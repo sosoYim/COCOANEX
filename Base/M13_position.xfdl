@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M13_position" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="직급 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" text="직급 이름 수정 기능이 구현될 예정입니다." left="170" top="226" width="780" height="148" textAlign="center" background="#d3d3d3" font="normal 20pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

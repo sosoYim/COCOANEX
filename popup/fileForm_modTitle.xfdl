@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="fileForm_addTitle" width="310" height="440" titletext="New Form" scrolltype="none" scrollbartype="none" onload="fileForm_modTitle_onload">
+    <Layouts>
+      <Layout height="440" mobileorientation="landscape" width="310">
+        <Static id="Static00" taborder="0" text="양식 분류 추가" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-780"/>
+        <Static id="Static01" taborder="1" text="양식 분류 명" left="10" top="44" width="120" height="36"/>
+        <Static id="Static01_00" taborder="2" text="설명" left="10" top="110" width="120" height="36"/>
+        <Edit id="Edit00" taborder="3" left="91" top="52" width="199" height="26" onchanged="Edit00_onchanged"/>
+        <TextArea id="TextArea00" taborder="4" left="91" top="120" width="199" height="144" displaynulltext=" "/>
+        <Button id="btn_cancel" taborder="5" text="취소" left="20" top="370" width="112" height="46" onclick="btn_cancel_onclick"/>
+        <Button id="btn_add" taborder="6" text="등록" left="160" top="370" width="112" height="46" onclick="btn_add_onclick"/>
+        <Static id="Static01_00_00" taborder="7" text="등록 정보" left="10" top="274" width="71" height="36"/>
+        <Static id="Static01_00_00_00" taborder="8" text="수정 정보" left="10" top="314" width="71" height="36"/>
+        <Static id="Static02" taborder="9" left="0" top="-5" width="310" height="44" border="0px none,0px none,1px solid #c9c9c9"/>
+        <Static id="sta_made_date" taborder="10" left="91" top="274" width="196" height="36"/>
+        <Static id="sta_mod_date" taborder="11" left="90" top="314" width="196" height="36"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.fileForm_modTitle_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var code = this.parent.code;
+	
+	this.transaction(
+		"tp_getFormInfoByCode" //1. strsvcid
+		,"/nexTemp/tp_getFormInfoByCode.nex" //2.strurl
+		,"" //3.strInDatasets Sds=Fds:U :A :
+		,"tp_title=out_ds" //4.strOutDatasets
+		,"code="+code //5.strArgument
+		,"fn_callback" //6.strCallbackFunc
+	);
+	
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("cancel");
+};
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	var getCurRow = this.tp_title.addRow();
+	var title = this.tp_title.getColumn(0,"title");
+	var contents = this.tp_title.getColumn(0,"contents");
+	this.tp_title.setColumn(getCurRow,"code",this.parent.code);
+	this.tp_title.setColumn(getCurRow,"title",title);
+	this.tp_title.setColumn(getCurRow,"contents",contents);
+	this.transaction(
+		"tp_getFormInfoByCode" //1. strsvcid
+		,"/nexTemp/tp_titleMod.nex" //2.strurl
+		,"in_ds=tp_title:U" //3.strInDatasets Sds=Fds:U :A :
+		,"" //4.strOutDatasets
+		,"" //5.strArgument
+		,"fn_modListCallBack" //6.strCallbackFunc
+	);	
+};
+
+this.fn_modListCallBack=function(id,errmsg,etc){
+	this.close(errmsg);
+}
+]]></Script>
+    <Objects>
+      <Dataset id="tp_title">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="made_date" type="INT" size="256"/>
+          <Column id="mod_date" type="INT" size="256"/>
+          <Column id="emp_code" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item1" compid="TextArea00" propid="value" datasetid="tp_title" columnid="contents"/>
+      <BindItem id="item2" compid="sta_made_date" propid="text" datasetid="tp_title" columnid="made_date"/>
+      <BindItem id="item3" compid="sta_mod_date" propid="text" datasetid="tp_title" columnid="mod_date"/>
+    </Bind>
+  </Form>
+</FDL>

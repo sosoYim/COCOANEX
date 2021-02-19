@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M51_logo" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="로고 변경" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+]]></Script>
+  </Form>
+</FDL>

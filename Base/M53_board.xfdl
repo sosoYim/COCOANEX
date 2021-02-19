@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M53_board" width="1090" height="650" titletext="New Form" onload="M53_board_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="게시판 관리" left="0" top="6" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Main_Grid" taborder="1" left="4%" top="13%" width="74%" height="77%"/>
+        <Static id="Static00_00" taborder="2" text="새 게시판 생성" left="7%" top="15%" height="5%" cssclass="sta_WF_title01" width="15%" font="normal 13px/normal"/>
+        <Div id="board_div" taborder="3" text="Div00" left="10.09%" top="20.62%" width="65.23%" height="60.31%">
+          <Layouts>
+            <Layout>
+              <Grid id="board_mn_list_Grd" taborder="0" left="0.14%" top="8.93%" binddataset="ds_board_menu" autofittype="col" width="49.09%" height="76.79%" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="50"/>
+                      <Column size="53"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="0" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="게시판 번호"/>
+                      <Cell col="2" text="게시판 이름"/>
+                      <Cell col="3" text="게시판 종류"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:seq" textAlign="center"/>
+                      <Cell col="2" text="bind:name"/>
+                      <Cell col="3" text="bind:type"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_modify" taborder="1" text="수정" left="79.04%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_modify_onclick"/>
+              <Button id="btn_add" taborder="2" text="추가" left="60.76%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_add_onclick"/>
+              <Button id="btn_del" taborder="3" text="삭제" left="69.76%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_del_onclick"/>
+              <Static id="Static01" taborder="4" text="게시판 정보안내 및 수정" left="63.01%" top="11.48%" width="21.38%" height="5.87%" textAlign="center" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" onclick="Common_onclick"/>
+              <Div id="Div00" taborder="5" left="52.04%" top="21.94%" width="43.60%" height="51.02%" border="1px groove #0052a6">
+                <Layouts>
+                  <Layout>
+                    <Static id="stcSeq" taborder="0" text="게시판 번호" left="28" top="16.74%" width="21.36%" height="18.03%" onclick="Common_onclick"/>
+                    <Static id="Static00" taborder="1" text="게시판 이름" left="8.09%" top="37.77%" width="22.01%" height="18.03%" onclick="Common_onclick"/>
+                    <MaskEdit id="mskSeq" taborder="2" left="35.60%" top="16.31%" width="10%" height="13%" border="0px none,0px none,1px groove #0052a6" textAlign="center"/>
+                    <Radio id="rdoType" taborder="3" left="35.60%" top="58.37%" height="18.03%" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" right="19" readonly="true" innerdataset="board_type_radio"/>
+                    <Static id="Static00_00" taborder="4" text="게시판 종류" left="8.09%" top="59.23%" width="22.01%" height="16.31%" onclick="Common_onclick"/>
+                    <Edit id="edtBoardNm" taborder="5" left="35.60%" top="37.34%" width="49.84%" height="16.31%" onclick="Common_onclick" border="0px none,0px none,1px groove #0052a6"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="board_type_radio">
+        <ColumnInfo>
+          <Column id="codecolumn" type="STRING" size="256"/>
+          <Column id="datacolumn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codecolumn">List</Col>
+            <Col id="datacolumn">리스트형</Col>
+          </Row>
+          <Row>
+            <Col id="codecolumn">Album</Col>
+            <Col id="datacolumn">이미지형</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_board_menu">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item2" compid="board_div.form.Div00.form.mskSeq" propid="value" datasetid="ds_board_menu" columnid="seq"/>
+      <BindItem id="item1" compid="board_div.form.Div00.form.rdoType" propid="value" datasetid="ds_board_menu" columnid="type"/>
+      <BindItem id="item0" compid="board_div.form.Div00.form.edtBoardNm" propid="value" datasetid="ds_board_menu" columnid="name"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[//내용 불러오기
+this.M53_board_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	trace("도착");
+	this.transaction(
+  		"board_Menu_list" // id
+  		, "/NecBoard/getBoardMenuList.nc" // url
+		, "" // inData
+  		, "ds_board_menu=out_board_menu" // outData
+ 		, ""// strArg
+  		, "fn_callback_mnList" // callback
+  	);
+};
+this.fn_callback_mnList = function(result)
+{
+	trace("리스트 불러옴!");
+}
+//추가 버튼
+this.board_div_btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace("눌린거지");
+	var objCF = new ChildFrame();
+	objCF.set_openalign("center middle");
+	objCF.set_formurl("Base::M54_boardPop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame()
+		,{}
+		,this
+		, "fn_callback_boardPop"
+	);
+};
+this.fn_callback_boardPop = function(id,sRtn){
+	
+	var arrRtn = sRtn.split("|");
+	var type = arrRtn[0];
+	var name = arrRtn[1];
+	if (type=="1"){
+		type = "Album";
+	}
+	if (type=="2"){
+		type = "List";
+	}
+	
+	trace("여기"+type);
+	trace("여기"+name);
+ 	this.transaction(
+   		"boardPop" // id
+   		, "/NecBoard/addBoard.nc" // url
+ 		, "" // inData
+   		, "" // outData
+  		, "type="+type+" name="+name// strArg
+   		, "fn_callback" // callback
+   	);
+};
+
+this.fn_callback = function(result)
+{
+	trace("추가 완료!");
+	this.M53_board_onload();
+}
+
+//수정 버튼
+this.board_div_btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.ds_board_menu.extractRows("chk==1");
+ 	this.ds_board_menu.deleteMultiRows(arr);
+	
+	var seq = this.board_div.form.Div00.form.mskSeq.value;
+	var name = this.board_div.form.Div00.form.edtBoardNm.value;
+	trace("변경할 이름 : "+name);
+	trace("번호 : "+seq);
+	this.transaction(
+  		"boardUpdate" // id
+  		, "/NecBoard/uptBoard.nc" // url
+		, "ds_uptBoard = ds_board_menu:U" // inData
+  		, "" // outData
+ 		, "name=" + name + " seq=" + seq// strArg
+  		, "fn_callback_upt" // callback
+  	);
+};
+this.fn_callback_upt = function(result)
+{
+	trace("수정 완료!");
+	this.M53_board_onload();
+}
+//Grid 체크박스
+	
+this.board_div_board_mn_list_Grd_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	trace("여기가 어디니..");
+	if(e.cell == 0)
+	{
+		this.gf_setCheckAll(obj, e);
+	}
+};
+
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+	trace("박스가 눌리니..");
+	var strColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", ""); //Cell의 특정 속성 값을 반환하는 메소드입니다.
+	var sheadValue = obj.getCellProperty("head", e.cell, "text"); //head에서 선택한 행의 text 값 가져오기
+	//var objDs = obj.getBindDataset(); 
+	
+		trace("strColID 값은?"+strColID);
+		trace("sheadValue 값은?"+sheadValue);
+
+		trace("아닐때");
+		sheadValue = (sheadValue == "0" ? "1" : "0");
+		obj.setCellProperty("head",e.cell,"text",sheadValue);
+		obj.setCellProperty("body",e.cell,"text",sheadValue);
+		trace("sheadValue "+sheadValue);
+		
+		//this.ds_board_menu.set_enableevent(false);
+		for(var i=0; i<this.ds_board_menu.getRowCount(); i++){
+			this.ds_board_menu.setColumn(i, "chk", sheadValue);
+		}
+		//this.ds_board_menu.set_enableevent(true);
+};
+//삭제 버튼
+this.board_div_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.ds_board_menu.extractRows("chk==1");
+	var seq = this.board_div.form.Div00.form.mskSeq.value;
+	if(arr.length == 0 || arr == -1) {alert("선택된 항목이 없습니다.");return}
+	trace("arr은?"+arr);
+	
+ 	this.ds_board_menu.deleteMultiRows(arr);
+	
+	this.transaction(
+  		"boardDelete" // id
+  		, "/NecBoard/delBoard.nc" // url
+		, "ds_delBoard = ds_board_menu:D" // inData
+  		, "" // outData
+ 		, "seq="+seq// strArg
+  		, "fn_callback_del" // callback
+  	);
+};
+this.fn_callback_del = function(result)
+{
+	trace("삭제 완료!");
+	this.alert("삭제 되었습니다.");
+}]]></Script>
+  </Form>
+</FDL>

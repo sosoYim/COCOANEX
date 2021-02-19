@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M32_grantVacation" width="1090" height="650" titletext="New Form" onload="M31_grantVacation_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="휴가 사용처리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Div id="Div00" taborder="1" text="Div00" left="2%" top="100" width="35%" height="500" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="1%" top="1%" binddataset="ds_document" autofittype="col" right="1%" bottom="1%">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="61"/>
+                      <Column size="129"/>
+                      <Column size="93"/>
+                      <Column size="51"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="32" band="head"/>
+                      <Row size="33"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="문서번호"/>
+                      <Cell col="1" text="제목"/>
+                      <Cell col="2" text="승인날짜" autosizecol="default"/>
+                      <Cell col="3" text="처리여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:seq" textAlign="center" displaytype="mask" maskeditformat="####"/>
+                      <Cell col="1" text="bind:title" textAlign="center"/>
+                      <Cell col="2" text="bind:final_date" textAlign="center" displaytype="calendarcontrol" autosizerow="limitmin" autosizecol="default"/>
+                      <Cell col="3" text="bind:process" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout name="default0">
+              <Grid id="Grid00" taborder="0" left="1%" top="1%" width="99%" height="99%" binddataset="ds_document" autofittype="col"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="2" text="Div01" left="39%" top="100" height="300" border="1px solid black" right="2%">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="0" left="50%" top="19" height="30" right="3%" enable="false"/>
+              <Static id="Static00" taborder="1" text="제목" top="19" height="30" width="40" right="50%"/>
+              <Static id="Static00_00" taborder="2" text="내용" top="58" height="30" width="40" right="50%"/>
+              <TextArea id="TextArea00" taborder="3" left="50%" top="59" height="220" right="3%" enable="false"/>
+              <Static id="Static00_01" taborder="4" text="승인날짜" left="3%" top="69" width="65" height="30"/>
+              <Calendar id="Calendar00" taborder="5" left="15%" top="71" height="27" right="65%" enable="false"/>
+              <Static id="Static00_01_00" taborder="6" text="종류" left="3%" top="159" width="65" height="30"/>
+              <Edit id="Edit00_00_00" taborder="7" left="15%" top="159" height="30" right="65%" enable="false"/>
+              <Static id="Static00_02" taborder="8" text="문서번호" left="3.5%" top="19" width="120" height="30" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="Static00_01_01" taborder="9" text="시작 날짜" left="3%" top="204" width="65" height="30"/>
+              <Calendar id="Calendar00_00" taborder="10" left="15%" top="206" height="27" right="65%" enable="false"/>
+              <Static id="Static00_01_02" taborder="11" text="마감 날짜" left="3%" top="249" width="65" height="30"/>
+              <Calendar id="Calendar00_01" taborder="12" left="15%" top="251" height="27" right="65%" enable="false" onchanged="Div01_Calendar00_01_onchanged"/>
+              <Static id="Static00_01_00_00" taborder="13" text="작성자" left="3%" top="114" width="65" height="30"/>
+              <Edit id="writerEdit" taborder="14" left="15%" top="114" height="30" right="65%" enable="false"/>
+            </Layout>
+            <Layout name="default0">
+              <Edit id="Edit00" taborder="0" left="334" top="19" width="300" height="30"/>
+              <Static id="Static00" taborder="1" text="제목" left="285" top="19" width="40" height="30"/>
+              <Static id="Static00_00" taborder="2" text="내용" left="285" top="58" width="40" height="30"/>
+              <TextArea id="TextArea00" taborder="3" left="335" top="59" width="300" height="220"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="3" text="Div02" left="39%" top="420" height="180" right="2%" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <CheckBox id="checkMinus" taborder="0" text="휴가 차감 여부" left="20" top="139" width="194" height="25" onclick="Div02_CheckBox00_onclick"/>
+              <Static id="seq" taborder="1" text="문서번호" left="3.5%" top="7" width="141" height="42" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Spin id="spinTime" taborder="2" left="15%" top="95" height="27" min="1" max="7" value="" right="65%"/>
+              <Static id="Static01" taborder="3" text="종류" left="3%" top="50" width="64" height="31"/>
+              <Static id="Static01_00" taborder="4" text="시간" left="19" top="95" width="64" height="31"/>
+              <Edit id="editType" taborder="5" left="15%" top="50" height="27" right="65%" enable="false"/>
+              <Button id="submitBtn" taborder="6" text="등록" top="144" height="25" background="linear-gradient(#23cccc,#1098d5)" borderRadius="10px" right="2.02%" width="69" color="#ffffff" onclick="Div02_submitBtn_onclick"/>
+              <Static id="Static01_01" taborder="7" text="시작 날짜" top="48" width="60" height="31" right="40%"/>
+              <Calendar id="calStart" taborder="8" top="50" height="27" right="20%" left="60%"/>
+              <Static id="Static01_01_00" taborder="9" text="마감 날짜" top="95" width="60" height="31" right="40%"/>
+              <Calendar id="calEnd" taborder="10" top="95" height="27" right="20%" left="60%"/>
+            </Layout>
+            <Layout name="default0"/>
+          </Layouts>
+        </Div>
+      </Layout>
+      <Layout height="650" width="1090" name="default0">
+        <Static id="Static00" taborder="0" text="휴가 부여" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Div id="Div00" taborder="1" text="Div00" left="2%" top="100" width="35%" height="500" border="1px solid black"/>
+        <Div id="Div01" taborder="2" text="Div01" left="39%" top="100" height="300" border="1px solid black" right="2%"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_document" onrowposchanged="ds_document_onrowposchanged">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="write_date" type="DATETIME" size="256"/>
+          <Column id="final_date" type="DATETIME" size="256"/>
+          <Column id="writer_code" type="INT" size="256"/>
+          <Column id="dept_code" type="INT" size="256"/>
+          <Column id="temp_code" type="INT" size="256"/>
+          <Column id="leave_start" type="DATE" size="256"/>
+          <Column id="leave_end" type="DATE" size="256"/>
+          <Column id="leave_type" type="STRING" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
+          <Column id="process" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="seq">1001</Col>
+            <Col id="title">조퇴</Col>
+            <Col id="contents">3시에 먼저 갑니다</Col>
+            <Col id="write_date">2021-02-16</Col>
+            <Col id="final_date">2021-02-16</Col>
+            <Col id="writer_code">1004</Col>
+            <Col id="leave_start">2021-02-16</Col>
+            <Col id="leave_end"/>
+            <Col id="leave_type">조퇴</Col>
+            <Col id="status">CONFIRM</Col>
+            <Col id="process">N</Col>
+          </Row>
+          <Row>
+            <Col id="seq">1002</Col>
+            <Col id="title">기타</Col>
+            <Col id="contents">일주일만 쉴게여</Col>
+            <Col id="write_date">2021-02-17</Col>
+            <Col id="final_date">2021-02-17</Col>
+            <Col id="writer_code">1004</Col>
+            <Col id="leave_start">2021-02-20</Col>
+            <Col id="leave_end">2021-02-27</Col>
+            <Col id="leave_type">기타</Col>
+            <Col id="status">CONFIRM</Col>
+            <Col id="process">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="Div01.form.Edit00" propid="value" datasetid="ds_document" columnid="title"/>
+      <BindItem id="item3" compid="Div01.form.Calendar00" propid="value" datasetid="ds_document" columnid="final_date"/>
+      <BindItem id="item0" compid="Div01.form.Static00_02" propid="text" datasetid="ds_document" columnid="seq"/>
+      <BindItem id="item4" compid="Div01.form.Calendar00_00" propid="value" datasetid="ds_document" columnid="leave_start"/>
+      <BindItem id="item5" compid="Div01.form.Calendar00_01" propid="value" datasetid="ds_document" columnid="leave_end"/>
+      <BindItem id="item6" compid="Div01.form.Calendar00_00" propid="accessibilityaction" datasetid="ds_document" columnid="leave_start"/>
+      <BindItem id="item7" compid="Div01.form.Calendar00_01" propid="accessibilityaction" datasetid="ds_document" columnid="leave_end"/>
+      <BindItem id="item10" compid="Div01.form.Edit00_00_00" propid="value" datasetid="ds_document" columnid="leave_type"/>
+      <BindItem id="item9" compid="Div02.form.seq" propid="text" datasetid="ds_document" columnid="seq"/>
+      <BindItem id="item11" compid="Div02.form.editType" propid="value" datasetid="ds_document" columnid="leave_type"/>
+      <BindItem id="item12" compid="Div02.form.calStart" propid="value" datasetid="ds_document" columnid="leave_start"/>
+      <BindItem id="item13" compid="Div02.form.calEnd" propid="value" datasetid="ds_document" columnid="leave_end"/>
+      <BindItem id="item2" compid="Div01.form.TextArea00" propid="value" datasetid="ds_document" columnid="contents"/>
+      <BindItem id="item8" compid="Div01.form.writerEdit" propid="value" datasetid="ds_document" columnid="name"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+
+this.M31_grantVacation_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+			"documentList", // 1. strSvcID
+			"/documentN/getEarlyList.documentN", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"ds_document=out_document", // 4. strOutDatasets -select Fds=Sds
+			"" , // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"" // 6. strCallbackFunc
+		);
+};
+this.fn_callback = function(result)
+{
+	this.ds_document_onrowposchanged();
+}
+
+this.Div02_submitBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var seq = this.Div02.form.seq.text;
+	trace("seq " + seq);
+	var type = this.Div02.form.typeEdit.value;
+	trace("type " + type);
+	var startDate = this.Div02.form.startCalendar.value;
+	trace("startDate " + startDate);
+	var endDate = this.Div02.form.endCalendar.value;
+	trace("endDate " + endDate);
+	var time = this.Div02.form.timeSpin.value;
+	trace("time " + time);
+	var empCode = this.ds_employee.getColumn(this.ds_employee.rowposition, "code");
+	trace("empCode " + empCode);
+	var check = this.Div02.form.checkMinus.value;
+	trace("check " + check);
+	
+	
+	//ds_document 가져오기
+	this.transaction(
+			"insertLeave", // 1. strSvcID
+			"/leaveN/insert.leaveN", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"", // 4. strOutDatasets -select Fds=Sds
+			"seq=" +seq + " type=" + type + " startDate=" + startDate + " endDate=" + endDate + " time=" + time + " empCode=" + empCode + " check=" + check, // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"" // 6. strCallbackFunc
+		);
+	this.M31_grantVacation_onload();
+	
+};
+
+this.ds_document_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{	
+	var type = this.ds_document.getColumn(e.newrow, "leave_type");
+	if (type == "기타"){
+		this.Div02.form.spinTime.set_enable(true);
+		this.Div02.form.calEnd.set_enable(false);
+	}else if (type == "조퇴"){
+		this.Div02.form.spinTime.set_enable(false);
+		this.Div02.form.calEnd.set_enable(true);
+	}
+	
+};
+
+]]></Script>
+  </Form>
+</FDL>

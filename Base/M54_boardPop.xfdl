@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M54_boardPop" width="300" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" width="300">
+        <Static id="staLogo" taborder="0" text="게시판 추가" left="24.33%" top="7.50%" width="50.00%" height="10.00%" font="bold 18px/normal &quot;Gulim&quot;" textAlign="center"/>
+        <Static id="stcType" taborder="1" text="게시판 종류 :" left="8.00%" top="22.50%" width="23.00%" height="8.00%"/>
+        <Static id="stcName" taborder="2" text="수업이름" left="15.67%" top="33.50%" width="21.00%" height="8.00%"/>
+        <Edit id="edtName" taborder="3" left="36.67%" top="34.00%" width="52.00%" height="7.50%" displaynulltext="이름을 입력하세요"/>
+        <Button id="btnOk" taborder="4" text="Ok" left="25.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnOk_onclick"/>
+        <Button id="btnCancel" taborder="5" text="Cancel" left="52.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnCancel_onclick"/>
+        <Radio id="rdoType" taborder="6" left="34.00%" top="22.75%" width="61.67%" height="7.75%" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">이미지형</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">리스트형</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static01" taborder="7" text="새 게시판 생성 안내" left="26.33%" top="49.50%" width="47.00%" height="6.50%" textAlign="center" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Div id="Div00" taborder="8" left="8.33%" top="56.75%" width="84.00%" height="21.50%" border="1px groove #0052a6">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="infor_static" taborder="9" text="(1)이미지형&#13;&#10; - 사진파일 첨부 필수&#13;&#10; - 최대 10개 첨부 가능" left="10.33%" top="59.50%" width="39.67%" height="16.00%" padding="0px" onclick="infor_static_onclick"/>
+        <Static id="infor_static00" taborder="10" text="(2)리스트형&#13;&#10; - 목록형 리스트&#13;&#10; - 최대 10개 첨부 가능" left="51.33%" top="59.50%" width="39.67%" height="16.00%" padding="0px" onclick="infor_static_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[//취소 버튼
+this.btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+//확인 버튼
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace("확인버튼 눌림");
+	var type = this.rdoType.value;
+	var name = this.edtName.value;
+	trace(type);
+	trace(name);
+	
+	if(type!=null && name!=null){
+		var sRtn = type + "|" + name;
+		this.close(sRtn);
+	}else{
+		this.alert("모든 항목을 기입해주세요.");
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

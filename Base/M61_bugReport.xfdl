@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M61_bugReport" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="버그리포트 " left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Main_Grid" taborder="1" left="4%" top="13%" width="74%" height="77%"/>
+        <Static id="Static00_00" taborder="2" text="버그리포트 전송" left="7%" top="15%" height="5%" cssclass="sta_WF_title01" width="15%" font="normal 13px/normal"/>
+        <Static id="infor_static" taborder="3" text=" (1) 필수 첨부 내용&#13;&#10;&#13;&#10;  - 보내는 사람 소속 &#13;&#10;    ex) 회사명, 부서명, 이름&#13;&#10;  - 문제점&#13;&#10;    ex) 어떤 경우에 생기는 문제&#13;&#10;      인지 상세하게 기입하세요&#13;&#10; &#13;&#10; (2) 회신및 문제 해결 기간&#13;&#10;&#13;&#10;  - 회신 : 최대 3-4일 &#13;&#10;  - 문제 해결 기간은 회신 이메&#13;&#10;    일에 자세히 안내 될 예정&#13;&#10;&#13;&#10; (3) Contact Detail&#13;&#10;&#13;&#10; - 회사명 : 올바른데이터&#13;&#10;  - 회사 번호 : (02)1231-1231&#13;&#10; " left="11.93%" top="29.85%" width="14.95%" height="44.92%" border="1px double #0052a6" padding="0px" onclick="infor_static_onclick"/>
+        <Static id="Infor_title_static" taborder="4" text="버그리포트 전송 안내" left="12.94%" top="23.85%" width="12.94%" height="4.00%" textAlign="center" font="bold italic 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" border="0px none,0px none,1px solid #0052a6"/>
+        <Div id="bugReport_div" taborder="5" left="24.50%" top="17.08%" width="52.57%" height="70.00%" text="">
+          <Layouts>
+            <Layout>
+              <Static id="contents_edt_box" taborder="0" left="11.17%" top="27.69%" height="55%" cssclass="sta_cm_box02L" width="73.8%"/>
+              <Static id="receiver_edt_box00" taborder="1" left="25%" top="18%" height="10%" cssclass="sta_cm_box02L" width="60%"/>
+              <Static id="title_edt_box00" taborder="2" left="25%" top="8%" height="10%" cssclass="sta_cm_box02L" width="60%" text=""/>
+              <Static id="title_nm_box00" taborder="3" text="제목" left="11%" top="8%" width="15%" height="10%" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
+              <Static id="receiver_nm_box00" taborder="4" text="받는 사람" left="11%" top="18%" width="15%" height="10%" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
+              <Edit id="title_edt00" taborder="5" left="26.70%" top="10.11%" width="55.85%" height="5.49%" displaynulltext="제목을 입력하세요." border="0px none"/>
+              <TextArea id="contents_textarea" taborder="6" left="12.91%" top="29.45%" width="69.98%" height="50%"/>
+              <Button id="btn_send" taborder="7" text="전송" left="63.70%" top="85%" width="20.77%" height="8.13%" font="normal 15px/normal &quot;Arial&quot;" onclick="btn_send_onclick"/>
+              <Static id="receiver_static" taborder="8" text="cocoasemiproject@gmail.com" left="27.4%" top="19.56%" width="30.54%" height="5.93%"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+//전송
+this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var title = this.bugReport_div.form.title_edt00.value;
+	var receiver_email = "cocoasemiproject@gmail.com";
+	var contents =  this.bugReport_div.form.contents_textarea.value;
+	if(title == null ){
+		title ="(제목없음)";
+	}
+	if(contents == null){
+		trace("이건 왜 ..?");
+		contents ="(내용없음)";
+	}
+	this.transaction(
+			"bug" //1.strSvcID (Transaction을 구분하기 위한  ID : Callback때 넣어주는 id)
+			,"/email/nexacroEmailSend.email"//2.strURL
+			,""//3.strInDatasets - I,U,D Sds=Fds:U, :A, :N
+			,""//4.strOutDatasets - select Fds=Sds
+			,"title=" + title + " receiver_email=" + receiver_email + " contents="+ contents//5.strArgument
+													//id앞에 항상 띄어쓰기 넣어야함
+			,"fn_callback"//6.strCallbackFunc
+		);
+					
+};	
+this.fn_callback = function(result){
+	trace(result);
+	this.alert("버그리포트 전송 완료!");
+};]]></Script>
+  </Form>
+</FDL>

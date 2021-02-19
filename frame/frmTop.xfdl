@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="fm_top" width="1260" height="65" titletext="New Form" onload="fm_top_onload">
+    <Layouts>
+      <Layout height="65" mobileorientation="landscape" width="1260">
+        <Static id="Static00" taborder="0" left="0" top="0" height="24" right="0" cssclass="sta_top_bg01" background="linear-gradient(to right,cornflowerblue 12%,#684bb9 49%)"/>
+        <Static id="Static01" taborder="1" left="0" top="24" height="41" right="0" cssclass="sta_top_bg02"/>
+        <Static id="Static03" taborder="2" text="Hello! Hong Gil Dong" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht"/>
+        <Static id="Static02" taborder="3" text="COCOAERP" left="0" top="24" width="164" height="41" padding="5px" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="black"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_Popup">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">하위메뉴_1</Col>
+            <Col id="Column1">0</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_2</Col>
+            <Col id="Column1">0</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_2_1</Col>
+            <Col id="Column1">1</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_2_2</Col>
+            <Col id="Column1">1</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_2_3</Col>
+            <Col id="Column1">1</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_3</Col>
+            <Col id="Column1">0</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">하위메뉴_4</Col>
+            <Col id="Column1">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.PopupMenu00.trackPopupByComponent(this.Button00,0,41);
+};
+
+this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

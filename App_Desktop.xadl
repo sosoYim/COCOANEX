@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="App_Desktop" screenid="Desktop_screen" onload="Application_onload">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1280" height="720" titletext="MDI (Frameset)">
+        <VFrameSet id="VFSet01" separatesize="65,*,30">
+          <Frames>
+            <ChildFrame id="TopFrame" formurl="frame::frmTop.xfdl" dragmovetype="none" showstatusbar="false" showtitlebar="false"/>
+            <HFrameSet id="HFSet01" separatesize="190,*">
+              <Frames>
+                <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
+                <VFrameSet id="VFSet02" separatesize="30,*">
+                  <Frames>
+                    <ChildFrame id="MdiFrame" formurl="frame::frmMdi.xfdl" showtitlebar="false" dragmovetype="none"/>
+                    <FrameSet id="WorkFrame"/>
+                  </Frames>
+                </VFrameSet>
+              </Frames>
+            </HFrameSet>
+            <ChildFrame id="BottomFrame" formurl="frame::frmBottom.xfdl" showtitlebar="false" dragmovetype="none"/>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+    <Style url="xcssrc::temp_main.xcss"/>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[this.VFSet01;
+this.VFSet02;
+this.HFSet01;
+this.TopFrame;
+this.LeftFrame;
+this.MdiFrame;
+this.BottomFrame;
+this.WorkFrame;
+
+this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
+{
+	this.VFSet01 = this.mainframe.VFSet01;
+	this.VFSet02 = this.mainframe.VFSet01.HFSet01.VFSet02;
+	this.HFSet01 = this.mainframe.VFSet01.HFSet01;
+	this.TopFrame = this.mainframe.VFSet01.TopFrame;
+	this.LeftFrame = this.mainframe.VFSet01.HFSet01.LeftFrame;
+	this.MdiFrame = this.mainframe.VFSet01.HFSet01.VFSet02.MdiFrame;
+	this.BottomFrame = this.mainframe.VFSet01.BottomFrame;
+	this.WorkFrame = this.mainframe.VFSet01.HFSet01.VFSet02.WorkFrame;
+};
+]]></Script>
+</ADL>

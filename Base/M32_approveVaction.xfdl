@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M32_approveVaction" width="1090" height="650" titletext="New Form" onload="M32_approveVaction_onload">
+    <Layouts>
+      <Layout height="650" width="1090" stepcount="0">
+        <Static id="Static00" taborder="0" text="휴가 부여" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Div id="Div00" taborder="1" text="Div00" left="3%" top="160" right="3%" border="1px solid black" bottom="10%">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="0.4%" top="1%" binddataset="ds_employee" right="0.4%" bottom="1%" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사번"/>
+                      <Cell col="1" text="부서명"/>
+                      <Cell col="2" text="팀명"/>
+                      <Cell col="3" text="posname"/>
+                      <Cell col="4" text="name"/>
+                      <Cell col="5" text="hire_date"/>
+                      <Cell col="6" text="office_phone"/>
+                      <Cell col="7" text="year"/>
+                      <Cell col="8" text="leave_got"/>
+                      <Cell col="9" text="leave_used"/>
+                      <Cell col="10" text="addLeave"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:code"/>
+                      <Cell col="1" text="bind:deptname"/>
+                      <Cell col="2" text="bind:teamname"/>
+                      <Cell col="3" text="bind:posname"/>
+                      <Cell col="4" text="bind:name"/>
+                      <Cell col="5" text="bind:hire_date"/>
+                      <Cell col="6" text="bind:office_phone"/>
+                      <Cell col="7" text="bind:year"/>
+                      <Cell col="8" text="bind:leave_got"/>
+                      <Cell col="9" text="bind:leave_used"/>
+                      <Cell col="10" text="bind:addLeave" edittype="mask" maskeditformat="###" displaytype="editcontrol" autosizerow="limitmin"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="2" text="Div01" left="3%" top="100" height="50" right="14%" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="사번" left="2%" top="13" height="25" right="85%"/>
+              <Button id="btnSearch" taborder="1" text="검색" left="92%" top="12" height="25" right="2%" onclick="Div01_btnSearch_onclick"/>
+              <Static id="Static00_00" taborder="2" text="이름" left="47%" top="13" height="25" right="40%"/>
+              <Edit id="editName" taborder="3" left="51.00%" top="13" height="25" right="38%" onchanged="Edit_onchanged"/>
+              <Combo id="comboDept" taborder="4" text="" left="19%" top="13" height="25" right="70%" innerdataset="ds_departments" codecolumn="code" datacolumn="name" value="0" index="-1"/>
+              <Combo id="comboPos" taborder="5" text="" left="32%" top="13" height="25" right="57%" innerdataset="ds_position" codecolumn="code" datacolumn="name" value="0" index="-1"/>
+              <Edit id="editYear" taborder="6" left="69%" top="14" height="25" right="20%" onchanged="Edit_onchanged" text="d"/>
+              <Static id="Static00_00_00" taborder="7" text="년도" left="65%" top="13" height="25" right="28%"/>
+              <Button id="btnReset" taborder="8" text="초기화" left="84%" top="12" height="25" right="10%" onclick="Div01_btnReset_onclick"/>
+              <Edit id="editEmpCode" taborder="9" left="5.97%" top="13" height="25" right="82.96%"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btnInsert" taborder="3" text="일괄부여" left="88%" top="105" height="35" right="4%" onclick="btnInsert_onclick"/>
+        <Button id="btnAdd" taborder="4" text="추가휴가 입력" right="4%" onclick="btnAdd_onclick" top="92%" height="25" width="120"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_employee">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="deptname" type="STRING" size="256"/>
+          <Column id="teamname" type="STRING" size="256"/>
+          <Column id="posname" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="hire_date" type="STRING" size="256"/>
+          <Column id="office_phone" type="STRING" size="256"/>
+          <Column id="year" type="INT" size="256"/>
+          <Column id="leave_got" type="INT" size="256"/>
+          <Column id="leave_used" type="INT" size="256"/>
+          <Column id="deptCode" type="INT" size="256"/>
+          <Column id="teamCode" type="INT" size="256"/>
+          <Column id="posCode" type="INT" size="256"/>
+          <Column id="addLeave" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_departments">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="name">개발부</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="name">영업부</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="name">부우부</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="name">말리부</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="name">대표</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="name">사장</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="name">부장</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="name">대리</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.M32_approveVaction_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//1. ds_employee 받아오기
+	this.transaction(
+			"selectEmployeeList", // 1. strSvcID
+			"/membership/selectEmployeeLTU.employee", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"ds_employee=out_employee", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"" // 6. strCallbackFunc
+		);
+		
+	//2. ds_departments 받아오기
+	this.transaction(
+			"getDepartmentsList", // 1. strSvcID
+			"/department/getDeptList.department", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"ds_departments=out_departments", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"" // 6. strCallbackFunc
+		);
+		
+	//3. ds_position 받아오기
+	this.transaction(
+			"getPositionList", // 1. strSvcID
+			"/position/getPositionList.position", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"ds_position=out_position", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"" // 6. strCallbackFunc
+		);
+};
+
+this.btnInsert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//Leave_Taken_Used 넣기
+	this.transaction(
+			"insertAllLTU", // 1. strSvcID
+			"/ltuN/insertAllLTU.ltuN", // 2. strURL
+			"", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+			"ds_employee=out_employee", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+			"fn_callback" // 6. strCallbackFunc
+		);
+};
+this.fn_callback = function(result) {
+	this.alert("일괄부여가 완료되었습니다.");
+}
+this.Div01_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var empCode = this.Div01.form.editEmpCode.value;
+	var dept = this.Div01.form.comboDept.value;
+	var pos = this.Div01.form.comboPos.value;
+	var name = this.Div01.form.editName.value;
+	var year = this.Div01.form.editYear.value;
+	
+	var filterCon = "";
+	if(empCode != null){
+		if(filterCon != ""){
+			filterCon = filterCon + " && ";
+		}
+		filterCon = filterCon + "code=='" + empCode + "'";
+	}
+	if(dept != '0'){
+		if(filterCon != ""){
+			filterCon = filterCon + " && ";
+		}
+		filterCon = filterCon + "deptCode=='" + dept + "'";
+	}
+	if(pos != '0'){
+		if(filterCon != ""){
+			filterCon = filterCon + " && ";
+		}
+		filterCon = filterCon + "posCode=='" + pos + "'";
+	}
+	if(name != null){
+		if(filterCon != ""){
+			filterCon = filterCon + " && ";
+		}
+		filterCon = filterCon + "name=='" + name + "'";
+	}
+	if(year != null){
+		if(filterCon != ""){
+			filterCon = filterCon + " && ";
+		}
+		filterCon = filterCon + "year=='" + year + "'";
+	}
+	
+	trace("filterCon : " + filterCon);
+	this.ds_employee.filter(filterCon);
+};
+
+this.Div01_btnReset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_employee.filter("");
+	
+	this.Div01.form.editEmpCode.set_value("");
+	this.Div01.form.comboDept.set_value(0);
+	this.Div01.form.comboPos.set_value(0);
+	this.Div01.form.editName.set_value("");
+	this.Div01.form.editYear.set_value("");
+};
+
+this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var check = 0;
+	for(var i=0; i<this.ds_employee.rowcount; i++){
+		var leaveCount = this.ds_employee.getColumn(i, "addLeave");
+		if(leaveCount > 0){
+			check++;
+		}
+	}
+	if(check > 0){
+		this.transaction(
+				"updateLeave", // 1. strSvcID
+				"/ltuN/addLeave.ltuN", // 2. strURL
+				"in_ds=ds_employee:U", // 3. strIndatasets - Insert,Delete,Update  Sds = Fds :U ,:A ,:N
+				"ds_employee=out_employee", // 4. strOutDatasets -select Fds=Sds
+				"", // 5. strArgument 화면에서 서버로 보내는 변수값 (구분자는 띄어쓰기로' ')
+				"" // 6. strCallbackFunc
+			);
+	}else{
+		alert("입력된 추가정보가 없습니다.");
+	}
+};
+
+this.fn_callback2 = function(){
+	this.alert("추가 성공");
+}
+]]></Script>
+  </Form>
+</FDL>
