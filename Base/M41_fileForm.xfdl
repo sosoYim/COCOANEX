@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M41_fileForm" width="1090" height="650" titletext="New Form" onload="M41_fileForm_onload">
+  <Form id="M41_fileForm" width="1580" height="650" titletext="New Form" onload="M41_fileForm_onload">
     <Layouts>
-      <Layout height="650" width="1090">
+      <Layout height="650" width="1580">
         <Static id="Static00" taborder="0" text="기안 양식 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
         <Grid id="grid_form" taborder="1" left="10" top="90" width="180" height="546" binddataset="tp_title" autofittype="col" oncellclick="grid_form_oncellclick">
           <Formats>
@@ -45,7 +45,7 @@
         <Button id="btn_titleAdd" taborder="3" text="추가" left="10" top="54" width="43" height="26" onclick="btn_titleAdd_onclick"/>
         <Button id="btn_titleMod" taborder="4" text="수정" left="60" top="54" width="43" height="26" onclick="btn_titleMod_onclick"/>
         <Button id="btn_titleRm" taborder="5" text="삭제" left="110" top="54" width="43" height="26" onclick="btn_titleRm_onclick"/>
-        <Combo id="Combo00" taborder="6" text="기안제목" left="420" top="57" width="129" height="26" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="name">
+        <Combo id="Combo00" taborder="6" text="기안제목" left="420" top="57" width="129" height="26" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="name" onitemchanged="Combo00_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -431,6 +431,11 @@ this.btn_listSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 
 
 
+
+this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
 ]]></Script>
     <Objects>
       <Dataset id="tp_title" useclientlayout="true">
