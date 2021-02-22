@@ -3,13 +3,11 @@
   <Form id="M53_board" width="1090" height="650" titletext="New Form" onload="M53_board_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="게시판 관리" left="0" top="6" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Grid id="Main_Grid" taborder="1" left="4%" top="13%" width="74%" height="77%"/>
-        <Static id="Static00_00" taborder="2" text="새 게시판 생성" left="7%" top="15%" height="5%" cssclass="sta_WF_title01" width="15%" font="normal 13px/normal"/>
-        <Div id="board_div" taborder="3" text="Div00" left="10.09%" top="20.62%" width="65.23%" height="60.31%">
+        <Static id="Static00" taborder="0" text="게시판 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Div id="board_div" taborder="1" text="Div00" left="20" top="55" height="500" border="1px solid gray" right="110">
           <Layouts>
             <Layout>
-              <Grid id="board_mn_list_Grd" taborder="0" left="0.14%" top="8.93%" binddataset="ds_board_menu" autofittype="col" width="49.09%" height="76.79%" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
+              <Grid id="board_mn_list_Grd" taborder="0" left="0" top="60" binddataset="ds_board_menu" autofittype="col" width="559" height="394" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -37,22 +35,23 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_modify" taborder="1" text="수정" left="79.04%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_modify_onclick"/>
-              <Button id="btn_add" taborder="2" text="추가" left="60.76%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_add_onclick"/>
-              <Button id="btn_del" taborder="3" text="삭제" left="69.76%" top="77.55%" width="7.88%" height="6.38%" onclick="board_div_btn_del_onclick"/>
-              <Static id="Static01" taborder="4" text="게시판 정보안내 및 수정" left="63.01%" top="11.48%" width="21.38%" height="5.87%" textAlign="center" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" onclick="Common_onclick"/>
-              <Div id="Div00" taborder="5" left="52.04%" top="21.94%" width="43.60%" height="51.02%" border="1px groove #0052a6">
+              <Button id="btn_modify" taborder="1" text="수정" left="830" top="14" width="76" height="31" onclick="board_div_btn_modify_onclick"/>
+              <Button id="btn_add" taborder="2" text="추가" left="653" top="14" width="76" height="31" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01"/>
+              <Button id="btn_del" taborder="3" text="삭제" left="740" top="14" width="76" height="31" onclick="board_div_btn_del_onclick"/>
+              <Div id="Div00" taborder="4" left="581" top="60" width="358" height="266" text="" border="1px solid #c7c7c7">
                 <Layouts>
                   <Layout>
-                    <Static id="stcSeq" taborder="0" text="게시판 번호" left="28" top="16.74%" width="21.36%" height="18.03%" onclick="Common_onclick"/>
-                    <Static id="Static00" taborder="1" text="게시판 이름" left="8.09%" top="37.77%" width="22.01%" height="18.03%" onclick="Common_onclick"/>
-                    <MaskEdit id="mskSeq" taborder="2" left="35.60%" top="16.31%" width="10%" height="13%" border="0px none,0px none,1px groove #0052a6" textAlign="center"/>
-                    <Radio id="rdoType" taborder="3" left="35.60%" top="58.37%" height="18.03%" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" right="19" readonly="true" innerdataset="board_type_radio"/>
-                    <Static id="Static00_00" taborder="4" text="게시판 종류" left="8.09%" top="59.23%" width="22.01%" height="16.31%" onclick="Common_onclick"/>
-                    <Edit id="edtBoardNm" taborder="5" left="35.60%" top="37.34%" width="49.84%" height="16.31%" onclick="Common_onclick" border="0px none,0px none,1px groove #0052a6"/>
+                    <Static id="sta_writer_code00" taborder="0" left="140" top="110" width="200" height="132" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
+                    <Static id="Static01_06_00" taborder="1" left="140" top="63" width="200" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
+                    <Static id="sta_form" taborder="2" left="140" top="16" width="200" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text=""/>
+                    <Static id="Static01" taborder="3" text="게시판 번호" left="20" top="16" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                    <Static id="Static01_00" taborder="4" text="게시판 명" left="20" top="63" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                    <Static id="Static01_01" taborder="5" left="20" top="110" width="120" height="132" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="게시판 종류"/>
+                    <Radio id="rdoType" taborder="6" left="193" top="122" height="103" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" innerdataset="board_type_radio" width="89"/>
                   </Layout>
                 </Layouts>
               </Div>
+              <Static id="Static01_02" taborder="5" text="새 게시판 생성 안내" left="71.50%" top="66.47%" width="14.51%" height="4.82%" textAlign="center" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -85,9 +84,8 @@
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item2" compid="board_div.form.Div00.form.mskSeq" propid="value" datasetid="ds_board_menu" columnid="seq"/>
+      <BindItem id="item0" compid="board_div.form.Div00.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
       <BindItem id="item1" compid="board_div.form.Div00.form.rdoType" propid="value" datasetid="ds_board_menu" columnid="type"/>
-      <BindItem id="item0" compid="board_div.form.Div00.form.edtBoardNm" propid="value" datasetid="ds_board_menu" columnid="name"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[//내용 불러오기
 this.M53_board_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
