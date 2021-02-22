@@ -3,8 +3,49 @@
   <Form id="M12_deptTeam" width="1090" height="650" titletext="New Form" onload="M12_deptTeam_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="부서 / 팀 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="600" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Grid id="grd_tree" taborder="1" left="10" top="40" width="280" bottom="148" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_org" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" oncelldblclick="grd_tree_oncelldblclick" onselectchanged="grd_tree_onselectchanged">
+        <Static id="sta_title" taborder="0" text="부서 / 팀 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="600" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Div id="div_empList" taborder="7" left="450" top="160" right="100" border="1px solid #c7c7c7" height="440">
+          <Layouts>
+            <Layout>
+              <Grid id="grd_emp" taborder="0" left="9" top="39" height="390" right="9" binddataset="ds_employee" autofittype="col" scrollbartype="indicator auto">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사번"/>
+                      <Cell col="1" text="이름"/>
+                      <Cell col="2" text="부서"/>
+                      <Cell col="3" text="팀"/>
+                      <Cell col="4" text="직위"/>
+                      <Cell col="5" text="퇴직"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:code"/>
+                      <Cell col="1" text="bind:name"/>
+                      <Cell col="2" text="bind:deptname"/>
+                      <Cell col="3" text="bind:teamname"/>
+                      <Cell col="4" text="bind:posname"/>
+                      <Cell col="5" text="bind:withdraw"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="sta_subtitle" taborder="1" text="사원 목록" left="-1" top="0" height="40" cssclass="sta_WF_title01" right="18"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_tree" taborder="1" left="20" top="160" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_org" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" oncelldblclick="grd_tree_oncelldblclick" onselectchanged="grd_tree_onselectchanged" right="div_empList:10" height="440">
           <Formats>
             <Format id="default">
               <Columns>
@@ -19,33 +60,20 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_msg" taborder="2" text="구현 : &#13;&#10;- 트랜잭션을 통해 컨트롤러까지 값 전달 &#13;&#10;- 트리 더블클릭시 이름 변경&#13;&#10;미구현 : &#13;&#10;- 매퍼와 dao를 통한 디비 적용 미구현" left="310" top="181" width="270" height="90" background="#f8d8fd" textAlign="left" onclick="sta_msg_onclick"/>
-        <Button id="btn_add" taborder="3" text="추가" left="316" top="40" width="64" height="39" onclick="btn_add_onclick"/>
-        <Button id="btn_reset" taborder="4" text="리셋" left="396" top="91" width="64" height="39" onclick="btn_reset_onclick"/>
-        <Button id="btn_save" taborder="5" text="저장" left="316" top="90" width="64" height="39" onclick="btn_save_onclick"/>
-        <Button id="btn_reset00" taborder="6" text="삭제" left="396" top="40" width="64" height="39" onclick="btn_del"/>
-        <Grid id="Grid00" taborder="7" left="480" top="40" width="304" height="129" binddataset="ds_position">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="code"/>
-                <Cell col="1" text="name"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:code"/>
-                <Cell col="1" text="bind:name"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
+        <Static id="sta_msg" taborder="2" text="구현 : &#13;&#10;- 트랜잭션을 통해 컨트롤러까지 값 전달 &#13;&#10;- 트리 더블클릭시 이름 변경&#13;&#10;미구현 : &#13;&#10;- 매퍼와 dao를 통한 디비 적용 미구현" left="180" top="0" width="270" height="90" background="#f8d8fd" textAlign="left" onclick="sta_msg_onclick"/>
+        <Button id="btn_reset" taborder="4" text="리셋" top="55" width="64" height="35" onclick="btn_reset_onclick" cssclass="btn_WF_reset01" right="100"/>
+        <Button id="btn_save" taborder="5" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" right="btn_reset:10"/>
+        <Button id="btn_del" taborder="6" text="삭제" top="55" height="35" cssclass="btn_WF_delete01" onclick="btn_del_onclick" width="64" right="btn_save:10"/>
+        <Button id="btn_add" taborder="3" text="추가" top="55" height="35" onclick="btn_add_onclick" cssclass="btn_WF_add01" width="64" right="btn_del:10"/>
+        <Div id="div_change" taborder="8" text="" left="20" top="100" height="50" border="1px solid #c7c7c7" right="100" background="#eeeeee" formscrolltype="none" formscrollbartype="none">
+          <Layouts>
+            <Layout>
+              <Button id="btn_valid" taborder="2" text="확인" top="11" height="24" onclick="div_search_btn_search_onclick" right="9" width="60"/>
+              <Edit id="edt_change" taborder="0" top="12" width="100" height="25" right="btn_valid:10"/>
+              <Static id="sta_change" taborder="1" text="이름변경" top="11" height="26" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" right="edt_change:10" width="60"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -102,6 +130,27 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_employee">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="office_phone" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="b_email" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="hire_date" type="DATE" size="256"/>
+          <Column id="withdraw" type="STRING" size="256"/>
+          <Column id="dept_code" type="INT" size="256"/>
+          <Column id="pos_code" type="INT" size="256"/>
+          <Column id="team_code" type="INT" size="256"/>
+          <Column id="deptname" type="STRING" size="256"/>
+          <Column id="teamname" type="STRING" size="256"/>
+          <Column id="posname" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.M12_deptTeam_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -110,7 +159,7 @@
 			"OrganDeptTeam" //strSvcID
 			, "/nexDeptTeam/nexOrganDept.nex" //strURL
 			, "" //strInDatasets Sds=Fds:U, A, N
-			, "ds_org=out_org_list ds_position=out_pos_list" //strOutDatasets - select Fds = Sds
+			, "ds_org=out_org_list ds_employee=out_emp_list" //strOutDatasets - select Fds = Sds
 			, "" //strArgument
 			,  "fn_callback" //strCallbackFunc
 		);	
@@ -152,12 +201,7 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	trace("추가된 로우 부모코드 : ", this.ds_org.getColumn(addedRow, "p_org_cd"))
 };
 //삭제
-this.btn_del = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	let row = this.grd_tree.currentrow;
-	trace(row);
-	this.ds_org.deleteRow(row);
-};
+
 
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -201,6 +245,14 @@ this.grd_tree_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEv
 	if(status != "tree"){
 		this.grd_tree.setCellProperty("body",0,"edittype","tree");
 	}
+};
+
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let row = this.grd_tree.currentrow;
+	trace(row);
+	this.ds_org.deleteRow(row);
 };
 ]]></Script>
   </Form>

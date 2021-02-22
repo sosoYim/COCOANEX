@@ -1,11 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M13_position" width="1090" height="650" titletext="New Form">
+  <Form id="M13_position" width="1090" height="650" titletext="New Form" onload="M13_position_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="직급 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" text="직급 이름 수정 기능이 구현될 예정입니다." left="170" top="226" width="780" height="148" textAlign="center" background="#d3d3d3" font="normal 20pt/normal &quot;Arial&quot;"/>
+        <Button id="btn_save" taborder="1" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" right="174"/>
+        <Button id="btn_reset" taborder="0" text="리셋" top="55" width="64" height="35" onclick="btn_reset_onclick" cssclass="btn_WF_reset01" right="100"/>
+        <Static id="sta_title" taborder="2" text="사용자 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Static id="sta_posName" taborder="3" text="직급명" left="696" top="109" width="149" height="43"/>
+        <Edit id="edit_posName" taborder="4" top="109" width="165" height="43" right="102"/>
+        <Grid id="Grid00" taborder="5" left="20" top="92" height="337" binddataset="ds_position" autofittype="col" right="506">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="56"/>
+                <Column size="95"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드"/>
+                <Cell col="1" text="직급"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">임시</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.M13_position_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+		trace("포스 도착==============--================");
+		this.transaction(
+			"loadPosList" //strSvcID
+			, "/nexPos/loadPosList.nex" //strURL
+			, "" //strInDatasets Sds=Fds:U, A, N
+			, "ds_position=out_pos_list" //strOutDatasets - select Fds = Sds
+			, "" //strArgument
+			,  "fn_callback" //strCallbackFunc
+		);	
+};
+
+this.fn_callback = function(id, ErrCode, ErrMsg)
+{
+	trace(ErrMsg);
+}
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="edit_posName" propid="value" datasetid="ds_position" columnid="name"/>
+    </Bind>
   </Form>
 </FDL>
