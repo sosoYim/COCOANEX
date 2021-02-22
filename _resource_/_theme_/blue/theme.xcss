@@ -1190,11 +1190,7 @@
 
 .Tab .tabbuttonitem
 {
-	background : #e7e7e7;
-	color : #888888;
-	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7;
-	-nexa-padding : 6px 10px 6px 10px;
+	
 }
 
 .Tab .tabbuttonitem[status=mouseover]
@@ -2185,10 +2181,10 @@
 
 .Button.btn_mdi_close, .Button.btn_mdi_close[status=focused],.Button.btn_mdi_close[userstatus=selected]
 {
-	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e7e7e7;
+	background : url('imagerc::btn_mdi_close.png') no-repeat center center #e7e7e7;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7
-;}
+	-nexa-border : 1px solid #c7c7c7;
+	}
 .Button.btn_mdi_close[status=mouseover], .Button.btn_mdi_close[userstatus=pushed]
 {
 	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e3e3e3;
@@ -2246,11 +2242,7 @@
 
 .Tab.tab_mdi_menu .tabbuttonitem
 {
-	background : #e7e7e7;
-	color : #888888;
-	cursor : pointer;
-	-nexa-border : 1px solid #e7e7e7, 1px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7;
-	-nexa-padding : 7px 10px 8px 10px;
+
 }
 
 .Tab.tab_mdi_menu .tabbuttonitem[status=mouseover]
