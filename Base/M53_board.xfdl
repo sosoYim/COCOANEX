@@ -4,54 +4,50 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="게시판 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Div id="board_div" taborder="1" text="Div00" left="20" top="55" height="500" border="1px solid gray" right="110">
+        <Button id="btn_modify" taborder="1" text="수정" left="915" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" cssclass="btn_WF_reset01"/>
+        <Button id="btn_del" taborder="2" text="삭제" left="840" top="55" width="55" height="35" cssclass="btn_WF_delete01" onclick="board_div_btn_del_onclick"/>
+        <Button id="btn_add" taborder="3" text="추가" left="765" top="55" width="55" height="35" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01"/>
+        <Grid id="board_mn_list_Grd" taborder="4" left="20" top="99" binddataset="ds_board_menu" autofittype="col" width="560" height="394" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="53"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="0" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="게시판 번호"/>
+                <Cell col="2" text="게시판 이름"/>
+                <Cell col="3" text="게시판 종류"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:seq" textAlign="center"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:type"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="stcTitle" taborder="5" text="게시판 정보 및 수정" left="700" top="103" width="192" height="35" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center"/>
+        <Div id="divBoardInfor" taborder="6" left="604" top="153" width="366" height="337" text="" border="1px solid #c7c7c7">
           <Layouts>
             <Layout>
-              <Grid id="board_mn_list_Grd" taborder="0" left="0" top="60" binddataset="ds_board_menu" autofittype="col" width="559" height="394" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="50"/>
-                      <Column size="53"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                    </Columns>
-                    <Rows>
-                      <Row size="24" band="head"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell text="0" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="게시판 번호"/>
-                      <Cell col="2" text="게시판 이름"/>
-                      <Cell col="3" text="게시판 종류"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:seq" textAlign="center"/>
-                      <Cell col="2" text="bind:name"/>
-                      <Cell col="3" text="bind:type"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
-              <Button id="btn_modify" taborder="1" text="수정" left="830" top="14" width="76" height="31" onclick="board_div_btn_modify_onclick"/>
-              <Button id="btn_add" taborder="2" text="추가" left="653" top="14" width="76" height="31" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01"/>
-              <Button id="btn_del" taborder="3" text="삭제" left="740" top="14" width="76" height="31" onclick="board_div_btn_del_onclick"/>
-              <Div id="Div00" taborder="4" left="581" top="60" width="358" height="266" text="" border="1px solid #c7c7c7">
-                <Layouts>
-                  <Layout>
-                    <Static id="sta_writer_code00" taborder="0" left="140" top="110" width="200" height="132" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
-                    <Static id="Static01_06_00" taborder="1" left="140" top="63" width="200" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
-                    <Static id="sta_form" taborder="2" left="140" top="16" width="200" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text=""/>
-                    <Static id="Static01" taborder="3" text="게시판 번호" left="20" top="16" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                    <Static id="Static01_00" taborder="4" text="게시판 명" left="20" top="63" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                    <Static id="Static01_01" taborder="5" left="20" top="110" width="120" height="132" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="게시판 종류"/>
-                    <Radio id="rdoType" taborder="6" left="193" top="122" height="103" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" innerdataset="board_type_radio" width="89"/>
-                  </Layout>
-                </Layouts>
-              </Div>
-              <Static id="Static01_02" taborder="5" text="새 게시판 생성 안내" left="71.50%" top="66.47%" width="14.51%" height="4.82%" textAlign="center" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="stcTypeForm" taborder="0" left="138" top="127" width="200" height="132" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
+              <Static id="stcNmForm" taborder="1" left="138" top="80" width="200" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
+              <Static id="stcSeqForm" taborder="2" left="138" top="33" width="200" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text=""/>
+              <Static id="stcSeq" taborder="3" text="게시판 번호" left="18" top="33" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+              <Static id="stcNm" taborder="4" text="게시판 명" left="18" top="80" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+              <Static id="stcType" taborder="5" left="18" top="127" width="120" height="132" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="게시판 종류"/>
+              <MaskEdit id="mskSeq" taborder="6" left="41.29%" top="14.02%" width="8.43%" height="7.32%" textAlign="center" border="0px none,0px none,1px solid #c7c7c7"/>
+              <Edit id="edtBoardNm" taborder="7" left="40.17%" top="27.13%" width="42.98%" height="9.76%" onclick="Common_onclick" border="0px none,0px none,1px solid #c7c7c7"/>
+              <Radio id="rdoType" taborder="8" left="41.29%" top="47.26%" height="24.39%" codecolumn="codecolumn" datacolumn="datacolumn" columncount="1" right="27" readonly="true" innerdataset="board_type_radio"/>
             </Layout>
           </Layouts>
         </Div>
@@ -83,14 +79,9 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Bind>
-      <BindItem id="item0" compid="board_div.form.Div00.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
-      <BindItem id="item1" compid="board_div.form.Div00.form.rdoType" propid="value" datasetid="ds_board_menu" columnid="type"/>
-    </Bind>
     <Script type="xscript5.1"><![CDATA[//내용 불러오기
 this.M53_board_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	trace("도착");
 	this.transaction(
   		"board_Menu_list" // id
   		, "/NecBoard/getBoardMenuList.nc" // url
@@ -100,14 +91,12 @@ this.M53_board_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
   		, "fn_callback_mnList" // callback
   	);
 };
-this.fn_callback_mnList = function(result)
+this.fn_callback_mnList = function(id, ErrCode, ErrMsg)
 {
-	trace("리스트 불러옴!");
 }
 //추가 버튼
 this.board_div_btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	trace("눌린거지");
 	var objCF = new ChildFrame();
 	objCF.set_openalign("center middle");
 	objCF.set_formurl("Base::M54_boardPop.xfdl");
@@ -123,6 +112,8 @@ this.fn_callback_boardPop = function(id,sRtn){
 	var arrRtn = sRtn.split("|");
 	var type = arrRtn[0];
 	var name = arrRtn[1];
+	trace("type"+type);
+	
 	if (type=="1"){
 		type = "Album";
 	}
@@ -130,8 +121,6 @@ this.fn_callback_boardPop = function(id,sRtn){
 		type = "List";
 	}
 	
-	trace("여기"+type);
-	trace("여기"+name);
  	this.transaction(
    		"boardPop" // id
    		, "/NecBoard/addBoard.nc" // url
@@ -142,9 +131,8 @@ this.fn_callback_boardPop = function(id,sRtn){
    	);
 };
 
-this.fn_callback = function(result)
+this.fn_callback =function(id, ErrCode, ErrMsg)
 {
-	trace("추가 완료!");
 	this.M53_board_onload();
 }
 
@@ -154,10 +142,8 @@ this.board_div_btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	let arr = this.ds_board_menu.extractRows("chk==1");
  	this.ds_board_menu.deleteMultiRows(arr);
 	
-	var seq = this.board_div.form.Div00.form.mskSeq.value;
-	var name = this.board_div.form.Div00.form.edtBoardNm.value;
-	trace("변경할 이름 : "+name);
-	trace("번호 : "+seq);
+	var seq = this.divBoardInfor.form.mskSeq.value;
+	var name = this.divBoardInfor.form.edtBoardNm.value;
 	this.transaction(
   		"boardUpdate" // id
   		, "/NecBoard/uptBoard.nc" // url
@@ -167,9 +153,8 @@ this.board_div_btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
   		, "fn_callback_upt" // callback
   	);
 };
-this.fn_callback_upt = function(result)
+this.fn_callback_upt =function(id, ErrCode, ErrMsg)
 {
-	trace("수정 완료!");
 	this.M53_board_onload();
 }
 //Grid 체크박스
@@ -185,15 +170,10 @@ this.board_div_board_mn_list_Grd_onheadclick = function(obj:nexacro.Grid,e:nexac
 
 this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 {
-	trace("박스가 눌리니..");
 	var strColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", ""); //Cell의 특정 속성 값을 반환하는 메소드입니다.
 	var sheadValue = obj.getCellProperty("head", e.cell, "text"); //head에서 선택한 행의 text 값 가져오기
 	//var objDs = obj.getBindDataset(); 
 	
-		trace("strColID 값은?"+strColID);
-		trace("sheadValue 값은?"+sheadValue);
-
-		trace("아닐때");
 		sheadValue = (sheadValue == "0" ? "1" : "0");
 		obj.setCellProperty("head",e.cell,"text",sheadValue);
 		obj.setCellProperty("body",e.cell,"text",sheadValue);
@@ -209,12 +189,11 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 this.board_div_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let arr = this.ds_board_menu.extractRows("chk==1");
-	var seq = this.board_div.form.Div00.form.mskSeq.value;
+	var seq = this.divBoardInfor.form.mskSeq.value;
+	trace("seq값은? "+seq);
 	if(arr.length == 0 || arr == -1) {alert("선택된 항목이 없습니다.");return}
-	trace("arr은?"+arr);
 	
  	this.ds_board_menu.deleteMultiRows(arr);
-	
 	this.transaction(
   		"boardDelete" // id
   		, "/NecBoard/delBoard.nc" // url
@@ -224,10 +203,15 @@ this.board_div_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
   		, "fn_callback_del" // callback
   	);
 };
-this.fn_callback_del = function(result)
+this.fn_callback_del = function(id, ErrCode, ErrMsg)
 {
-	trace("삭제 완료!");
 	this.alert("삭제 되었습니다.");
-}]]></Script>
+}
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="divBoardInfor.form.mskSeq" propid="value" datasetid="ds_board_menu" columnid="seq"/>
+      <BindItem id="item1" compid="divBoardInfor.form.edtBoardNm" propid="value" datasetid="ds_board_menu" columnid="name"/>
+      <BindItem id="item2" compid="divBoardInfor.form.rdoType" propid="value" datasetid="ds_board_menu" columnid="type"/>
+    </Bind>
   </Form>
 </FDL>

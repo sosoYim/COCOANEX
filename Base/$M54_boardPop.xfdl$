@@ -3,13 +3,13 @@
   <Form id="M54_boardPop" width="300" height="400" titletext="New Form">
     <Layouts>
       <Layout height="400" width="300">
-        <Static id="staLogo" taborder="0" text="게시판 추가" left="23.33%" top="15.00%" width="50.00%" height="10.00%" font="bold 18px/normal &quot;Gulim&quot;" textAlign="center"/>
-        <Static id="stcType" taborder="1" text="게시판 종류 :" left="5.67%" top="38.50%" width="23.00%" height="8.00%"/>
-        <Static id="stcName" taborder="2" text="수업이름 :" left="8.00%" top="55.75%" width="21.00%" height="8.00%"/>
-        <Edit id="edtName" taborder="3" left="32.00%" top="56.25%" width="52.00%" height="7.50%" displaynulltext="이름을 입력하세요"/>
+        <Static id="staLogo" taborder="0" text="게시판 추가" left="24.33%" top="7.50%" width="50.00%" height="10.00%" font="bold 18px/normal &quot;Gulim&quot;" textAlign="center"/>
+        <Static id="stcType" taborder="1" text="게시판 종류 :" left="5.67%" top="20.25%" width="23.00%" height="8.00%"/>
+        <Static id="stcName" taborder="2" text="수업이름 :" left="8.00%" top="30.75%" width="21.00%" height="8.00%"/>
+        <Edit id="edtName" taborder="3" left="32.00%" top="31.25%" width="52.00%" height="7.50%" displaynulltext="이름을 입력하세요"/>
         <Button id="btnOk" taborder="4" text="Ok" left="25.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnOk_onclick"/>
         <Button id="btnCancel" taborder="5" text="Cancel" left="52.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnCancel_onclick"/>
-        <Radio id="rdoType" taborder="6" left="31.67%" top="38.75%" width="61.67%" height="7.75%" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+        <Radio id="rdoType" taborder="6" left="31.67%" top="20.50%" width="61.67%" height="7.75%" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -27,6 +27,15 @@
             </Rows>
           </Dataset>
         </Radio>
+        <Div id="Div00" taborder="7" left="17" top="189" width="268" height="127" text="" border="1px solid #c7c7c7">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="(1) 이미지형&#13;&#10;- 사진첨부필수&#13;&#10;- 최대 10개 파일 첨부 " left="8" top="50" width="126" height="58" onclick="Div00_Static00_onclick"/>
+              <Static id="Static00_00" taborder="1" text="(2) 리스트형&#13;&#10;- 목록형 리스트&#13;&#10;- 최대 10개 파일 첨부 " left="141" top="50" width="123" height="58"/>
+              <Static id="Static00_01" taborder="2" text="게시판 생성 안내" left="50" top="10" width="150" height="20" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//취소 버튼
@@ -37,7 +46,6 @@ this.btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 //확인 버튼
 this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	trace("확인버튼 눌림");
 	var type = this.rdoType.value;
 	var name = this.edtName.value;
 	trace(type);
