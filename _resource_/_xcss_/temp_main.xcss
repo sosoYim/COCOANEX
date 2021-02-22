@@ -152,4 +152,10 @@
 	background : #ffffff;
 	-nexa-background-odd : #f7f7f7;
 	-nexa-text-align : center;
-}]]></XCSS>
+}.Button.btn_confirm
+{
+	border-radius : 5px;
+	background : #23272B;
+	color : #ffffff;
+}
+]]></XCSS>
