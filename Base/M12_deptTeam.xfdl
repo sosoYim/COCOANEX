@@ -24,6 +24,28 @@
         <Button id="btn_reset" taborder="4" text="리셋" left="396" top="91" width="64" height="39" onclick="btn_reset_onclick"/>
         <Button id="btn_save" taborder="5" text="저장" left="316" top="90" width="64" height="39" onclick="btn_save_onclick"/>
         <Button id="btn_reset00" taborder="6" text="삭제" left="396" top="40" width="64" height="39" onclick="btn_del"/>
+        <Grid id="Grid00" taborder="7" left="480" top="40" width="304" height="129" binddataset="ds_position">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="code"/>
+                <Cell col="1" text="name"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -60,6 +82,26 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="code" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">대표</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">부장</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">팀장</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.M12_deptTeam_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -68,7 +110,7 @@
 			"OrganDeptTeam" //strSvcID
 			, "/nexDeptTeam/nexOrganDept.nex" //strURL
 			, "" //strInDatasets Sds=Fds:U, A, N
-			, "ds_org=out_org_list" //strOutDatasets - select Fds = Sds
+			, "ds_org=out_org_list ds_position=out_pos_list" //strOutDatasets - select Fds = Sds
 			, "" //strArgument
 			,  "fn_callback" //strCallbackFunc
 		);	
