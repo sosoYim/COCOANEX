@@ -3,30 +3,22 @@
   <Form id="M52_menu" width="1090" height="650" titletext="New Form" onload="M52_menu_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Div id="div_detail" taborder="4" text="" top="120" height="450" cssclass="sta_cm_box01L" border="1px solid gray" right="10" width="360">
+        <Div id="div_search_input" taborder="3" text="" left="20" top="100" height="50" background="#eeeeee" border="1px solid #c7c7c7" maxwidth="" right="100">
           <Layouts>
             <Layout>
-              <Static id="Static01_00" taborder="0" text="상태" left="0" top="121" width="110" height="32" cssclass="sta_cm_box01R"/>
-              <Static id="Static01_00_00" taborder="1" text="설명" left="0" top="153" width="110" height="286" cssclass="sta_cm_box01R"/>
-              <Static id="Static01_00_01" taborder="4" text="대분류" left="0" top="28" width="110" height="32" cssclass="sta_cm_box01R"/>
-              <Static id="Static28_00" taborder="5" left="110" top="28" width="240" height="32" cssclass="sta_cm_box02L"/>
-              <Edit id="Edit07" taborder="6" left="120" top="32" width="140" height="24" readonly="true"/>
-              <Static id="Static28_00_00" taborder="7" left="110" top="58" width="240" height="32" cssclass="sta_cm_box02L"/>
-              <Edit id="Edit07_00" taborder="8" left="120" top="62" width="140" height="24" readonly="true"/>
-              <Static id="Static01_00_01_00" taborder="9" text="중분류" left="0" top="58" width="110" height="32" cssclass="sta_cm_box01R"/>
-              <Static id="Static28_00_00_00" taborder="10" left="110" top="89" width="240" height="32" cssclass="sta_cm_box02L"/>
-              <Edit id="Edit07_00_00" taborder="11" left="120" top="92" width="140" height="24" readonly="true"/>
-              <Static id="Static01_00_01_00_00" taborder="12" text="소분류" left="0" top="89" width="110" height="32" cssclass="sta_cm_box01R"/>
-              <Static id="Static28_00_00_00_00" taborder="13" left="110" top="153" width="240" height="286" cssclass="sta_cm_box02L"/>
-              <TextArea id="TextArea00" taborder="2" left="120" top="163" width="220" height="266" scrolltype="vertical" wordWrap="char"/>
-              <Static id="Static28_00_00_00_01" taborder="14" left="111" top="121" width="240" height="32" cssclass="sta_cm_box02L"/>
-              <Radio id="rds_status" taborder="3" left="123" top="124" width="185" height="27" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+              <Static id="Static03_00_00" taborder="0" text="이름" left="538" top="10" width="50" height="25" cssclass="sta_cm_text12R"/>
+              <Edit id="edt_name" taborder="1" left="598" top="10" height="25" width="100" onchanged="edt_name_onchanged"/>
+              <Radio id="rds_status_search" taborder="2" left="278" top="10" width="230" height="27" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="search_rdo_status" onclick="rds_status_search_onclick">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
                     <Column id="datacolumn" size="256"/>
                   </ColumnInfo>
                   <Rows>
+                    <Row>
+                      <Col id="codecolumn">A</Col>
+                      <Col id="datacolumn">전체</Col>
+                    </Row>
                     <Row>
                       <Col id="codecolumn">Y</Col>
                       <Col id="datacolumn">보임</Col>
@@ -38,89 +30,65 @@
                   </Rows>
                 </Dataset>
               </Radio>
+              <Static id="Static03_00" taborder="3" text="상태" left="218" top="11" width="50" height="25" cssclass="sta_cm_text12R"/>
+              <Combo id="combo_menu" taborder="4" left="60" top="11" width="110" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="search_combo_menu_seq" type="filterlike">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">0</Col>
+                      <Col id="datacolumn">전체보기</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">업무일지</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">전자결재</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">3</Col>
+                      <Col id="datacolumn">일정관리</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">4</Col>
+                      <Col id="datacolumn">근태현황</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">5</Col>
+                      <Col id="datacolumn">전자우편</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">6</Col>
+                      <Col id="datacolumn">커뮤니티</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">7</Col>
+                      <Col id="datacolumn">개인정보</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">8</Col>
+                      <Col id="datacolumn">조직도</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">9</Col>
+                      <Col id="datacolumn">버그리포팅</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Static id="Static03" taborder="5" text="대분류" left="0" top="11" width="50" height="25" cssclass="sta_cm_text12R"/>
+              <Button id="btn_reset" taborder="6" text="초기화" top="11" width="70" height="25" onclick="btn_reset_onclick" right="80" cssclass="btn_WF_reset01"/>
+              <Button id="btn_search" taborder="7" text="검색" top="11" height="25" cssclass="btn_WF_search01" width="60" right="10" onclick="btn_search_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00" taborder="0" text="메뉴 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Button id="btn_update" taborder="1" text="변경사항 적용" top="585" height="30" onclick="btn_update_onclick" right="10" width="100"/>
-        <Static id="Static01" taborder="2" left="10" top="60" height="50" cssclass="sta_cm_box01L" right="10" text=""/>
-        <Button id="btn_reload" taborder="3" text="목록 불러오기" top="586" width="100" height="30" onclick="btn_reload_onclick" right="120"/>
-        <Button id="btn_reset" taborder="5" text="초기화" top="586" width="100" height="30" onclick="btn_reset_onclick" right="230"/>
-        <Static id="Static03" taborder="6" text="대분류" left="10" top="73" width="65" height="25" cssclass="sta_cm_text12R"/>
-        <Combo id="combo_menu" taborder="7" left="7.43%" top="73" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="search_combo_menu_seq" type="filterlike">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">0</Col>
-                <Col id="datacolumn">전체보기</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">1</Col>
-                <Col id="datacolumn">업무일지</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2</Col>
-                <Col id="datacolumn">전자결재</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">3</Col>
-                <Col id="datacolumn">일정관리</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">4</Col>
-                <Col id="datacolumn">근태현황</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">5</Col>
-                <Col id="datacolumn">전자우편</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">6</Col>
-                <Col id="datacolumn">커뮤니티</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">7</Col>
-                <Col id="datacolumn">개인정보</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">8</Col>
-                <Col id="datacolumn">조직도</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">9</Col>
-                <Col id="datacolumn">버그리포팅</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Static id="Static06" taborder="8" text="상태" left="18.72%" top="73" width="7.80%" height="25" cssclass="sta_cm_text12R"/>
-        <Radio id="rds_status_search" taborder="9" left="318" top="73" width="245" height="27" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="search_rdo_status">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">A</Col>
-                <Col id="datacolumn">전체</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">Y</Col>
-                <Col id="datacolumn">보임</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">안보임</Col>
-                <Col id="codecolumn">N</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Radio>
-        <Grid id="grd_menu_manage" taborder="10" left="10" top="120" height="450" binddataset="ds_sidebar" autofittype="col" right="380">
+        <Button id="btn_update" taborder="0" text="변경사항 적용" top="55" height="35" onclick="btn_update_onclick" right="100" width="110" cssclass="btn_WF_save01"/>
+        <Grid id="grd_menu_manage" taborder="1" left="20" top="170" binddataset="ds_sidebar" autofittype="col" right="560" bottom="50" minwidth="300" maxwidth="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -147,7 +115,7 @@
               </Band>
               <Band id="body">
                 <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk" checkboxtruevalue="1" checkboxfalsevalue="0"/>
-                <Cell col="1" text="bind:code"/>
+                <Cell col="1" text="bind:code" textAlign="left"/>
                 <Cell col="2" text="bind:menu_name"/>
                 <Cell col="3" text="bind:mid_name"/>
                 <Cell col="4" text="bind:sub_name"/>
@@ -157,6 +125,46 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static00" taborder="2" text="메뉴 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Div id="Div00" taborder="4" text="" top="170" border="1px solid #c7c7c7" width="450" bottom="50" left="grd_menu_manage:10">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="메뉴 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="0"/>
+              <Static id="Static01_06_00" taborder="1" left="122" top="124" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
+              <Static id="Static01_00" taborder="2" text="중분류" left="20" top="124" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
+              <Static id="Static01" taborder="3" text="대분류" left="20" top="77" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+              <Static id="sta_form" taborder="4" left="122" top="77" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="20"/>
+              <Static id="Static01_06_00_00" taborder="5" left="122" top="170" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="21"/>
+              <Static id="Static01_00_00" taborder="6" text="소분류" left="20" top="170" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
+              <Static id="Static01_00_00_00" taborder="7" text="상태" left="20" top="216" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
+              <Static id="Static01_06_00_00_00" taborder="8" left="122" top="216" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="22"/>
+              <Radio id="rds_status" taborder="9" left="150" top="226" width="185" height="27" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">Y</Col>
+                      <Col id="datacolumn">보임</Col>
+                    </Row>
+                    <Row>
+                      <Col id="datacolumn">안보임</Col>
+                      <Col id="codecolumn">N</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Static id="Static01_00_00_00_00" taborder="10" text="설명" left="20" top="262" height="137" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
+              <Static id="Static01_06_00_00_00_00" taborder="11" left="122" top="262" height="137" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="22"/>
+              <TextArea id="TextArea00" taborder="12" left="150" top="272" width="268" height="117" scrolltype="vertical" wordWrap="char"/>
+              <Edit id="Edit07" taborder="13" left="150" top="84" width="131" height="32" readonly="true"/>
+              <Edit id="Edit07_00" taborder="14" left="150" top="130" width="131" height="32" readonly="true"/>
+              <Edit id="Edit07_00_00" taborder="15" left="150" top="176" width="131" height="32" readonly="true"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -177,11 +185,12 @@
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="div_detail.form.TextArea00" propid="value" datasetid="ds_sidebar" columnid="contents"/>
-      <BindItem id="item1" compid="div_detail.form.rds_status" propid="value" datasetid="ds_sidebar" columnid="status"/>
-      <BindItem id="item4" compid="div_detail.form.Edit07_00" propid="value" datasetid="ds_sidebar" columnid="mid_name"/>
-      <BindItem id="item5" compid="div_detail.form.Edit07" propid="value" datasetid="ds_sidebar" columnid="menu_name"/>
-      <BindItem id="item6" compid="div_detail.form.Edit07_00_00" propid="value" datasetid="ds_sidebar" columnid="sub_name"/>
+      <BindItem id="item3" compid="Div00.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item1" compid="Div00.form.rds_status" propid="value" datasetid="ds_sidebar" columnid="status"/>
+      <BindItem id="item7" compid="Div00.form.TextArea00" propid="value" datasetid="ds_sidebar" columnid="contents"/>
+      <BindItem id="item5" compid="Div00.form.Edit07" propid="value" datasetid="ds_sidebar" columnid="menu_name"/>
+      <BindItem id="item2" compid="Div00.form.Edit07_00" propid="value" datasetid="ds_sidebar" columnid="mid_name"/>
+      <BindItem id="item6" compid="Div00.form.Edit07_00_00" propid="value" datasetid="ds_sidebar" columnid="sub_name"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.M52_menu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -224,7 +233,7 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_sidebar.filter("");
 };
 
-
+// 검색 ? 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	
@@ -262,6 +271,13 @@ this.search_combo_menu_seq = function(obj:nexacro.Combo,e:nexacro.ItemChangeEven
 	}
 	
 };
+
+// 이름으로 검색
+this.edt_name_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	
+};
 ]]></Script>
+    <InitValue/>
   </Form>
 </FDL>
