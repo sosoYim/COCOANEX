@@ -41,6 +41,10 @@
     <Service prefixid="popup" type="form" url="./popup/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
-  <Update/>
-  <Deploy/>
+  <Update>
+    <Os name="Windows" url="./" timeout="30" retry="3" autoupdate="auto" updatetype="server"/>
+  </Update>
+  <Deploy>
+    <Os name="Windows"/>
+  </Deploy>
 </TypeDefinition>
