@@ -3,7 +3,7 @@
   <Form id="M11_users" width="1090" height="650" titletext="New Form" onload="M11_users_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="사용자 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="920"/>
+        <Static id="sta_title" taborder="0" text="사용자 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
         <Grid id="grd_emp_list" taborder="1" left="20" top="175" width="570" height="435" binddataset="ds_employee" autofittype="col">
           <Formats>
             <Format id="default">
@@ -151,8 +151,8 @@
           </Layouts>
         </Div>
         <Static id="Static01" taborder="4" text="검색하기" left="38" top="115" width="84" height="28" onclick="Static01_onclick"/>
-        <Button id="btn_save" taborder="5" text="저장" left="23" top="40" width="135" height="46" onclick="btn_save_onclick"/>
-        <Button id="btn_cancel" taborder="6" text="작업 취소" left="180" top="40" width="127" height="46" onclick="btn_cancel_onclick"/>
+        <Button id="btn_save" taborder="5" text="저장" left="668" top="16" width="135" height="46" onclick="btn_save_onclick"/>
+        <Button id="btn_cancel" taborder="6" text="작업 취소" left="825" top="16" width="127" height="46" onclick="btn_cancel_onclick"/>
         <Static id="Static02" taborder="7" text="구현 : 검색/불러오기/트랜잭션으로 값 전송 &#13;&#10;미구현 : 각종 유효성 검사 및 디비 업데이트 " left="10" top="508" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
       </Layout>
     </Layouts>
