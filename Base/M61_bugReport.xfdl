@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="버그리포트 " left="20" top="10" height="34" cssclass="sta_WF_title01" right="630" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Div id="bugReport_div" taborder="1" left="10" top="55" width="830" height="500" text="" border="1px solid gray">
+        <Div id="bugReport_div" taborder="1" left="20" top="55" width="76.15%" height="500" text="">
           <Layouts>
             <Layout>
               <Static id="contents_edt_box" taborder="0" left="254" top="164" height="268" cssclass="sta_cm_box02L" width="518"/>

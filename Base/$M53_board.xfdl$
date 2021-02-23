@@ -7,7 +7,7 @@
         <Button id="btn_modify" taborder="1" text="수정" left="915" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" cssclass="btn_WF_reset01"/>
         <Button id="btn_del" taborder="2" text="삭제" left="840" top="55" width="55" height="35" cssclass="btn_WF_delete01" onclick="board_div_btn_del_onclick"/>
         <Button id="btn_add" taborder="3" text="추가" left="765" top="55" width="55" height="35" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01"/>
-        <Grid id="board_mn_list_Grd" taborder="4" left="20" top="99" binddataset="ds_board_menu" autofittype="col" width="560" height="394" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick">
+        <Grid id="board_mn_list_Grd" taborder="4" left="20" top="170" binddataset="ds_board_menu" autofittype="col" width="560" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick" bottom="50">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,8 +35,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="stcTitle" taborder="5" text="게시판 정보 및 수정" left="700" top="103" width="192" height="35" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center"/>
-        <Div id="divBoardInfor" taborder="6" left="604" top="153" width="366" height="337" text="" border="1px solid #c7c7c7">
+        <Static id="stcTitle" taborder="5" text="게시판 정보 및 수정" left="694" top="123" width="192" height="35" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center"/>
+        <Div id="divBoardInfor" taborder="6" left="604" top="170" width="366" text="" border="1px solid #c7c7c7" bottom="50">
           <Layouts>
             <Layout>
               <Static id="stcTypeForm" taborder="0" left="138" top="127" width="200" height="132" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
@@ -45,9 +45,9 @@
               <Static id="stcSeq" taborder="3" text="게시판 번호" left="18" top="33" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
               <Static id="stcNm" taborder="4" text="게시판 명" left="18" top="80" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
               <Static id="stcType" taborder="5" left="18" top="127" width="120" height="132" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="게시판 종류"/>
-              <MaskEdit id="mskSeq" taborder="6" left="41.29%" top="14.02%" width="8.43%" height="7.32%" textAlign="center" border="0px none,0px none,1px solid #c7c7c7"/>
-              <Edit id="edtBoardNm" taborder="7" left="40.17%" top="27.13%" width="42.98%" height="9.76%" onclick="Common_onclick" border="0px none,0px none,1px solid #c7c7c7"/>
-              <Radio id="rdoType" taborder="8" left="41.29%" top="47.26%" height="24.39%" codecolumn="codecolumn" datacolumn="datacolumn" columncount="1" right="27" readonly="true" innerdataset="board_type_radio"/>
+              <MaskEdit id="mskSeq" taborder="6" left="145" top="40" width="30" height="32" textAlign="center" border="0px none,0px none,1px solid #c7c7c7"/>
+              <Edit id="edtBoardNm" taborder="7" left="144" top="86" width="151" height="34" onclick="Common_onclick" border="0px none,0px none,1px solid #c7c7c7"/>
+              <Radio id="rdoType" taborder="8" left="148" top="136" height="108" codecolumn="codecolumn" datacolumn="datacolumn" columncount="1" right="91" readonly="true" innerdataset="board_type_radio"/>
             </Layout>
           </Layouts>
         </Div>
