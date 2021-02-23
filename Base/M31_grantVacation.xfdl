@@ -3,11 +3,11 @@
   <Form id="M32_grantVacation" width="1090" height="650" titletext="New Form" onload="M31_grantVacation_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="휴가 사용처리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Div id="Div00" taborder="1" text="Div00" left="2%" top="100" width="35%" height="500" border="1px solid black">
+        <Static id="Static00" taborder="0" text="휴가 사용처리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Div id="Div00" taborder="1" text="Div00" left="10" top="100" right="660" minwidth="380" maxwidth="" bottom="50" minheight="470" maxheight="">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="1%" top="1%" binddataset="ds_document" autofittype="col" right="1%" bottom="1%">
+              <Grid id="Grid00" taborder="0" left="0" top="0.00%" binddataset="ds_document" autofittype="col" right="0" bottom="0">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -41,56 +41,74 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div01" taborder="2" text="Div01" left="39%" top="100" height="300" border="1px solid black" right="2%">
+        <Div id="divDocument" taborder="2" text="Div01" border="1px solid #c9c9c9" formscrollbartype="none" formscrolltype="none" width="600" top="270" bottom="50" minheight="300" maxheight="" left="Div00:10">
           <Layouts>
             <Layout>
-              <Edit id="Edit00" taborder="0" left="50%" top="19" height="30" right="3%" enable="false"/>
-              <Static id="Static00" taborder="1" text="제목" top="19" height="30" width="40" right="50%"/>
-              <Static id="Static00_00" taborder="2" text="내용" top="58" height="30" width="40" right="50%"/>
-              <TextArea id="TextArea00" taborder="3" left="50%" top="59" height="220" right="3%" enable="false"/>
-              <Static id="Static00_01" taborder="4" text="승인날짜" left="3%" top="69" width="65" height="30"/>
-              <Calendar id="Calendar00" taborder="5" left="15%" top="71" height="27" right="65%" enable="false"/>
-              <Static id="Static00_01_00" taborder="6" text="종류" left="3%" top="159" width="65" height="30"/>
-              <Edit id="Edit00_00_00" taborder="7" left="15%" top="159" height="30" right="65%" enable="false"/>
-              <Static id="Static00_02" taborder="8" text="문서번호" left="3.5%" top="19" width="120" height="30" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="Static00_01_01" taborder="9" text="시작 날짜" left="3%" top="204" width="65" height="30"/>
-              <Calendar id="Calendar00_00" taborder="10" left="15%" top="206" height="27" right="65%" enable="false"/>
-              <Static id="Static00_01_02" taborder="11" text="마감 날짜" left="3%" top="249" width="65" height="30"/>
-              <Calendar id="Calendar00_01" taborder="12" left="15%" top="251" height="27" right="65%" enable="false" onchanged="Div01_Calendar00_01_onchanged"/>
-              <Static id="Static00_01_00_00" taborder="13" text="작성자" left="3%" top="114" width="65" height="30"/>
-              <Edit id="writerEdit" taborder="14" left="15%" top="114" height="30" right="65%" enable="false"/>
+              <Static id="Static00" taborder="0" text="제목" top="65" height="35" width="80" left="20" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_00" taborder="1" text="내용" top="170" width="80" left="20" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" bottom="10" padding="0px 0px 0px 5px"/>
+              <TextArea id="TextArea00" taborder="2" left="110" top="175" right="25" enable="false" bottom="15" maxheight=""/>
+              <Static id="Static00_01" taborder="3" text="승인날짜" left="300" top="30" width="80" height="35" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_01_00" taborder="4" text="종류" left="20" top="100" width="80" height="35" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_02" taborder="5" text="문서번호" left="105" top="30" width="120" height="30"/>
+              <Static id="Static00_01_01" taborder="6" text="시작 날짜" left="20" top="135" width="80" height="35" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_01_02" taborder="7" text="마감 날짜" left="300" top="135" width="80" height="35" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_01_00_00" taborder="8" text="작성자" left="300" top="100" width="80" height="35" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9" padding="0px 0px 0px 5px"/>
+              <Static id="Static00_02_00" taborder="9" text="휴가 신청서" left="0" top="0" height="20" cssclass="sta_WF_title01" right="172"/>
+              <Static id="Static00_03" taborder="10" text="문서번호" top="30" height="35" width="80" left="20" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Static id="staticSeq" taborder="11" top="30" height="35" width="200" left="100" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" text=""/>
+              <Static id="Static00_01_03" taborder="12" left="380" top="30" height="35" right="20" border="1px solid #c9c9c9,0px none,1px solid #c9c9c9,"/>
+              <Static id="Static00_04" taborder="13" top="65" height="35" left="100" right="20" border="0px none,0px none,1px solid #c9c9c9" onclick="Div01_Static00_04_onclick"/>
+              <Static id="Static00_01_00_01" taborder="14" left="100" top="100" width="200" height="35" border="0px none,0px none,1px solid #c9c9c9"/>
+              <Static id="Static00_01_00_01_00" taborder="15" left="380" top="100" height="35" border="0px none,0px none,1px solid #c9c9c9" right="20"/>
+              <Static id="Static00_01_00_01_00_00" taborder="16" left="380" top="135" height="35" border="0px none,0px none,1px solid #c9c9c9" right="20"/>
+              <Static id="Static00_01_00_01_00_00_00" taborder="17" left="100" top="135" width="200" height="35" border="0px none,0px none,1px solid #c9c9c9"/>
+              <Static id="Static00_00_00" taborder="18" top="170" left="100" bottom="10" right="20" border="0px none,0px none,1px solid #c9c9c9"/>
+              <Static id="staticWriter" taborder="19" text="writer" left="385" top="102" width="195" height="30"/>
+              <Static id="staticTitle" taborder="20" text="Static02" left="105" top="67" width="196" height="29"/>
+              <MaskEdit id="maskStartDate" taborder="21" left="109" top="137" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
+              <MaskEdit id="maskEndDate" taborder="22" left="385" top="137" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
+              <MaskEdit id="MaskEdit00_00_00" taborder="23" left="385" top="32" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
+              <Static id="staticType" taborder="24" text="Static02" left="105" top="102" width="195" height="30"/>
             </Layout>
             <Layout name="default0">
-              <Edit id="Edit00" taborder="0" left="334" top="19" width="300" height="30"/>
-              <Static id="Static00" taborder="1" text="제목" left="285" top="19" width="40" height="30"/>
-              <Static id="Static00_00" taborder="2" text="내용" left="285" top="58" width="40" height="30"/>
-              <TextArea id="TextArea00" taborder="3" left="335" top="59" width="300" height="220"/>
+              <Static id="Static00" taborder="0" text="제목" left="285" top="19" width="40" height="30"/>
+              <Static id="Static00_00" taborder="1" text="내용" left="285" top="58" width="40" height="30"/>
+              <TextArea id="TextArea00" taborder="2" left="335" top="59" width="300" height="220"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div02" taborder="3" text="Div02" left="39%" top="420" height="180" right="2%" border="1px solid black">
+        <Div id="divProcess" taborder="3" text="Div02" top="100" height="160" border="1px solid #c9c9c9" width="600" formscrollbartype="none" formscrolltype="none" left="Div00:10">
           <Layouts>
             <Layout>
-              <CheckBox id="checkMinus" taborder="0" text="휴가 차감 여부" left="20" top="139" width="194" height="25" onclick="Div02_CheckBox00_onclick"/>
-              <Static id="seq" taborder="1" text="문서번호" left="3.5%" top="7" width="141" height="42" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Spin id="spinTime" taborder="2" left="15%" top="95" height="27" min="1" max="7" value="" right="65%"/>
-              <Static id="Static01" taborder="3" text="종류" left="3%" top="50" width="64" height="31"/>
-              <Static id="Static01_00" taborder="4" text="시간" left="19" top="95" width="64" height="31"/>
-              <Edit id="editType" taborder="5" left="15%" top="50" height="27" right="65%" enable="false"/>
-              <Button id="submitBtn" taborder="6" text="등록" top="144" height="25" background="linear-gradient(#23cccc,#1098d5)" borderRadius="10px" right="2.02%" width="69" color="#ffffff" onclick="Div02_submitBtn_onclick"/>
-              <Static id="Static01_01" taborder="7" text="시작 날짜" top="48" width="60" height="31" right="40%"/>
-              <Calendar id="calStart" taborder="8" top="50" height="27" right="20%" left="60%"/>
-              <Static id="Static01_01_00" taborder="9" text="마감 날짜" top="95" width="60" height="31" right="40%"/>
-              <Calendar id="calEnd" taborder="10" top="95" height="27" right="20%" left="60%"/>
+              <CheckBox id="checkMinus" taborder="0" text="휴가 차감 여부" left="25" top="125" width="194" height="25" onclick="Div02_CheckBox00_onclick"/>
+              <Static id="seq" taborder="1" text="문서번호" left="105" top="30" height="30" border="1px solid #c9c9c9c,0px none,0px none" width="100"/>
+              <Spin id="spinTime" taborder="2" left="105" top="92" height="25" min="1" max="7" value="" width="150"/>
+              <Static id="Static01" taborder="3" text="종류" left="20" top="60" width="80" height="30" padding="0px 0px 0px 5px" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="Static01_00" taborder="4" text="시간" left="20" top="90" width="80" height="30" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 5px"/>
+              <Edit id="editType" taborder="5" left="105" top="62" height="25" enable="false" width="150"/>
+              <Calendar id="calStart" taborder="6" top="62" height="25" width="150" left="375"/>
+              <Calendar id="calEnd" taborder="7" top="92" height="25" width="150" left="375"/>
+              <Static id="Static00" taborder="8" top="60" width="200" height="30" left="80" border="0px none,0px none,1px solid #c9c9c9"/>
+              <Static id="Static00_00" taborder="9" top="90" width="200" height="30" left="80" border="0px none,0px none,1px solid #c9c9c9," padding="0px 0px 0px 5px" onclick="Div02_Static00_00_onclick" text=""/>
+              <Static id="Static00_01" taborder="10" top="60" width="210" height="30" border="1px solid #c7c7c7,0px none" left="370"/>
+              <Static id="Static00_00_00" taborder="11" top="90" width="210" height="30" border="0px none,0px none,1px solid #c9c9c9," padding="0px 0px 0px 5px" left="370"/>
+              <Static id="Static01_01" taborder="12" text="시작 날짜" left="280" top="60" width="90" height="30" border="1px solid #c7c7c7" padding="0px 0px 0px 5px"/>
+              <Static id="Static01_00_00" taborder="13" text="마감 날짜" left="280" top="90" width="90" height="30" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c7c7c7" padding="0px 0px 0px 5px"/>
+              <Button id="submitBtn00" taborder="14" text="등록" top="-42" height="25" background="linear-gradient(#23cccc,#1098d5)" borderRadius="10px" right="-0.97%" width="69" color="#ffffff" onclick="Div02_submitBtn_onclick"/>
+              <Static id="Static00_02" taborder="15" text="휴가 사용 처리" left="0" top="0" height="20" cssclass="sta_WF_title01" right="172"/>
+              <Static id="Static01_02" taborder="16" text="문서번호" left="20" top="30" width="80" height="30" padding="0px 0px 0px 5px" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="Static00_01_00" taborder="17" top="30" height="30" border="1px solid #c7c7c7,0px none" left="100" right="20"/>
             </Layout>
             <Layout name="default0"/>
           </Layouts>
         </Div>
+        <Button id="submitBtn" taborder="4" text="추가" top="60" width="60" height="30" onclick="Div02_submitBtn_onclick" cssclass="btn_WF_add01" right="50"/>
+        <Static id="Static00_01_00_01" taborder="5" left="100" top="100" width="200" height="35" border="0px none,0px none,1px solid #c9c9c9"/>
       </Layout>
       <Layout height="650" width="1090" name="default0">
         <Static id="Static00" taborder="0" text="휴가 부여" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Div id="Div00" taborder="1" text="Div00" left="2%" top="100" width="35%" height="500" border="1px solid black"/>
-        <Div id="Div01" taborder="2" text="Div01" left="39%" top="100" height="300" border="1px solid black" right="2%"/>
+        <Div id="Div00" taborder="2" text="Div00" left="2%" top="100" width="35%" height="500" border="1px solid black"/>
+        <Div id="divDocument" taborder="1" text="Div01" left="39%" top="100" height="300" border="1px solid black" right="2%"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -136,27 +154,11 @@
             <Col id="leave_end">2021-02-27</Col>
             <Col id="leave_type">기타</Col>
             <Col id="status">CONFIRM</Col>
-            <Col id="process">N</Col>
+            <Col id="process">Y</Col>
           </Row>
         </Rows>
       </Dataset>
     </Objects>
-    <Bind>
-      <BindItem id="item1" compid="Div01.form.Edit00" propid="value" datasetid="ds_document" columnid="title"/>
-      <BindItem id="item3" compid="Div01.form.Calendar00" propid="value" datasetid="ds_document" columnid="final_date"/>
-      <BindItem id="item0" compid="Div01.form.Static00_02" propid="text" datasetid="ds_document" columnid="seq"/>
-      <BindItem id="item4" compid="Div01.form.Calendar00_00" propid="value" datasetid="ds_document" columnid="leave_start"/>
-      <BindItem id="item5" compid="Div01.form.Calendar00_01" propid="value" datasetid="ds_document" columnid="leave_end"/>
-      <BindItem id="item6" compid="Div01.form.Calendar00_00" propid="accessibilityaction" datasetid="ds_document" columnid="leave_start"/>
-      <BindItem id="item7" compid="Div01.form.Calendar00_01" propid="accessibilityaction" datasetid="ds_document" columnid="leave_end"/>
-      <BindItem id="item10" compid="Div01.form.Edit00_00_00" propid="value" datasetid="ds_document" columnid="leave_type"/>
-      <BindItem id="item9" compid="Div02.form.seq" propid="text" datasetid="ds_document" columnid="seq"/>
-      <BindItem id="item11" compid="Div02.form.editType" propid="value" datasetid="ds_document" columnid="leave_type"/>
-      <BindItem id="item12" compid="Div02.form.calStart" propid="value" datasetid="ds_document" columnid="leave_start"/>
-      <BindItem id="item13" compid="Div02.form.calEnd" propid="value" datasetid="ds_document" columnid="leave_end"/>
-      <BindItem id="item2" compid="Div01.form.TextArea00" propid="value" datasetid="ds_document" columnid="contents"/>
-      <BindItem id="item8" compid="Div01.form.writerEdit" propid="value" datasetid="ds_document" columnid="name"/>
-    </Bind>
     <Script type="xscript5.1"><![CDATA[
 
 this.M31_grantVacation_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -177,20 +179,13 @@ this.fn_callback = function(result)
 
 this.Div02_submitBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var seq = this.Div02.form.seq.text;
-	trace("seq " + seq);
-	var type = this.Div02.form.typeEdit.value;
-	trace("type " + type);
-	var startDate = this.Div02.form.startCalendar.value;
-	trace("startDate " + startDate);
-	var endDate = this.Div02.form.endCalendar.value;
-	trace("endDate " + endDate);
-	var time = this.Div02.form.timeSpin.value;
-	trace("time " + time);
+	var seq = this.divDocument.form.staticSeq.value;
+	var type = this.divDocument.form.staticType.value;
+	var startDate = this.divProcess.form.startCalendar.value;
+	var endDate = this.divProcess.form.endCalendar.value;
+	var time = this.divProcess.form.timeSpin.value;
 	var empCode = this.ds_employee.getColumn(this.ds_employee.rowposition, "code");
-	trace("empCode " + empCode);
-	var check = this.Div02.form.checkMinus.value;
-	trace("check " + check);
+	var check = this.divProcess.form.checkMinus.value;
 	
 	
 	//ds_document 가져오기
@@ -208,17 +203,40 @@ this.Div02_submitBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventI
 
 this.ds_document_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
 {	
-	var type = this.ds_document.getColumn(e.newrow, "leave_type");
-	if (type == "기타"){
-		this.Div02.form.spinTime.set_enable(true);
-		this.Div02.form.calEnd.set_enable(false);
-	}else if (type == "조퇴"){
-		this.Div02.form.spinTime.set_enable(false);
-		this.Div02.form.calEnd.set_enable(true);
+	//처리상태 Y일때 처리 못하게 막기
+	var process = this.ds_document.getColumn(e.newrow, "process");
+	if(process == "Y"){
+		this.divProcess.form.spinTime.set_enable(false);
+		this.divProcess.form.calStart.set_enable(false);
+		this.divProcess.form.calEnd.set_enable(false);
+		this.submitBtn.set_enable(false);
+	}else { 
+		this.submitBtn.set_enable(true);
+		//조퇴인지 기타인지에 따라 입력가능창 바꿔주기
+		var type = this.ds_document.getColumn(e.newrow, "leave_type");
+		if (type == "조퇴"){
+			this.divProcess.form.spinTime.set_enable(true);
+			this.divProcess.form.calEnd.set_enable(false);
+		}else if (type == "기타"){
+			this.divProcess.form.spinTime.set_enable(false);
+			this.divProcess.form.calEnd.set_enable(true);
+		}
 	}
 	
-};
-
-]]></Script>
+};]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="divDocument.form.Static00_02" propid="text" datasetid="ds_document" columnid="seq"/>
+      <BindItem id="item9" compid="divProcess.form.seq" propid="text" datasetid="ds_document" columnid="seq"/>
+      <BindItem id="item11" compid="divProcess.form.editType" propid="value" datasetid="ds_document" columnid="leave_type"/>
+      <BindItem id="item12" compid="divProcess.form.calStart" propid="value" datasetid="ds_document" columnid="leave_start"/>
+      <BindItem id="item13" compid="divProcess.form.calEnd" propid="value" datasetid="ds_document" columnid="leave_end"/>
+      <BindItem id="item2" compid="divDocument.form.TextArea00" propid="value" datasetid="ds_document" columnid="contents"/>
+      <BindItem id="item14" compid="divDocument.form.staticTitle" propid="text" datasetid="ds_document" columnid="title"/>
+      <BindItem id="item16" compid="divDocument.form.maskStartDate" propid="value" datasetid="ds_document" columnid="leave_start"/>
+      <BindItem id="item1" compid="divDocument.form.MaskEdit00_00_00" propid="value" datasetid="ds_document" columnid="final_date"/>
+      <BindItem id="item3" compid="divDocument.form.maskEndDate" propid="value" datasetid="ds_document" columnid="leave_end"/>
+      <BindItem id="item4" compid="divDocument.form.staticType" propid="text" datasetid="ds_document" columnid="title"/>
+      <BindItem id="item5" compid="divDocument.form.staticWriter" propid="text" datasetid="ds_document" columnid="name"/>
+    </Bind>
   </Form>
 </FDL>
