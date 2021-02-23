@@ -4,10 +4,10 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="게시판 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Button id="btn_modify" taborder="1" text="수정" left="915" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" cssclass="btn_WF_reset01"/>
-        <Button id="btn_del" taborder="2" text="삭제" left="840" top="55" width="55" height="35" cssclass="btn_WF_delete01" onclick="board_div_btn_del_onclick"/>
-        <Button id="btn_add" taborder="3" text="추가" left="765" top="55" width="55" height="35" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01"/>
-        <Grid id="board_mn_list_Grd" taborder="4" left="20" top="170" binddataset="ds_board_menu" autofittype="col" width="560" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick" bottom="50">
+        <Button id="btn_modify" taborder="1" text="수정" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" cssclass="btn_WF_reset01" right="100"/>
+        <Button id="btn_del" taborder="2" text="삭제" top="55" width="55" height="35" cssclass="btn_WF_delete01" onclick="board_div_btn_del_onclick" right="172"/>
+        <Button id="btn_add" taborder="3" text="추가" top="55" height="35" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01" right="250" width="55"/>
+        <Grid id="board_mn_list_Grd" taborder="4" left="20" top="100" binddataset="ds_board_menu" autofittype="col" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick" bottom="50" right="500">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,8 +35,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="stcTitle" taborder="5" text="게시판 정보 및 수정" left="694" top="123" width="192" height="35" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center"/>
-        <Div id="divBoardInfor" taborder="6" left="604" top="170" width="366" text="" border="1px solid #c7c7c7" bottom="50">
+        <Static id="stcTitle" taborder="5" text="게시판 정보 및 수정" top="100" width="192" height="35" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="center" right="204"/>
+        <Div id="divBoardInfor" taborder="6" top="145" text="" border="1px solid #c7c7c7" bottom="50" width="386" right="100">
           <Layouts>
             <Layout>
               <Static id="stcTypeForm" taborder="0" left="138" top="127" width="200" height="132" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>

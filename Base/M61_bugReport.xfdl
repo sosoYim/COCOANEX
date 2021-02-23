@@ -4,23 +4,23 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="버그리포트 " left="20" top="10" height="34" cssclass="sta_WF_title01" right="630" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Div id="bugReport_div" taborder="1" left="20" top="55" width="76.15%" height="500" text="">
+        <Div id="bugReport_div" taborder="1" top="100" text="" border="1px solid #c7c7c7" bottom="50" left="240" width="750">
           <Layouts>
             <Layout>
-              <Static id="contents_edt_box" taborder="0" left="254" top="164" height="268" cssclass="sta_cm_box02L" width="518"/>
-              <Static id="receiver_edt_box00" taborder="1" left="365" top="116" height="48" cssclass="sta_cm_box02L" width="407"/>
-              <Static id="title_edt_box00" taborder="2" left="365" top="69" height="48" cssclass="sta_cm_box02L" width="407" text=""/>
-              <Static id="title_nm_box00" taborder="3" text="제목" left="254" top="69" width="112" height="48" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
-              <Static id="receiver_nm_box00" taborder="4" text="받는 사람" left="254" top="116" width="113" height="48" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
-              <Edit id="title_edt00" taborder="5" left="382" top="79" width="373" height="25" displaynulltext="제목을 입력하세요." border="0px none"/>
-              <TextArea id="contents_textarea" taborder="6" left="271" top="175" width="486" height="246"/>
-              <Static id="receiver_static" taborder="7" text="cocoasemiproject@gmail.com" left="387" top="127" width="169" height="27"/>
-              <Static id="Infor_title_static" taborder="8" text="버그리포트 전송 안내" left="49" top="69" width="140" height="24" textAlign="center" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="infor_static" taborder="9" text=" (1) 필수 첨부 내용&#13;&#10;&#13;&#10;  - 보내는 사람 소속 &#13;&#10;    ex) 회사명, 부서명, 이름&#13;&#10;  - 문제점&#13;&#10;    ex) 어떤 경우에 생기는 문제&#13;&#10;      인지 상세하게 기입하세요&#13;&#10; &#13;&#10; (2) 회신및 문제 해결 기간&#13;&#10;&#13;&#10;  - 회신 : 최대 3-4일 &#13;&#10;  - 문제 해결 기간은 회신 이메&#13;&#10;    일에 자세히 안내 될 예정&#13;&#10;&#13;&#10; (3) Contact Detail&#13;&#10;&#13;&#10; - 회사명 : 올바른데이터&#13;&#10;  - 회사 번호 : (02)1231-1231&#13;&#10; " left="29" top="110" width="190" height="322" border="1px solid #c7c7c7" padding="0px" onclick="infor_static_onclick"/>
-              <Button id="btn_send" taborder="10" text="전송" left="719" top="14" width="55" height="35" font="normal 15px/normal &quot;Arial&quot;" onclick="btn_send_onclick"/>
+              <Static id="contents_edt_box" taborder="0" left="13" top="104" height="375" cssclass="sta_cm_box02L" right="5"/>
+              <Static id="receiver_edt_box00" taborder="1" left="124" top="56" height="48" cssclass="sta_cm_box02L" right="5"/>
+              <Static id="title_edt_box00" taborder="2" left="124" top="9" height="48" cssclass="sta_cm_box02L" text="" right="5"/>
+              <Static id="title_nm_box00" taborder="3" text="제목" left="13" top="9" width="112" height="48" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
+              <Static id="receiver_nm_box00" taborder="4" text="받는 사람" left="13" top="56" width="113" height="48" cssclass="sta_cm_box01R" onclick="Static01_onclick"/>
+              <Edit id="title_edt00" taborder="5" left="141" top="19" height="30" displaynulltext="제목을 입력하세요." border="0px none" right="10"/>
+              <TextArea id="contents_textarea" taborder="6" left="30" top="115" height="345" right="15"/>
+              <Static id="receiver_static" taborder="7" text="cocoasemiproject@gmail.com" left="146" top="67" width="169" height="27"/>
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Infor_title_static" taborder="2" text="버그리포트 전송 안내" left="45" top="100" width="140" height="24" textAlign="center" font="bold 13px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="infor_static" taborder="3" text=" (1) 필수 첨부 내용&#13;&#10;&#13;&#10;  - 보내는 사람 소속 &#13;&#10;    ex) 회사명, 부서명, 이름&#13;&#10;  - 문제점&#13;&#10;    ex) 어떤 경우에 생기는 문제&#13;&#10;      인지 상세하게 기입하세요&#13;&#10; &#13;&#10;&#13;&#10;&#13;&#10; (2) 회신및 문제 해결 기간&#13;&#10;&#13;&#10;  - 회신 : 최대 3-4일 &#13;&#10;  - 문제 해결 기간은 회신 이메&#13;&#10;    일에 자세히 안내 될 예정&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10; (3) Contact Detail&#13;&#10;&#13;&#10; - 회사명 : 올바른데이터&#13;&#10;  - 회사 번호 : (02)1231-1231&#13;&#10; " left="20" top="140" width="200" border="1px solid #c7c7c7" padding="0px" onclick="infor_static_onclick" bottom="50"/>
+        <Button id="btn_send" taborder="4" text="전송" top="55" height="35" font="normal 15px/normal &quot;Arial&quot;" onclick="btn_send_onclick" width="55" left="935"/>
       </Layout>
     </Layouts>
     <Objects>
