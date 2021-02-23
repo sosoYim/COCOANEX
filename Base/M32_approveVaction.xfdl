@@ -31,14 +31,14 @@
                       <Cell text="사번"/>
                       <Cell col="1" text="부서명"/>
                       <Cell col="2" text="팀명"/>
-                      <Cell col="3" text="posname"/>
-                      <Cell col="4" text="name"/>
-                      <Cell col="5" text="hire_date"/>
-                      <Cell col="6" text="office_phone"/>
-                      <Cell col="7" text="year"/>
-                      <Cell col="8" text="leave_got"/>
-                      <Cell col="9" text="leave_used"/>
-                      <Cell col="10" text="addLeave"/>
+                      <Cell col="3" text="직급"/>
+                      <Cell col="4" text="이름"/>
+                      <Cell col="5" text="입사일"/>
+                      <Cell col="6" text="사내 번호"/>
+                      <Cell col="7" text="입사일"/>
+                      <Cell col="8" text="받은 휴가"/>
+                      <Cell col="9" text="사용한 휴가"/>
+                      <Cell col="10" text="추가지급"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:code"/>
@@ -275,7 +275,7 @@ this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		if(leaveCount > 0){
 			check++;
 		}
-	}
+	} 
 	if(check > 0){
 		this.transaction(
 				"updateLeave", // 1. strSvcID
