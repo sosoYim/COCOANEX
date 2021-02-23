@@ -1190,8 +1190,13 @@
 
 .Tab .tabbuttonitem
 {
-	
+	background : #e7e7e7;
+	color : #888888;
+	cursor : pointer;
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-padding : 6px 10px 6px 10px;
 }
+
 
 .Tab .tabbuttonitem[status=mouseover]
 {
@@ -2242,7 +2247,11 @@
 
 .Tab.tab_mdi_menu .tabbuttonitem
 {
-
+	background : #e7e7e7;
+	color : #888888;
+	cursor : pointer;
+	-nexa-border : 1px solid #e7e7e7, 1px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7;
+	-nexa-padding : 7px 10px 8px 10px;
 }
 
 .Tab.tab_mdi_menu .tabbuttonitem[status=mouseover]

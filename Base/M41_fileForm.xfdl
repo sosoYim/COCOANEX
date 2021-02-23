@@ -44,8 +44,8 @@
         <Button id="btn_titleAdd" taborder="2" text="추가" left="20" top="130" width="55" height="35" onclick="btn_titleAdd_onclick" cssclass="btn_WF_add01"/>
         <Button id="btn_titleMod" taborder="3" text="수정" left="btn_titleAdd:5" top="130" width="55" height="35" onclick="btn_titleMod_onclick" cssclass="btn_WF_list01"/>
         <Button id="btn_titleRm" taborder="4" text="삭제" left="btn_titleMod:5" top="130" width="55" height="35" onclick="btn_titleRm_onclick" cssclass="btn_WF_delete01"/>
-        <Button id="btn_listAdd" taborder="5" text="양식 추가" top="130" onclick="btn_listAdd_onclick" cssclass="btn_WF_add01" height="35" width="80" left="btn_titleRm:15"/>
-        <Tab id="Tab00" taborder="6" tabindex="0" top="170" onchanged="Tab00_onchanged" bottom="50" extrabuttonsize="0 0" tabposition="right" tabbuttonheight="0" tabbuttonwidth="1" minheight="532" maxheight="" width="400" left="grid_temp:10" visible="false">
+        <Button id="btn_listAdd" taborder="5" text="양식 추가" top="130" onclick="btn_listAdd_onclick" cssclass="btn_WF_add01" height="35" width="80" left="btn_titleRm:15" enable="false"/>
+        <Tab id="Tab00" taborder="6" tabindex="1" top="170" onchanged="Tab00_onchanged" bottom="50" extrabuttonsize="0 0" tabposition="right" tabbuttonheight="0" tabbuttonwidth="1" minheight="532" maxheight="" width="400" left="grid_temp:10">
           <Tabpages>
             <Tabpage id="Tabpage1" text="Tabpage1" formscrolltype="none">
               <Layouts>
@@ -67,13 +67,13 @@
                   <Static id="Static01_06_00_04" taborder="14" left="130" top="399" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
                   <Combo id="tp_listTemp" taborder="15" left="Static01_05:10" top="404" width="120" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged"/>
                   <Edit id="tp_listName" taborder="16" left="Static01_00:10" top="101" width="110" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged"/>
-                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" width="140" height="32" maxlength="15"/>
+                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" width="130" height="32" maxlength="15"/>
                   <TextArea id="tp_listContents" taborder="18" left="Static01_03:10" top="242" width="230" height="100" maxlength="100"/>
                   <Button id="btn_addList" taborder="19" text="추가" top="7" onclick="btn_addList_onclick" height="25" cssclass="btn_WF_add01" width="60" right="10"/>
                   <Button id="btn_reset" taborder="20" top="7" onclick="div_addListForm_btn_reset_onclick" height="25" cssclass="btn_WF_reset01" background="#e7e7e7" text="취소" right="btn_addList:10" width="60"/>
                   <Radio id="radio_status" taborder="21" left="Static01_04:10" top="350" width="137" height="50" innerdataset="ds_status" codecolumn="code" datacolumn="status" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y"/>
-                  <Static id="sta_nameErrMsg" taborder="22" left="tp_listName:10" top="101" height="30" text="" right="10"/>
-                  <Static id="sta_explainErrMsg" taborder="23" left="tp_listExplain:10" top="194" height="30" right="12"/>
+                  <Static id="sta_nameErrMsg" taborder="22" left="tp_listName:10" top="101" height="30" text="" right="10" color="red"/>
+                  <Static id="sta_explainErrMsg" taborder="23" left="tp_listExplain:5" top="194" height="30" right="10" color="red"/>
                   <Static id="sta_comboErrMsg" taborder="24" left="tp_listTemp:10" top="402" height="37" color="red" right="17" onclick="Tab00_Tabpage1_sta_comboErrMsg_onclick"/>
                 </Layout>
               </Layouts>
@@ -99,9 +99,9 @@
                   <Static id="Static01_06_00_02" taborder="12" left="130" top="235" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
                   <Static id="Static01_06_00_03" taborder="13" left="130" top="352" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
                   <Static id="Static01_06_00_04" taborder="14" left="130" top="399" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
-                  <Combo id="tp_listTemp" taborder="15" left="Static01_05:10" top="404" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120"/>
+                  <Combo id="tp_listTemp" taborder="15" left="Static01_05:10" top="404" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120" index="-1"/>
                   <Edit id="tp_listName" taborder="16" left="Static01_00:10" top="101" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged" width="110"/>
-                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" height="32" maxlength="15" width="140"/>
+                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" height="32" maxlength="15" width="130"/>
                   <TextArea id="tp_listContents" taborder="18" left="Static01_03:10" top="242" height="100" maxlength="100" width="230"/>
                   <Radio id="radio_status" taborder="19" left="Static01_04:10" top="350" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y" width="137">
                     <Dataset id="innerdataset">
@@ -122,7 +122,7 @@
                     </Dataset>
                   </Radio>
                   <Static id="sta_nameErrMsg" taborder="20" left="tp_listName:10" top="102" height="30" color="red" right="10"/>
-                  <Static id="sta_explainErrMsg" taborder="21" left="tp_listExplain:10" top="195" height="30" color="red" width="100"/>
+                  <Static id="sta_explainErrMsg" taborder="21" left="tp_listExplain:10" top="195" height="30" color="red" right="10"/>
                   <Static id="sta_comboErrMsg" taborder="22" left="tp_listTemp:10" top="406" height="37" color="red" right="7"/>
                   <Button id="btn_modList" taborder="23" text="수정" top="7" height="25" onclick="div_addListForm_btn_modList_onclick" cssclass="btn_WF_list01" right="10" width="60"/>
                   <Button id="btn_removeList" taborder="24" text="삭제" top="7" height="25" onclick="div_addListForm_btn_removeList_onclick" cssclass="btn_WF_delete01" right="btn_modList:10" width="60"/>
@@ -141,33 +141,15 @@
 var count =0;
 this.M41_fileForm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-
 	this.transaction(
 		"ds_getUser" //1. strsvcid
-		,"/nexTemp/ds_user.nex" //2.strurl
+		,"/nexTemp/formLoad.nex" //2.strurl
 		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"ds_user=out_ds" //4.strOutDatasets
+		,"ds_user=out_ds tp_origin=out_origin tp_title=out_title" //4.strOutDatasets
 		,"" //5.strArgument
 		,"fn_callback" //6.strCallbackFunc
 	);
-	
-	this.transaction(
-		"tp_origin" //1. strsvcid
-		,"/nexTemp/tp_origin.nex" //2.strurl
-		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"tp_origin=out_ds" //4.strOutDatasets
-		,"" //5.strArgument
-		,"fn_callback" //6.strCallbackFunc
-	);
-			
-	this.transaction(
-		"tp_title" //1. strsvcid
-		,"/nexTemp/tp_title.nex" //2.strurl
-		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"tp_title=out_ds" //4.strOutDatasets
-		,"" //5.strArgument
-		,"fn_callback" //6.strCallbackFunc
-		);
+
 		
 };
 
@@ -250,6 +232,7 @@ this.grid_form_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 {
 	
 	this.Tab00.set_visible(false);
+	this.btn_listAdd.set_enable(true);
 	if(getAddCol!=-1){
 		getAddCol=-1;
 		count=0;

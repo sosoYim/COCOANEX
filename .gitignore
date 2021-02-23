@@ -1,7 +1,0 @@
-# nexacro studio ignore fils
-*.geninfo
-*$
-*.bak
-*.orig
-.*
-nexacro17lib/
