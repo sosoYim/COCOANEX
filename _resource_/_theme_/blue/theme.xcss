@@ -1197,6 +1197,7 @@
 	-nexa-padding : 6px 10px 6px 10px;
 }
 
+
 .Tab .tabbuttonitem[status=mouseover]
 {
 	background : #e7e7e7;
@@ -2185,10 +2186,10 @@
 
 .Button.btn_mdi_close, .Button.btn_mdi_close[status=focused],.Button.btn_mdi_close[userstatus=selected]
 {
-	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e7e7e7;
+	background : url('imagerc::btn_mdi_close.png') no-repeat center center #e7e7e7;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7
-;}
+	-nexa-border : 1px solid #c7c7c7;
+	}
 .Button.btn_mdi_close[status=mouseover], .Button.btn_mdi_close[userstatus=pushed]
 {
 	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e3e3e3;
