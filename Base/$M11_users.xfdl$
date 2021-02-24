@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="sta_title" taborder="0" text="사용자 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Grid id="grd_emp_list" taborder="1" left="20" top="175" binddataset="ds_employee" minwidth="150" maxwidth="" right="499" height="425">
+        <Grid id="grd_emp_list" taborder="1" left="20" top="175" binddataset="ds_employee" minwidth="425" maxwidth="" right="499" bottom="50">
           <Formats>
             <Format id="default">
               <Columns>
@@ -59,7 +59,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="div_info" taborder="2" text="" top="175" leftbase="" bottombase="" rightbase="" widthbase="" heightbase="" formscrolltype="none" formscrollbartype="none" border="1px solid #c7c7c7" borderRadius="2px" minwidth="150" maxwidth="" width="389" left="grd_emp_list:10" height="425">
+        <Div id="div_info" taborder="2" text="" top="175" leftbase="" bottombase="" rightbase="" widthbase="" heightbase="" formscrolltype="none" formscrollbartype="none" border="1px solid #c7c7c7" borderRadius="2px" minwidth="425" maxwidth="" width="389" left="grd_emp_list:10" bottom="50">
           <Layouts>
             <Layout>
               <Static id="sta_name" taborder="1" text="이름" left="8" top="86" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" onclick="div_detail_Static10_onclick" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
@@ -160,7 +160,7 @@
         </Div>
         <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="53" right="190"/>
         <Button id="btn_cancel" taborder="5" text="작업 취소" top="55" height="35" onclick="btn_cancel_onclick" width="80" right="100" cssclass="btn_WF_delete01"/>
-        <Static id="Static02" taborder="6" text="구현 : 검색/불러오기/트랜잭션으로 값 전송 &#13;&#10;미구현 : 각종 유효성 검사 및 디비 업데이트 " left="240" top="18" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
+        <Static id="Static02" taborder="6" text="구현 : 검색/불러오기/값전송/인서트&#13;&#10;미구현 : 각종 유효성 검사 및 수정 " left="240" top="18" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -300,10 +300,16 @@
 this.fn_callback = function(id, ErrCode, ErrMsg)
 {
 	trace(ErrMsg);
-
-	
 }
 
+this.fn_empsave = function(resultAdd, resultModif)
+{
+	
+	trace("resultAdd : ", nexacro.getApplication().resultAdd);
+	trace("resultModif : ", nexacro.getApplication().resultModif);
+}
+
+//트랜잭션 START ====================================================
 //불러오기
 this.M11_users_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -318,7 +324,7 @@ this.M11_users_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		);
 };
 
-//저장 & 취소 START========================================================================
+//저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	trace("M11 저장");
@@ -328,7 +334,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			, "in_ds_employee=ds_employee:U" //strInDatasets Sds=Fds:U, A, N
 			, "" //strOutDatasets - select Fds = Sds
 			, "" //strArgument
-			,  "fn_callback" //strCallbackFunc
+			,  "fn_empsave" //strCallbackFunc
 		);
 };
 //취소
@@ -351,7 +357,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 };
 
-//저장 & 취소 END====================================================
+//트랜잭션 END====================================================
 
 
 //ds_employee 업데이트 START====================================================
