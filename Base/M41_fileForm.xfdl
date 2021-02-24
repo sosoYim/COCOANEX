@@ -3,8 +3,7 @@
   <Form id="M41_fileForm" width="1090" height="650" titletext="New Form" onload="M41_fileForm_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="기안 양식 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="grid_form" taborder="1" left="20" top="90" width="150" height="546" binddataset="tp_title" autofittype="col" oncellclick="grid_form_oncellclick">
+        <Grid id="grid_form" taborder="0" left="20" top="171" width="180" binddataset="tp_title" autofittype="col" oncellclick="grid_form_oncellclick" bottom="49" minheight="532" maxheight="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -12,7 +11,7 @@
               </Columns>
               <Rows>
                 <Row size="38" band="head"/>
-                <Row size="24"/>
+                <Row size="35"/>
               </Rows>
               <Band id="head">
                 <Cell text="- 양식함" textAlign="left" padding="5px" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
@@ -23,7 +22,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="grid_temp" taborder="2" left="180" top="90" height="544" binddataset="tp_list" autofittype="col" oncellclick="grid_temp_oncellclick" right="560">
+        <Grid id="grid_temp" taborder="1" top="171" binddataset="tp_list" autofittype="col" oncellclick="grid_temp_oncellclick" bottom="49" minheight="532" maxheight="" maxwidth="" left="grid_form:10" right="505" minwidth="505">
           <Formats>
             <Format id="default">
               <Columns>
@@ -31,7 +30,7 @@
               </Columns>
               <Rows>
                 <Row size="35" band="head"/>
-                <Row size="24"/>
+                <Row size="35"/>
               </Rows>
               <Band id="head">
                 <Cell text="양식명" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
@@ -42,56 +41,40 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_titleAdd" taborder="3" text="추가" left="20" top="54" width="43" height="26" onclick="btn_titleAdd_onclick"/>
-        <Button id="btn_titleMod" taborder="4" text="수정" left="73" top="54" width="43" height="26" onclick="btn_titleMod_onclick"/>
-        <Button id="btn_titleRm" taborder="5" text="삭제" left="126" top="54" width="43" height="26" onclick="btn_titleRm_onclick"/>
-        <Combo id="Combo00" taborder="6" text="기안제목" left="185" top="54" width="115" height="26" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="name" onitemchanged="Combo00_onitemchanged">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">name</Col>
-                <Col id="datacolumn">기안제목</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Edit id="Edit00" taborder="7" left="310" top="53" width="150" height="26"/>
-        <Button id="btn_listSearch" taborder="8" text="검색" left="470" top="53" width="60" height="26" onclick="btn_listSearch_onclick" cssclass="btn_WF_search01"/>
-        <Button id="btn_listAdd" taborder="9" text="양식 추가" left="438" top="18" width="92" height="26" onclick="btn_listAdd_onclick" cssclass="btn_WF_add01"/>
-        <Tab id="Tab00" taborder="10" tabindex="0" top="90" height="571" onchanged="Tab00_onchanged" tabbuttonheight="0" tabposition="bottom" right="100" width="450">
+        <Button id="btn_titleAdd" taborder="2" text="추가" left="20" top="130" width="55" height="35" onclick="btn_titleAdd_onclick" cssclass="btn_WF_add01"/>
+        <Button id="btn_titleMod" taborder="3" text="수정" left="btn_titleAdd:5" top="130" width="55" height="35" onclick="btn_titleMod_onclick" cssclass="btn_WF_list01"/>
+        <Button id="btn_titleRm" taborder="4" text="삭제" left="btn_titleMod:5" top="130" width="55" height="35" onclick="btn_titleRm_onclick" cssclass="btn_WF_delete01"/>
+        <Button id="btn_listAdd" taborder="5" text="양식 추가" top="130" onclick="btn_listAdd_onclick" cssclass="btn_WF_add01" height="35" width="80" left="btn_titleRm:15" enable="false"/>
+        <Tab id="Tab00" taborder="6" tabindex="1" top="170" onchanged="Tab00_onchanged" bottom="50" extrabuttonsize="0 0" tabposition="right" tabbuttonheight="0" tabbuttonwidth="1" minheight="532" maxheight="" width="400" left="grid_temp:10">
           <Tabpages>
             <Tabpage id="Tabpage1" text="Tabpage1" formscrolltype="none">
               <Layouts>
                 <Layout>
                   <Static id="Static00" taborder="0" text="양식 추가" left="0" top="0" height="34" cssclass="sta_WF_title01" right="0"/>
-                  <Static id="Static01" taborder="1" text="양식 분류" left="20" top="77" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_00" taborder="2" text="기안 양식 명 *" left="20" top="124" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
-                  <Static id="Static01_01" taborder="3" left="20" top="171" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="양식 담당자"/>
-                  <Static id="Static01_02" taborder="4" text="설명 *" left="20" top="218" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Tab00_Tabpage1_Static01_02_onclick"/>
-                  <Static id="Static01_03" taborder="5" text="내용" left="20" top="265" width="120" height="116" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_04" taborder="6" text="공개여부" left="20" top="382" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_05" taborder="7" left="20" top="429" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="템플릿 설정"/>
-                  <Static id="sta_form" taborder="8" left="122" top="77" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="20"/>
-                  <Static id="Static01_06_00" taborder="9" left="122" top="124" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
-                  <Static id="sta_writer_code" taborder="10" left="122" top="171" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="20"/>
-                  <Static id="Static01_06_00_01" taborder="11" left="122" top="218" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="20"/>
-                  <Static id="Static01_06_00_02" taborder="12" left="119" top="266" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="23" text=""/>
-                  <Static id="Static01_06_00_03" taborder="13" left="122" top="382" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
-                  <Static id="Static01_06_00_04" taborder="14" left="122" top="429" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="20"/>
-                  <Combo id="tp_listTemp" taborder="15" left="153" top="433" width="180" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged"/>
-                  <Edit id="tp_listName" taborder="16" left="149" top="130" width="131" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged"/>
-                  <Edit id="tp_listExplain" taborder="17" left="150" top="225" width="169" height="32" maxlength="15"/>
-                  <TextArea id="tp_listContents" taborder="18" left="150" top="273" width="230" height="100" maxlength="100"/>
-                  <Button id="btn_addList" taborder="19" text="추가" left="335" top="483" height="25" onclick="btn_addList_onclick" right="20"/>
-                  <Button id="btn_reset" taborder="20" text="취소" left="227" top="483" height="25" onclick="div_addListForm_btn_reset_onclick" right="138"/>
-                  <Radio id="radio_status" taborder="21" left="149" top="379" width="137" height="50" innerdataset="ds_status" codecolumn="code" datacolumn="status" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y"/>
-                  <Static id="sta_nameErrMsg" taborder="22" left="286" top="131" width="122" height="30"/>
-                  <Static id="sta_explainErrMsg" taborder="23" left="333" top="227" height="30" right="20"/>
-                  <Static id="sta_comboErrMsg" taborder="24" left="339" top="436" height="37" color="red" right="20"/>
+                  <Static id="Static01" taborder="1" text="양식 분류" left="10" top="47" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_00" taborder="2" text="기안 양식 명 *" left="10" top="94" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
+                  <Static id="Static01_01" taborder="3" left="10" top="141" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="양식 담당자"/>
+                  <Static id="Static01_02" taborder="4" text="설명 *" left="10" top="188" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Tab00_Tabpage1_Static01_02_onclick"/>
+                  <Static id="Static01_03" taborder="5" text="내용" left="10" top="235" width="120" height="116" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_04" taborder="6" text="공개여부" left="10" top="352" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Tab00_Tabpage1_Static01_04_onclick"/>
+                  <Static id="Static01_05" taborder="7" left="10" top="399" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="템플릿 설정"/>
+                  <Static id="sta_form" taborder="8" left="130" top="47" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="10"/>
+                  <Static id="Static01_06_00" taborder="9" left="130" top="94" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
+                  <Static id="sta_writer_code" taborder="10" left="130" top="141" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Static id="Static01_06_00_01" taborder="11" left="130" top="188" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Static id="Static01_06_00_02" taborder="12" left="130" top="235" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10" text=""/>
+                  <Static id="Static01_06_00_03" taborder="13" left="130" top="352" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
+                  <Static id="Static01_06_00_04" taborder="14" left="130" top="399" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Combo id="tp_listTemp" taborder="15" left="Static01_05:10" top="404" width="120" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged"/>
+                  <Edit id="tp_listName" taborder="16" left="Static01_00:10" top="101" width="110" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged"/>
+                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" width="130" height="32" maxlength="15"/>
+                  <TextArea id="tp_listContents" taborder="18" left="Static01_03:10" top="242" width="230" height="100" maxlength="100"/>
+                  <Button id="btn_addList" taborder="19" text="추가" top="7" onclick="btn_addList_onclick" height="25" cssclass="btn_WF_add01" width="60" right="10"/>
+                  <Button id="btn_reset" taborder="20" top="7" onclick="div_addListForm_btn_reset_onclick" height="25" cssclass="btn_WF_reset01" background="#e7e7e7" text="취소" right="btn_addList:10" width="60"/>
+                  <Radio id="radio_status" taborder="21" left="Static01_04:10" top="350" width="137" height="50" innerdataset="ds_status" codecolumn="code" datacolumn="status" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y"/>
+                  <Static id="sta_nameErrMsg" taborder="22" left="tp_listName:10" top="101" height="30" text="" right="10" color="red"/>
+                  <Static id="sta_explainErrMsg" taborder="23" left="tp_listExplain:5" top="194" height="30" right="10" color="red"/>
+                  <Static id="sta_comboErrMsg" taborder="24" left="tp_listTemp:10" top="402" height="37" color="red" right="17" onclick="Tab00_Tabpage1_sta_comboErrMsg_onclick"/>
                 </Layout>
               </Layouts>
               <InitValue>
@@ -102,25 +85,25 @@
               <Layouts>
                 <Layout>
                   <Static id="Static00" taborder="0" text="양식 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-484"/>
-                  <Static id="Static01" taborder="1" text="양식 분류" left="53" top="77" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_00" taborder="2" text="기안 양식 명 *" left="53" top="124" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_01" taborder="3" left="53" top="171" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="양식 담당자"/>
-                  <Static id="Static01_02" taborder="4" text="설명 *" left="53" top="218" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_03" taborder="5" text="내용" left="53" top="265" width="120" height="116" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_04" taborder="6" text="공개여부" left="53" top="382" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_05" taborder="7" left="53" top="429" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="템플릿 설정"/>
-                  <Static id="sta_form" taborder="8" left="173" top="77" width="498" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text=""/>
-                  <Static id="Static01_06_00" taborder="9" left="173" top="124" width="498" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
-                  <Static id="sta_writer_code" taborder="10" left="173" top="171" width="498" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
-                  <Static id="Static01_06_00_01" taborder="11" left="173" top="218" width="498" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
-                  <Static id="Static01_06_00_02" taborder="12" left="173" top="265" width="498" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_06_00_03" taborder="13" left="173" top="382" width="498" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px"/>
-                  <Static id="Static01_06_00_04" taborder="14" left="173" top="429" width="498" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text=""/>
-                  <Combo id="tp_listTemp" taborder="15" left="181" top="435" width="193" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged"/>
-                  <Edit id="tp_listName" taborder="16" left="181" top="131" width="193" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged"/>
-                  <Edit id="tp_listExplain" taborder="17" left="181" top="225" width="259" height="32" maxlength="15"/>
-                  <TextArea id="tp_listContents" taborder="18" left="181" top="272" width="370" height="100" maxlength="100"/>
-                  <Radio id="radio_status" taborder="19" left="183" top="380" width="137" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y">
+                  <Static id="Static01" taborder="1" text="양식 분류" left="10" top="47" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_00" taborder="2" text="기안 양식 명 *" left="10" top="94" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_01" taborder="3" left="10" top="141" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="양식 담당자"/>
+                  <Static id="Static01_02" taborder="4" text="설명 *" left="10" top="188" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_03" taborder="5" text="내용" left="10" top="235" width="120" height="116" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_04" taborder="6" text="공개여부" left="10" top="352" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+                  <Static id="Static01_05" taborder="7" left="10" top="399" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="템플릿 설정"/>
+                  <Static id="sta_form" taborder="8" left="130" top="47" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="10"/>
+                  <Static id="Static01_06_00" taborder="9" left="130" top="94" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10" text=""/>
+                  <Static id="sta_writer_code" taborder="10" left="130" top="141" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Static id="Static01_06_00_01" taborder="11" left="130" top="188" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Static id="Static01_06_00_02" taborder="12" left="130" top="235" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
+                  <Static id="Static01_06_00_03" taborder="13" left="130" top="352" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
+                  <Static id="Static01_06_00_04" taborder="14" left="130" top="399" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Combo id="tp_listTemp" taborder="15" left="Static01_05:10" top="404" height="35" innerdataset="tp_origin" codecolumn="code" datacolumn="name" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120" index="-1"/>
+                  <Edit id="tp_listName" taborder="16" left="Static01_00:10" top="101" height="32" maxlength="10" onchanged="div_addListForm_tp_listName_onchanged" width="110"/>
+                  <Edit id="tp_listExplain" taborder="17" left="Static01_02:10" top="195" height="32" maxlength="15" width="130"/>
+                  <TextArea id="tp_listContents" taborder="18" left="Static01_03:10" top="242" height="100" maxlength="100" width="230"/>
+                  <Radio id="radio_status" taborder="19" left="Static01_04:10" top="350" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" onitemchanged="radio_addList_onitemchanged" index="0" text="공개" value="Y" width="137">
                     <Dataset id="innerdataset">
                       <ColumnInfo>
                         <Column id="codecolumn" size="256"/>
@@ -138,11 +121,11 @@
                       </Rows>
                     </Dataset>
                   </Radio>
-                  <Static id="sta_nameErrMsg" taborder="20" left="384" top="132" width="292" height="30" color="red"/>
-                  <Static id="sta_explainErrMsg" taborder="21" left="453" top="227" width="234" height="30" color="red"/>
-                  <Static id="sta_comboErrMsg" taborder="22" left="390" top="436" width="275" height="37" color="red"/>
-                  <Button id="btn_modList" taborder="23" text="수정" left="585" top="489" width="86" height="33" onclick="div_addListForm_btn_modList_onclick"/>
-                  <Button id="btn_removeList" taborder="24" text="삭제" left="485" top="489" width="86" height="33" onclick="div_addListForm_btn_removeList_onclick"/>
+                  <Static id="sta_nameErrMsg" taborder="20" left="tp_listName:10" top="102" height="30" color="red" right="10"/>
+                  <Static id="sta_explainErrMsg" taborder="21" left="tp_listExplain:10" top="195" height="30" color="red" right="10"/>
+                  <Static id="sta_comboErrMsg" taborder="22" left="tp_listTemp:10" top="406" height="37" color="red" right="7"/>
+                  <Button id="btn_modList" taborder="23" text="수정" top="7" height="25" onclick="div_addListForm_btn_modList_onclick" cssclass="btn_WF_list01" right="10" width="60"/>
+                  <Button id="btn_removeList" taborder="24" text="삭제" top="7" height="25" onclick="div_addListForm_btn_removeList_onclick" cssclass="btn_WF_delete01" right="btn_modList:10" width="60"/>
                 </Layout>
               </Layouts>
               <InitValue>
@@ -151,39 +134,22 @@
             </Tabpage>
           </Tabpages>
         </Tab>
+        <Static id="Static00" taborder="7" text="기안 양식 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[var getAddCol =-1;
 var count =0;
 this.M41_fileForm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-
 	this.transaction(
 		"ds_getUser" //1. strsvcid
-		,"/nexTemp/ds_user.nex" //2.strurl
+		,"/nexTemp/formLoad.nex" //2.strurl
 		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"ds_user=out_ds" //4.strOutDatasets
+		,"ds_user=out_ds tp_origin=out_origin tp_title=out_title" //4.strOutDatasets
 		,"" //5.strArgument
 		,"fn_callback" //6.strCallbackFunc
 	);
-	
-	this.transaction(
-		"tp_origin" //1. strsvcid
-		,"/nexTemp/tp_origin.nex" //2.strurl
-		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"tp_origin=out_ds" //4.strOutDatasets
-		,"" //5.strArgument
-		,"fn_callback" //6.strCallbackFunc
-	);
-			
-	this.transaction(
-		"tp_title" //1. strsvcid
-		,"/nexTemp/tp_title.nex" //2.strurl
-		,"" //3.strInDatasets Sds=Fds:U :A :
-		,"tp_title=out_ds" //4.strOutDatasets
-		,"" //5.strArgument
-		,"fn_callback" //6.strCallbackFunc
-		);
+
 		
 };
 
@@ -266,6 +232,11 @@ this.grid_form_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 {
 	
 	this.Tab00.set_visible(false);
+	this.btn_listAdd.set_enable(true);
+	if(getAddCol!=-1){
+		getAddCol=-1;
+		count=0;
+	}
 
 	var getCol = this.tp_title.getColumn(this.tp_title.rowposition,"code");	
 		this.transaction(
@@ -334,7 +305,8 @@ this.btn_addList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		);
 	this.Tab00.set_visible(false);
 	count--;
-	trace(count);
+	getAddCol=-1;
+	
 };
 
 this.div_addListForm_btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -430,17 +402,6 @@ this.btn_listSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 };
 
 
-
-
-this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
-{
-	
-};
-
-this.Tab00_Tabpage1_Static01_02_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
 ]]></Script>
     <Objects>
       <Dataset id="tp_title" useclientlayout="true">

@@ -20,36 +20,6 @@
       </ColumnInfo>
       <Rows>
         <Row>
-          <Col id="MENU_CD">0000</Col>
-          <Col id="UP_MENU_CD">0</Col>
-          <Col id="MENU_LVL">0</Col>
-          <Col id="MENU_NM">업무화면예시</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_CD">0001</Col>
-          <Col id="UP_MENU_CD">0000</Col>
-          <Col id="MENU_NM">화면예시1</Col>
-          <Col id="PGM_PATH">Base</Col>
-          <Col id="PGM_ID">work01.xfdl</Col>
-          <Col id="MENU_LVL">1</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_CD">0002</Col>
-          <Col id="UP_MENU_CD">0000</Col>
-          <Col id="MENU_NM">화면예시2</Col>
-          <Col id="PGM_PATH">Base</Col>
-          <Col id="PGM_ID">work02.xfdl</Col>
-          <Col id="MENU_LVL">1</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_CD">0003</Col>
-          <Col id="UP_MENU_CD">0000</Col>
-          <Col id="MENU_NM">화면예시3</Col>
-          <Col id="PGM_PATH">Base</Col>
-          <Col id="PGM_ID">work03.xfdl</Col>
-          <Col id="MENU_LVL">1</Col>
-        </Row>
-        <Row>
           <Col id="MENU_CD">0010</Col>
           <Col id="UP_MENU_CD">0</Col>
           <Col id="MENU_NM">조직 관리</Col>
@@ -134,14 +104,6 @@
           <Col id="UP_MENU_CD">0</Col>
           <Col id="MENU_LVL">0</Col>
           <Col id="MENU_NM">페이지 관리</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_CD">0051</Col>
-          <Col id="UP_MENU_CD">0000</Col>
-          <Col id="MENU_NM">로고 변경</Col>
-          <Col id="MENU_LVL">1</Col>
-          <Col id="PGM_PATH">Base</Col>
-          <Col id="PGM_ID">M51_logo.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">메뉴 관리</Col>
