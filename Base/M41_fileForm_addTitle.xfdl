@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="fileForm_addTitle" width="310" height="400" titletext="New Form" scrolltype="none" scrollbartype="none">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="310">
+        <Static id="Static00" taborder="0" text="양식 분류 추가" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-780"/>
+        <Static id="Static01" taborder="1" text="양식 분류 명 *" left="10" top="44" width="120" height="36"/>
+        <Static id="Static01_00" taborder="2" text="설명" left="10" top="110" width="120" height="36"/>
+        <Edit id="Edit00" taborder="3" left="91" top="52" width="199" height="26" onchanged="Edit00_onchanged"/>
+        <TextArea id="TextArea00" taborder="4" left="91" top="120" width="199" height="144"/>
+        <Button id="btn_cancel" taborder="5" text="취소" left="30" top="317" width="112" height="46" onclick="btn_cancel_onclick"/>
+        <Button id="btn_add" taborder="6" text="등록" left="160" top="317" width="112" height="46" onclick="btn_add_onclick"/>
+        <Static id="Static02" taborder="7" left="0" top="4" width="310" height="36" border="0px none,0px none,1px solid #c9c9c9" text=""/>
+        <Static id="sta_titleErrMsg" taborder="8" left="91" top="88" width="201" height="24" color="red"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("cancel");
+};
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var title = this.Edit00.value;
+	var contents = this.TextArea00.value;
+	
+	if(title==null){
+		this.sta_titleErrMsg.set_text("양식 분류명을 작성해주세요.");
+		this.Edit00.setFocus(true);
+		return;
+	}else{
+		this.sta_titleErrMsg.set_text("");
+	}
+	
+	this.transaction(
+		"tp_getFormInfoByCode" //1. strsvcid
+		,"/nexTemp/tp_titleAdd.nex" //2.strurl
+		,"" //3.strInDatasets Sds=Fds:U :A :
+		,"" //4.strOutDatasets
+		,"title='"+title+"' contents='"+contents+"'" //5.strArgument
+		,"fn_addListCallBack" //6.strCallbackFunc
+	);	
+};
+
+this.fn_addListCallBack=function(id,msg){
+	this.close(msg);
+}
+
+
+]]></Script>
+  </Form>
+</FDL>
