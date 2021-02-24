@@ -149,5 +149,8 @@
       </ColumnInfo>
     </Dataset>
   </Datasets>
-  <Variables/>
+  <Variables>
+    <Variable id="resultAdd" initval="0"/>
+    <Variable id="resultModif" initval="0"/>
+  </Variables>
 </AppVariables>
