@@ -8,6 +8,40 @@
       <XCSS rule_version="1.04"/>
       <Script rule_version="1.02"/>
     </Rule>
-    <Info project="C:\dev\projects\workspace_cocoaERP\COCOANEX\" generated="C:\dev\projects\workspace_cocoaERP\COCOAERP\src\main\resources\static\sample\"><File url="typedefinition.xml" checksum="20210222113848" errormsg=""/><File url="appvariables.xml" checksum="20210224122531" errormsg=""/><File url="environment.xml" checksum="20210220132733" errormsg=""/><File url="_resource_\_theme_\blue\theme.xcss" checksum="20210223174221" errormsg=""/><File url="App_Desktop.xadl" checksum="20210220132733" errormsg=""/><File url="frame\frmTop.xfdl" checksum="20210223174221" errormsg=""/><File url="frame\frmLeft.xfdl" checksum="20210220132733" errormsg=""/><File url="frame\frmMdi.xfdl" checksum="20210220132733" errormsg=""/><File url="frame\frmBottom.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\M11_users.xfdl" checksum="20210225164502" errormsg=""/><File url="Base\M12_deptTeam.xfdl" checksum="20210225142525" errormsg=""/><File url="Base\M13_position.xfdl" checksum="20210224123912" errormsg=""/><File url="Base\M21_companySchedule.xfdl" checksum="20210224123912" errormsg=""/><File url="Base\M31_grantVacation.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\M32_approveVaction.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\M41_fileForm.xfdl" checksum="20210224133932" errormsg=""/><File url="Base\M41_fileForm_addTitle.xfdl" checksum="20210224133932" errormsg=""/><File url="Base\M41_fileForm_modTitle.xfdl" checksum="20210224133932" errormsg=""/><File url="Base\M52_menu.xfdl" checksum="20210224123912" errormsg=""/><File url="Base\M53_board.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\M54_boardPop.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\M61_bugReport.xfdl" checksum="20210223174221" errormsg=""/><File url="Base\work01.xfdl" checksum="20210220132733" errormsg=""/><File url="Base\work02.xfdl" checksum="20210220132733" errormsg=""/><File url="Base\work03.xfdl" checksum="20210220132733" errormsg=""/><File url="frame\frmWork.xfdl" checksum="20210220132733" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\framework\Framework.json" checksum="20200527181350" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\resources\Resource.json" checksum="20200527181350" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\CompBase.json" checksum="20200527181348" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\ComComp.json" checksum="20200527181348" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\Grid.json" checksum="20200527181348" errormsg=""/><File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\DeviceAPI.json" checksum="20200527181348" errormsg=""/><File url="_resource_\_xcss_\temp_main.xcss" checksum="20210222113848" errormsg=""/></Info>
+    <Info project="C:\dev\projects\workspace_cocoaERP\COCOANEX\" generated="C:\dev\projects\workspace_cocoaERP\COCOAERP\src\main\resources\static\sample\">
+      <File url="typedefinition.xml" checksum="20210222113848" errormsg=""/>
+      <File url="appvariables.xml" checksum="20210224122531" errormsg=""/>
+      <File url="environment.xml" checksum="20210220132733" errormsg=""/>
+      <File url="_resource_\_theme_\blue\theme.xcss" checksum="20210223174221" errormsg=""/>
+      <File url="App_Desktop.xadl" checksum="20210220132733" errormsg=""/>
+      <File url="frame\frmTop.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="frame\frmLeft.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="frame\frmMdi.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="frame\frmBottom.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\M11_users.xfdl" checksum="20210225164502" errormsg=""/>
+      <File url="Base\M12_deptTeam.xfdl" checksum="20210225142525" errormsg=""/>
+      <File url="Base\M13_position.xfdl" checksum="20210224123912" errormsg=""/>
+      <File url="Base\M21_companySchedule.xfdl" checksum="20210224123912" errormsg=""/>
+      <File url="Base\M31_grantVacation.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\M32_approveVaction.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\M41_fileForm.xfdl" checksum="20210225171626" errormsg=""/>
+      <File url="Base\M41_fileForm_addTitle.xfdl" checksum="20210224133932" errormsg=""/>
+      <File url="Base\M41_fileForm_modTitle.xfdl" checksum="20210224133932" errormsg=""/>
+      <File url="Base\M52_menu.xfdl" checksum="20210224123912" errormsg=""/>
+      <File url="Base\M53_board.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\M54_boardPop.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\M61_bugReport.xfdl" checksum="20210223174221" errormsg=""/>
+      <File url="Base\work01.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="Base\work02.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="Base\work03.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="frame\frmWork.xfdl" checksum="20210220132733" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\framework\Framework.json" checksum="20200527181350" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\resources\Resource.json" checksum="20200527181350" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\CompBase.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\ComComp.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\Grid.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\DeviceAPI.json" checksum="20200527181348" errormsg=""/>
+      <File url="_resource_\_xcss_\temp_main.xcss" checksum="20210222113848" errormsg=""/>
+    </Info>
   </GenInfo>
 </root>
