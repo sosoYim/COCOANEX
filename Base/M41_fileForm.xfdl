@@ -192,7 +192,7 @@ this.btn_titleMod_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 	var cf = new ChildFrame();
 	cf.init("cf_modTtitle",0,0,310,400)
 	var code = this.tp_title.getColumn(this.tp_title.rowposition,"code");
-	cf.set_formurl("Base::M_41fileform_modTitle.xfdl");
+	cf.set_formurl("Base::M41_fileform_modTitle.xfdl");
 	cf.set_openalign("center middle");
 	cf.showModal(
 		this.getOwnerFrame(),{code:code},this,"fn_cbModTitle"
