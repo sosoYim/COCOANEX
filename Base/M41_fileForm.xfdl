@@ -43,7 +43,7 @@
         </Grid>
         <Button id="btn_titleAdd" taborder="2" text="추가" left="20" top="60" width="55" height="35" onclick="btn_titleAdd_onclick" cssclass="btn_WF_add01"/>
         <Button id="btn_titleMod" taborder="3" text="수정" left="btn_titleAdd:5" top="60" width="55" height="35" onclick="btn_titleMod_onclick" cssclass="btn_WF_list01"/>
-        <Button id="btn_titleRm" taborder="4" text="삭제" left="btn_titleMod:5" top="60" width="55" height="35" onclick="btn_titleRm_onclick" cssclass="btn_WF_delete01"/>
+        <Button id="btn_titleRm" taborder="4" text="삭제" left="btn_titleMod:5" top="60" width="55" height="35" onclick="btn_titleRm_onclick" cssclass="btn_WF_delete01" enable="false"/>
         <Button id="btn_listAdd" taborder="5" text="양식 추가" top="60" onclick="btn_listAdd_onclick" cssclass="btn_WF_add01" height="35" width="80" left="btn_titleRm:15" enable="false"/>
         <Tab id="Tab00" taborder="6" tabindex="1" top="100" onchanged="Tab00_onchanged" bottom="50" extrabuttonsize="0 0" tabposition="right" tabbuttonheight="0" tabbuttonwidth="1" minheight="450" maxheight="" width="400" left="grid_temp:10">
           <Tabpages>
@@ -237,6 +237,12 @@ this.grid_form_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		getAddCol=-1;
 		count=0;
 	}
+	
+	if(this.grid_form.currentrow==0){
+		this.btn_titleRm.set_enable(false);
+	}else{
+		this.btn_titleRm.set_enable(true);
+	}
 
 	var getCol = this.tp_title.getColumn(this.tp_title.rowposition,"code");	
 		this.transaction(
@@ -319,6 +325,14 @@ this.div_addListForm_btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.C
 this.grid_temp_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var curRow = this.tp_list.rowposition;
+	var LeftcurRow = this.grid_form.currentrow;
+	if(LeftcurRow==0){
+		this.Tab00.Tabpage2.form.btn_removeList.set_enable(false);
+		this.Tab00.Tabpage2.form.tp_listTemp.set_enable(false);
+	}else{
+		this.Tab00.Tabpage2.form.btn_removeList.set_enable(true);
+		this.Tab00.Tabpage2.form.tp_listTemp.set_enable(true);
+	}
 
 	if(curRow==getAddCol){
 		this.Tab00.set_tabindex(0);
