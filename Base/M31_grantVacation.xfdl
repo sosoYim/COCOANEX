@@ -17,8 +17,8 @@
                       <Column size="51"/>
                     </Columns>
                     <Rows>
-                      <Row size="32" band="head"/>
-                      <Row size="33"/>
+                      <Row size="35" band="head"/>
+                      <Row size="30"/>
                     </Rows>
                     <Band id="head">
                       <Cell text="문서번호"/>
@@ -65,7 +65,7 @@
               <Static id="Static00_00_00" taborder="18" top="170" left="100" bottom="10" right="20" border="0px none,0px none,1px solid #c9c9c9"/>
               <Static id="staticWriter" taborder="19" text="writer" left="385" top="102" width="195" height="30"/>
               <Static id="staticTitle" taborder="20" text="Static02" left="105" top="67" width="196" height="29"/>
-              <MaskEdit id="maskStartDate" taborder="21" left="109" top="137" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
+              <MaskEdit id="maskStartDate" taborder="21" left="109" top="137" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000" onchanged="divDocument_maskStartDate_onchanged"/>
               <MaskEdit id="maskEndDate" taborder="22" left="385" top="137" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
               <MaskEdit id="MaskEdit00_00_00" taborder="23" left="385" top="32" width="120" height="30" border="none" format="#### - ## - ##" type="string" enable="false" background="#ffffff" color="#000000"/>
               <Static id="staticType" taborder="24" text="Static02" left="105" top="102" width="195" height="30"/>
@@ -77,7 +77,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divProcess" taborder="3" text="Div02" top="100" height="160" border="1px solid #c9c9c9" width="600" formscrollbartype="none" formscrolltype="none" left="Div00:10">
+        <Div id="divProcess" taborder="3" text="Div02" top="100" height="160" border="1px solid #c9c9c9" formscrollbartype="none" formscrolltype="none" left="Div00:10" width="600">
           <Layouts>
             <Layout>
               <CheckBox id="checkMinus" taborder="0" text="휴가 차감 여부" left="25" top="125" width="194" height="25" onclick="Div02_CheckBox00_onclick"/>
@@ -102,8 +102,15 @@
             <Layout name="default0"/>
           </Layouts>
         </Div>
-        <Button id="submitBtn" taborder="4" text="추가" top="60" width="60" height="30" onclick="Div02_submitBtn_onclick" cssclass="btn_WF_add01" right="50"/>
-        <Static id="Static00_01_00_01" taborder="5" left="100" top="100" width="200" height="35" border="0px none,0px none,1px solid #c9c9c9"/>
+        <Static id="Static00_01_00_01" taborder="4" left="100" top="100" width="200" height="35" border="0px none,0px none,1px solid #c9c9c9"/>
+        <Div id="Div01" taborder="5" text="Div01" top="50" height="30" right="50" minwidth="990" maxwidth="" left="20">
+          <Layouts>
+            <Layout>
+              <Button id="submitBtn" taborder="0" text="추가" top="0" width="60" height="30" onclick="Div02_submitBtn_onclick" cssclass="btn_WF_add01" right="0"/>
+            </Layout>
+            <Layout name="default0"/>
+          </Layouts>
+        </Div>
       </Layout>
       <Layout height="650" width="1090" name="default0">
         <Static id="Static00" taborder="0" text="휴가 부여" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
@@ -223,7 +230,8 @@ this.ds_document_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.
 		}
 	}
 	
-};]]></Script>
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="divDocument.form.Static00_02" propid="text" datasetid="ds_document" columnid="seq"/>
       <BindItem id="item9" compid="divProcess.form.seq" propid="text" datasetid="ds_document" columnid="seq"/>

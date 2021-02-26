@@ -11,31 +11,31 @@
                 <Formats>
                   <Format id="default">
                     <Columns>
+                      <Column size="65"/>
                       <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
+                      <Column size="68"/>
+                      <Column size="64"/>
+                      <Column size="61"/>
+                      <Column size="109"/>
+                      <Column size="93"/>
+                      <Column size="70"/>
                       <Column size="80"/>
                       <Column size="80"/>
                       <Column size="80"/>
                     </Columns>
                     <Rows>
-                      <Row size="24" band="head"/>
-                      <Row size="24"/>
+                      <Row size="35" band="head"/>
+                      <Row size="30"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="사번"/>
-                      <Cell col="1" text="부서명"/>
+                      <Cell text="사번" autosizecol="default" expandsize="16"/>
+                      <Cell col="1" text="부서명" autosizecol="limitmax"/>
                       <Cell col="2" text="팀명"/>
                       <Cell col="3" text="직급"/>
                       <Cell col="4" text="이름"/>
                       <Cell col="5" text="입사일"/>
                       <Cell col="6" text="사내 번호"/>
-                      <Cell col="7" text="입사일"/>
+                      <Cell col="7" text="년도"/>
                       <Cell col="8" text="받은 휴가"/>
                       <Cell col="9" text="사용한 휴가"/>
                       <Cell col="10" text="추가지급"/>
@@ -46,7 +46,7 @@
                       <Cell col="2" text="bind:teamname"/>
                       <Cell col="3" text="bind:posname"/>
                       <Cell col="4" text="bind:name"/>
-                      <Cell col="5" text="bind:hire_date"/>
+                      <Cell col="5" text="bind:hire_date" displaytype="calendarcontrol" maskeditformat="#### - ## - ##" border="1px none #ffffff" autosizecol="limitmax"/>
                       <Cell col="6" text="bind:office_phone"/>
                       <Cell col="7" text="bind:year"/>
                       <Cell col="8" text="bind:leave_got"/>
@@ -108,9 +108,11 @@
         <Rows>
           <Row>
             <Col id="leave_got">5</Col>
+            <Col id="hire_date">202010101</Col>
           </Row>
           <Row>
             <Col id="leave_got">6</Col>
+            <Col id="hire_date">2020050513313</Col>
           </Row>
         </Rows>
       </Dataset>
