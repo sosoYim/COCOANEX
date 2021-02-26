@@ -295,7 +295,6 @@ this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.fn_callback2 = function(){
 	this.alert("추가 성공");
 }
-
 this.ds_employee_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
 	var leave = this.ds_employee.getColumn(e.row, "leave_got");
@@ -305,6 +304,7 @@ this.ds_employee_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.
 	this.ds_employee.setColumn(e.row, "addLeave", 0);
 	}
 };
+
 ]]></Script>
   </Form>
 </FDL>
