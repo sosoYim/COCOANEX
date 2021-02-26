@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="sta_title" taborder="0" text="사용자 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Grid id="grd_emp_list" taborder="1" left="20" top="175" binddataset="ds_employee" minwidth="150" maxwidth="" right="499" height="425">
+        <Grid id="grd_emp_list" taborder="1" left="20" top="175" binddataset="ds_employee" minwidth="425" maxwidth="" right="499" bottom="50" oncellposchanged="grd_emp_list_oncellposchanged">
           <Formats>
             <Format id="default">
               <Columns>
@@ -59,7 +59,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="div_info" taborder="2" text="" top="175" leftbase="" bottombase="" rightbase="" widthbase="" heightbase="" formscrolltype="none" formscrollbartype="none" border="1px solid #c7c7c7" borderRadius="2px" minwidth="150" maxwidth="" width="389" left="grd_emp_list:10" height="425">
+        <Div id="div_info" taborder="2" text="" top="175" leftbase="" bottombase="" rightbase="" widthbase="" heightbase="" formscrolltype="vertical" formscrollbartype="auto" border="1px solid #c7c7c7" borderRadius="2px" minwidth="425" maxwidth="" width="389" left="grd_emp_list:10" bottom="50">
           <Layouts>
             <Layout>
               <Static id="sta_name" taborder="1" text="이름" left="8" top="86" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" onclick="div_detail_Static10_onclick" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
@@ -84,10 +84,10 @@
               <Edit id="edt_address" taborder="19" left="76" top="358" width="293" height="56"/>
               <Static id="sta_address" taborder="20" text="주소" left="8" top="358" width="58" height="66" background="" padding="0px" cssclass="sta_WF_table_required" onclick="div_detail_Static10_onclick" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
               <Button id="btn_reset" taborder="23" text="" top="8" height="25" cssclass="btn_WF_reset01" width="25" right="10"/>
-              <Button id="btn_withdraw" taborder="32" text="퇴직" top="8" height="24" onclick="div_info_btn_withdraw_onclick" cssclass="btn_WF_delete01" width="55" right="btn_reset:10"/>
-              <Button id="btn_add" taborder="21" text="추가" top="8" height="24" onclick="div_info_btn_add_onclick" cssclass="btn_WF_add01" width="55" right="btn_withdraw:10"/>
+              <Button id="btn_del" taborder="32" text="삭제" top="8" height="24" cssclass="btn_WF_delete01" width="55" right="btn_reset:10" onclick="div_info_btn_del_onclick"/>
+              <Button id="btn_add" taborder="21" text="추가" top="8" height="24" onclick="div_info_btn_add_onclick" cssclass="btn_WF_add01" width="55" right="btn_del:10"/>
               <CheckBox id="chk_notaem" taborder="22" text="무소속" left="224" top="86" width="56" height="34" font="normal 8px/normal &quot;Arial&quot;" border="0px none,1px solid #c7c7c7,0px none,0px none" padding="0px 3px 0px 0px" onchanged="div_info_chk_notaem_onchanged"/>
-              <MaskEdit id="msk_password" taborder="24" left="76" top="129" width="100" height="24" type="string" visible="false" enable="false"/>
+              <MaskEdit id="msk_password" taborder="24" left="76" top="129" width="100" height="24" type="string" enable="false" visible="false"/>
               <Edit id="edt_name" taborder="25" left="76" top="91" width="100" height="24" onclick="div_info_edt_name_onclick"/>
               <Combo id="cmb_dept" taborder="26" text="Combo00" left="270" top="53" width="100" height="25" index="-1" innerdataset="ds_departments" datacolumn="name" codecolumn="code" onitemchanged="div_info_cmb_dept_onitemchanged"/>
               <Combo id="cmb_team" taborder="27" text="Combo00" left="285" top="92" width="85" height="22" innerdataset="ds_team" datacolumn="name" codecolumn="code" onitemchanged="div_info_cmb_searchTeam_onitemchanged" onsetfocus="div_info_cmb_team_onsetfocus"/>
@@ -110,7 +110,7 @@
                 </Dataset>
               </Radio>
               <Calendar id="cal_hire_date" taborder="29" left="76" top="204" width="100" height="26"/>
-              <Calendar id="cal_hire_date00" taborder="30" left="76" top="242" width="100" height="26" enable="false"/>
+              <Calendar id="cal_withdraw_date" taborder="30" left="76" top="242" width="100" height="26" enable="false"/>
               <MaskEdit id="msk_code" taborder="31" left="76" top="53" width="100" height="25" format="######" enable="false"/>
               <Static id="sta_line" taborder="33" text="" left="10" top="46" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
               <Static id="sta_line00" taborder="34" text="" left="10" top="84" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
@@ -121,7 +121,7 @@
               <Static id="sta_line00_00_00_00_00_00" taborder="39" text="" left="10" top="274" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
               <Static id="sta_line00_00_00_00_00_00_00" taborder="40" text="" left="10" top="312" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
               <Static id="sta_subtitle" taborder="41" text="사원 정보" left="0" top="0" height="34" cssclass="sta_WF_title01" right="299"/>
-              <Combo id="Combo00" taborder="42" text="Combo00" left="270" top="128" width="100" height="25" innerdataset="ds_position" codecolumn="code" datacolumn="name"/>
+              <Combo id="cmb_pos" taborder="42" text="Combo00" left="270" top="128" width="100" height="25" innerdataset="ds_position" codecolumn="code" datacolumn="name"/>
             </Layout>
           </Layouts>
         </Div>
@@ -160,7 +160,7 @@
         </Div>
         <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="53" right="190"/>
         <Button id="btn_cancel" taborder="5" text="작업 취소" top="55" height="35" onclick="btn_cancel_onclick" width="80" right="100" cssclass="btn_WF_delete01"/>
-        <Static id="Static02" taborder="6" text="구현 : 검색/불러오기/트랜잭션으로 값 전송 &#13;&#10;미구현 : 각종 유효성 검사 및 디비 업데이트 " left="240" top="18" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
+        <Static id="Static02" taborder="6" text="미구현 : 팀 무소속 / 컬럼 추가" left="240" top="18" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -293,43 +293,87 @@
       <BindItem id="item4" compid="div_info.form.ckb_withdraw" propid="value" datasetid="ds_employee" columnid="withdraw"/>
       <BindItem id="item8" compid="div_info.form.cmb_team" propid="value" datasetid="ds_employee" columnid="team_code"/>
       <BindItem id="item9" compid="div_info.form.chk_notaem" propid="value" datasetid="ds_employee" columnid="team_code"/>
-      <BindItem id="item10" compid="div_info.form.Combo00" propid="value" datasetid="ds_employee" columnid="pos_code"/>
+      <BindItem id="item10" compid="div_info.form.cmb_pos" propid="value" datasetid="ds_employee" columnid="pos_code"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[
 //=======콜백==========
 this.fn_callback = function(id, ErrCode, ErrMsg)
 {
 	trace(ErrMsg);
-
-	
 }
 
+this.fn_empsave = function(resultAdd, resultModif)
+{
+	
+	trace("resultAdd : ", nexacro.getApplication().resultAdd);
+	trace("resultModif : ", nexacro.getApplication().resultModif);
+}
+
+//트랜잭션 START ====================================================
 //불러오기
 this.M11_users_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	trace("M11 도착");
-	this.transaction(
+				this.transaction(
 			"EmpList" //strSvcID
 			, "/nexEmployee/nexEmpList.nex" //strURL
 			, "" //strInDatasets Sds=Fds:U, A, N
 			, "ds_employee=out_emp_list ds_departments=out_dept_list ds_position=out_pos_list ds_team=out_team_list" //strOutDatasets - select Fds = Sds
 			, "" //strArgument
 			,  "fn_callback" //strCallbackFunc
-		);
+			);
 };
 
-//저장 & 취소 START========================================================================
+//저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	trace("M11 저장");
-	this.transaction(
-			"empSave" //strSvcID
-			, "/nexEmployee/nexSave.nex" //strURL
-			, "in_ds_employee=ds_employee:U" //strInDatasets Sds=Fds:U, A, N
-			, "" //strOutDatasets - select Fds = Sds
-			, "" //strArgument
-			,  "fn_callback" //strCallbackFunc
-		);
+	
+		
+	for(var i=0; i < this.ds_employee.rowcount; i++)
+	{
+		let rowType = this.ds_employee.getRowType(i);
+		
+		let code = this.ds_employee.getColumn(i,"code");
+		let name = this.ds_employee.getColumn(i,"name");
+		let phone = this.ds_employee.getColumn(i,"phone");
+		let office_phone = this.ds_employee.getColumn(i,"office_phone");
+		let address = this.ds_employee.getColumn(i,"address");
+		let email = this.ds_employee.getColumn(i,"email");
+		let b_email = this.ds_employee.getColumn(i,"b_email");
+		let gender = this.ds_employee.getColumn(i,"gender");
+		let hire_date = this.ds_employee.getColumn(i,"hire_date");
+		let withdraw = this.ds_employee.getColumn(i,"withdraw");
+		let dept_code = this.ds_employee.getColumn(i,"dept_code");
+		let pos_code = this.ds_employee.getColumn(i,"pos_code");
+		//let team_code = this.ds_employee.getColumn(i,"team_code");
+		
+		
+		//2: 추가 4:수정
+		if(rowType==2){
+			if(name==null||phone==null||office_phone==null||address==null||email==null||b_email==null||gender==null||hire_date==null||dept_code==null||pos_code==null){
+				alert("추가된 사원의 정보가 누락되었습니다. 확인 후 다시 저장하십시오.");
+				this.ds_employee.set_rowposition(i);
+				return;
+			}
+		}else if (rowType==4){
+			trace("수정된 사원 이름 : ",name);
+			if(name==""||phone==""||office_phone==""||address==""||email==""||b_email==""||gender==""||hire_date==""||dept_code==""||pos_code==""){
+				alert("수정된 사원의 정보가 누락되었습니다. 확인 후 다시 저장하십시오.");
+				this.ds_employee.set_rowposition(i);
+				return;
+			}
+		}else{
+			this.transaction(
+				"empSave" //strSvcID
+				, "/nexEmployee/nexSave.nex" //strURL
+				, "in_ds_employee=ds_employee:U" //strInDatasets Sds=Fds:U, A, N
+				, "" //strOutDatasets - select Fds = Sds
+				, "" //strArgument
+				,  "fn_empsave" //strCallbackFunc
+			);
+		}
+	}
 };
 //취소
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -351,7 +395,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 };
 
-//저장 & 취소 END====================================================
+//트랜잭션 END====================================================
 
 
 //ds_employee 업데이트 START====================================================
@@ -361,12 +405,18 @@ this.div_info_btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	let row = this.ds_employee.addRow();
 	this.ds_employee.setColumn(row, "withdraw", "N");
 };
-//퇴직
-this.div_info_btn_withdraw_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+//행 제거(아직 디비에 저장 안됨 행만 가능)
+this.div_info_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	//퇴직 상태 변경 후 사원번호, ... .. 빼고 개인정보 지워 주기
-	let row = this.ds_employee.rowposition; 
-	this.ds_employee.setColumn(row, "withdraw", "Y");
+	let row = this.grd_emp_list.currentrow;
+	let rowType = this.ds_employee.getRowType(row);
+	trace("삭제 전 로우타입 체크 : ",rowType);
+	if(rowType==2){
+		this.ds_employee.deleteRow(row);
+	}else{
+		alert("??이미 저장된 사원은 삭제할 수 없습니다.??");
+	}
+	
 };
 //부서콤보제한
 this.div_info_cmb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
@@ -388,7 +438,7 @@ this.div_info_cmb_searchTeam_onitemchanged = function(obj:nexacro.Combo,e:nexacr
 };
 
 
-//퇴사 체크시 무든 수정입력 불가능
+//퇴사 체크시 무든 수정입력 불가능&값지우기
 this.div_info_ckb_withdraw_onchanged = function(obj:nexacro.CheckBox,e:nexacro.CheckBoxChangedEventInfo)
 {
 	let withdraw = obj.value;
@@ -399,16 +449,14 @@ this.div_info_ckb_withdraw_onchanged = function(obj:nexacro.CheckBox,e:nexacro.C
 			this.div_info.form.edt_name.set_enable(false);
 			this.div_info.form.cmb_team.set_enable(false);
 			this.div_info.form.chk_notaem.set_enable(false);
-			this.div_info.form.msk_password.set_enable(false);		
-			this.div_info.form.edt_posname.set_enable(false);
+			//this.div_info.form.msk_password.set_enable(false);
+			this.div_info.form.cmb_pos.set_enable(false);
 			this.div_info.form.rad_gender.set_enable(false);
-			this.div_info.form.edt_posname.set_enable(false);
-			this.div_info.form.msk_salary.set_enable(false);
 			this.div_info.form.cal_hire_date.set_enable(false);
 			this.div_info.form.edt_phone.set_enable(false);
 			this.div_info.form.edt_office_phone.set_enable(false);
 			this.div_info.form.edt_email.set_enable(false);
-			this.div_info.form.edt_b_email.set_enable(false);		
+			this.div_info.form.edt_b_email.set_enable(false);
 			this.div_info.form.edt_address.set_enable(false);
 			//값 지우기
 			this.div_info.form.msk_password.set_value(null);
@@ -420,6 +468,7 @@ this.div_info_ckb_withdraw_onchanged = function(obj:nexacro.CheckBox,e:nexacro.C
 			this.div_info.form.edt_b_email.set_value(null);
 			this.div_info.form.edt_address.set_value(null);
 		}else{
+			obj.set_value("N");
 			return;
 		}
 		
@@ -428,20 +477,18 @@ this.div_info_ckb_withdraw_onchanged = function(obj:nexacro.CheckBox,e:nexacro.C
 			this.div_info.form.edt_name.set_enable(true);
 			this.div_info.form.cmb_team.set_enable(true);
 			this.div_info.form.chk_notaem.set_enable(true);
-			this.div_info.form.msk_password.set_enable(true);		
-			this.div_info.form.edt_posname.set_enable(true);
+			//this.div_info.form.msk_password.set_enable(true);
+			this.div_info.form.cmb_pos.set_enable(true);
 			this.div_info.form.rad_gender.set_enable(true);
-			this.div_info.form.edt_posname.set_enable(true);
-			this.div_info.form.msk_salary.set_enable(true);
 			this.div_info.form.cal_hire_date.set_enable(true);
 			this.div_info.form.edt_phone.set_enable(true);
 			this.div_info.form.edt_office_phone.set_enable(true);
 			this.div_info.form.edt_email.set_enable(true);
-			this.div_info.form.edt_b_email.set_enable(true);		
+			this.div_info.form.edt_b_email.set_enable(true);
 			this.div_info.form.edt_address.set_enable(true);
 	}
 };
-//팀 무소속 : 팀 선택 콤부 비활성화, 팀 값 null
+//팀 무소속 : 팀 선택 콤보 비활성화, 팀 값 null
 this.div_info_chk_notaem_onchanged = function(obj:nexacro.CheckBox,e:nexacro.CheckBoxChangedEventInfo)
 {
 	let noteam = obj.value;
@@ -540,8 +587,44 @@ this.setTeamCombo = function(){
 	trace(dept_code);
 	this.div_search.form.cmb_searchDept.set_value(dept_code);
 }
+//============================================
 
-
+//그리드 포커스 이동마다 퇴직인지 아닌지 체크 -> 인풋창들 활성화 or 비활성화
+this.grd_emp_list_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
+{
+	let row = obj.currentrow;
+	let withdraw = this.ds_employee.getColumn(row, "withdraw");
+	trace("셀포스 변경, withdraw 체크 : ",withdraw);
+	if(withdraw=="Y"){
+			this.div_info.form.cmb_dept.set_enable(false);
+			this.div_info.form.edt_name.set_enable(false);
+			this.div_info.form.cmb_team.set_enable(false);
+			this.div_info.form.chk_notaem.set_enable(false);
+			//this.div_info.form.msk_password.set_enable(false);
+			this.div_info.form.cmb_pos.set_enable(false);
+			this.div_info.form.rad_gender.set_enable(false);
+			this.div_info.form.cal_hire_date.set_enable(false);
+			this.div_info.form.edt_phone.set_enable(false);
+			this.div_info.form.edt_office_phone.set_enable(false);
+			this.div_info.form.edt_email.set_enable(false);
+			this.div_info.form.edt_b_email.set_enable(false);
+			this.div_info.form.edt_address.set_enable(false);
+	}else{
+			this.div_info.form.cmb_dept.set_enable(true);
+			this.div_info.form.edt_name.set_enable(true);
+			this.div_info.form.cmb_team.set_enable(true);
+			this.div_info.form.chk_notaem.set_enable(true);
+			//this.div_info.form.msk_password.set_enable(true);
+			this.div_info.form.cmb_pos.set_enable(true);
+			this.div_info.form.rad_gender.set_enable(true);
+			this.div_info.form.cal_hire_date.set_enable(true);
+			this.div_info.form.edt_phone.set_enable(true);
+			this.div_info.form.edt_office_phone.set_enable(true);
+			this.div_info.form.edt_email.set_enable(true);
+			this.div_info.form.edt_b_email.set_enable(true);
+			this.div_info.form.edt_address.set_enable(true);
+	}
+};
 
 
 ]]></Script>

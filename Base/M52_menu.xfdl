@@ -120,7 +120,7 @@
                 <Cell col="3" text="bind:mid_name"/>
                 <Cell col="4" text="bind:sub_name"/>
                 <Cell col="5" text="bind:contents" edittype="normal"/>
-                <Cell col="6" text="bind:status" edittype="mask" maskedittype="string" maskedittrimtype="both" maskeditformat="A" displaytype="mask"/>
+                <Cell col="6" text="bind:status" edittype="mask" maskedittype="string" maskedittrimtype="both" maskeditformat="A" displaytype="mask" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
