@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M22_schedulePopup" width="300" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" width="300">
+        <Static id="staLogo" taborder="0" text="일정 추가" left="24.00%" top="2.50%" width="50.00%" height="10.00%" font="bold 18px/normal &quot;Gulim&quot;" textAlign="center"/>
+        <Static id="sta_title" taborder="1" text="일정이름 :" left="7.67%" top="13.50%" width="21.00%" height="8.00%"/>
+        <Edit id="edt_title" taborder="2" left="32.00%" top="13.75%" width="52.00%" height="7.50%" displaynulltext="일정 이름을 입력하세요"/>
+        <Static id="sta_start" taborder="3" text="시작일 :" left="7.67%" top="23.50%" width="21.00%" height="8.00%"/>
+        <Calendar id="cldStart" taborder="4" left="96" top="99" width="156" height="25"/>
+        <Static id="sta_end" taborder="5" text="종료일 :" left="8.00%" top="33.50%" width="21.00%" height="8.00%"/>
+        <Calendar id="cldEnd" taborder="6" left="96" top="138" width="156" height="25"/>
+        <Static id="sta_color" taborder="7" text="색상 :" left="8.00%" top="43.50%" width="21.00%" height="8.00%"/>
+        <TextArea id="ta_contents" taborder="8" left="20" top="210" width="260" height="141" scrollbartype="default" scrolltype="vertical" displaynulltext="내용을 입력하세요"/>
+        <Button id="btnOk" taborder="9" text="Ok" left="25.67%" top="90.25%" width="20.00%" height="7.50%" onclick="btnOk_onclick"/>
+        <Button id="btnCancel" taborder="10" text="Cancel" left="52.67%" top="90.25%" width="20.00%" height="7.50%" onclick="btnCancel_onclick"/>
+        <Combo id="cb_color" taborder="11" text="Combo00" left="96" top="178" width="156" height="25" innerdataset="dsColor" codecolumn="code" datacolumn="color"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var title = this.edt_title.value;
+	var start = this.cldStart.value;
+	var end = this.cldEnd.value;
+	var color = this.cb_color.value;
+	var contents = this.ta_contents.value;
+  	if(title!=null && start!=null && end!=null && color!=null && contents!=null){
+ 		if(start <= end) {
+ 			var sRtn = title + "|" + start + "|" + end + "|" + color + "|" + contents;
+ 			this.close(sRtn);
+ 		}else {
+			this.alert("시작일이 종료일보다 늦을 수 없습니다");
+		}
+  	}else{
+  		this.alert("모든 입력사항을 입력해야합니다.");
+  	}
+};
+
+this.btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsColor">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="color" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">#a4a6a5</Col>
+            <Col id="color">Gray</Col>
+          </Row>
+          <Row>
+            <Col id="code">#fc9a8d</Col>
+            <Col id="color">Red</Col>
+          </Row>
+          <Row>
+            <Col id="code">#f7cc54</Col>
+            <Col id="color">Yellow</Col>
+          </Row>
+          <Row>
+            <Col id="code">#8cdba4</Col>
+            <Col id="color">Green</Col>
+          </Row>
+          <Row>
+            <Col id="code">#8cd4db</Col>
+            <Col id="color">Blue</Col>
+          </Row>
+          <Row>
+            <Col id="code">#e1c9ff</Col>
+            <Col id="color">Purple</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
