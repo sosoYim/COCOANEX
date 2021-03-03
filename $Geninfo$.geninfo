@@ -16,8 +16,7 @@
       <File url="appvariables.xml" checksum="20210224140418" errormsg=""/>
       <File url="environment.xml" checksum="20201116093330" errormsg=""/>
       <File url="_resource_\_theme_\blue\theme.xcss" checksum="20210222233904" errormsg=""/>
-
-      <File url="App_Desktop.xadl" checksum="20210222091807" errormsg=""/>
+      <File url="App_Desktop.xadl" checksum="20201116093330" errormsg=""/>
       <File url="Base\M11_users.xfdl" checksum="20210226122525" errormsg=""/>
       <File url="Base\M12_deptTeam.xfdl" checksum="20210226122525" errormsg=""/>
       <File url="Base\M13_position.xfdl" checksum="20210226122525" errormsg=""/>
@@ -37,7 +36,13 @@
       <File url="frame\frmMdi.xfdl" checksum="20210222091807" errormsg=""/>
       <File url="frame\frmTop.xfdl" checksum="20210223145619" errormsg=""/>
       <File url="frame\frmWork.xfdl" checksum="20210222091807" errormsg=""/>
-
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\framework\Framework.json" checksum="20200527181350" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\resources\Resource.json" checksum="20200527181350" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\CompBase.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\ComComp.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\Grid.json" checksum="20200527181348" errormsg=""/>
+      <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\DeviceAPI.json" checksum="20200527181348" errormsg=""/>
+      <File url="_resource_\_xcss_\temp_main.xcss" checksum="20210222112738" errormsg=""/>
     </Info>
 >>>>>>> 53a39938982a098346c34ea2762ea5658eea83ec
   </GenInfo>
