@@ -3,7 +3,7 @@
   <Form id="M11_users" width="1090" height="650" titletext="New Form" onload="M11_users_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="sta_title" taborder="0" text="사용자 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Static id="sta_title" taborder="0" text="사용자 관리" left="20" top="10" height="30" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
         <Grid id="grd_emp_list" taborder="1" left="20" top="175" binddataset="ds_employee" minwidth="425" maxwidth="" right="499" bottom="50" oncellposchanged="grd_emp_list_oncellposchanged">
           <Formats>
             <Format id="default">
@@ -160,7 +160,7 @@
         </Div>
         <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="53" right="190"/>
         <Button id="btn_cancel" taborder="5" text="작업 취소" top="55" height="35" onclick="btn_cancel_onclick" width="80" right="100" cssclass="btn_WF_delete01"/>
-        <Static id="Static02" taborder="6" text="미구현 : 팀 무소속 / 컬럼 추가" left="240" top="18" width="280" height="52" onclick="Static02_onclick" background="#fcd3f2"/>
+        <Static id="Static02" taborder="6" text="팀 무소속 바인딩 안됨 : &#13;&#10;0일때 체크, 그 외에 체크 안되야 하는데 반대로...ㅠㅠㅠ&#13;&#10;퇴직날짜, 연봉 컬럼 추가 안됨: 했다가 어디서 오류날까봐 무섭네요. &#13;&#10;그냥 뺄까요" left="230" top="8" width="563" height="78" onclick="Static02_onclick" background="#fcd3f2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -414,7 +414,7 @@ this.div_info_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	if(rowType==2){
 		this.ds_employee.deleteRow(row);
 	}else{
-		alert("??이미 저장된 사원은 삭제할 수 없습니다.??");
+		alert("이미 저장된 사원정보는 삭제할 수 없습니다.");
 	}
 	
 };
@@ -503,7 +503,7 @@ this.div_info_chk_notaem_onchanged = function(obj:nexacro.CheckBox,e:nexacro.Che
 
 //검색 ==============================================================
 // Retrieve Button
-this.div_search_tn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.div_search_btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
 	trace("검색 도착");
 	//선택 안할 경우 값 : all
