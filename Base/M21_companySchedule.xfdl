@@ -37,7 +37,7 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
                       <Cell col="1" text="번호"/>
                       <Cell col="2" text="제목"/>
                       <Cell col="3" text="내용"/>
@@ -228,7 +228,7 @@ this.divSearch_btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
     	, "fn_callback"
     	);
 };
-/*
+
 this.Div00_GridList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.cell == 0){
@@ -252,7 +252,7 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 		this.ds_board_menu.setColumn(i, "chk", sheadValue);
 	}
 	//this.ds_board_menu.set_enableevent(true);
-};*/]]></Script>
+};]]></Script>
     <Bind>
       <BindItem id="item7" compid="Div00.form.div_info.form.ta_contents" propid="value" datasetid="dsSchedule" columnid="contents"/>
       <BindItem id="item0" compid="Div00.form.div_info.form.edt_title" propid="value" datasetid="dsSchedule" columnid="title"/>
