@@ -3,8 +3,8 @@
   <Form id="M21_companySchedule" width="1090" height="650" titletext="New Form" onload="M21_companySchedule_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="2" text="회사 일정 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Div id="divSearch" taborder="2" left="20" top="100" border="1px solid #c7c7c7" text="" background="#eeeeee" right="100" height="50" minwidth="905" maxwidth="">
+        <Static id="Static00" taborder="1" text="회사 일정 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Div id="divSearch" taborder="0" left="20" top="100" border="1px solid #c7c7c7" text="" background="#eeeeee" right="100" height="50" minwidth="905" maxwidth="">
           <Layouts>
             <Layout>
               <Calendar id="cldEnd" taborder="0" left="276" top="12" width="150" height="25"/>
@@ -12,77 +12,72 @@
               <Static id="Static02" taborder="2" text="-" left="256" top="12" width="10" height="25"/>
               <Calendar id="cldStart" taborder="3" left="92" top="12" width="150" height="25"/>
               <Button id="btnFind" taborder="4" text="조회" left="453" top="12" width="54" height="25" cssclass="btn_WF_search01" onclick="divSearch_btnFind_onclick"/>
-              <Button id="btnAdd" taborder="5" text="추가" top="12" width="70" height="25" cssclass="btn_WF_add01" onclick="divSearch_btnAdd_onclick" right="80"/>
-              <Button id="btnDel" taborder="6" text="삭제" top="12" width="60" height="25" cssclass="btn_WF_delete01" onclick="divSearch_btnDel_onclick" right="10"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div00" taborder="0" text="Div00" left="20" top="170" right="90" bottom="30" minwidth="905" maxwidth="">
+        <Grid id="GridList" taborder="2" left="20" top="170" binddataset="dsSchedule" autofittype="col" right="436" bottom="50" onheadclick="GridList_onheadclick" minwidth="300" maxwidth="">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="25"/>
+                <Column size="20"/>
+                <Column size="60"/>
+                <Column size="110"/>
+                <Column size="50"/>
+                <Column size="50"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" edittype="none" text="삭제"/>
+                <Cell col="1" text="번호"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="내용"/>
+                <Cell col="4" text="시작일"/>
+                <Cell col="5" text="종료일"/>
+                <Cell col="6" text="등록인"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk" checkboxfalsevalue="0" checkboxtruevalue="1"/>
+                <Cell col="1" text="bind:seq" displaytype="text"/>
+                <Cell col="2" text="bind:title"/>
+                <Cell col="3" text="bind:contents"/>
+                <Cell col="4" text="bind:str_start_time" edittype="none"/>
+                <Cell col="5" text="bind:str_end_time" displaytype="normal" edittype="none"/>
+                <Cell col="6" text="bind:writer_name" displaytype="text"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_info" taborder="3" left="GridList:10" formscrollbartype="auto" formscrolltype="vertical" maxwidth="" bottom="50" top="170" text="" width="340" border="1px solid #c7c7c7" minwidth="200">
           <Layouts>
             <Layout>
-              <Grid id="GridList" taborder="0" left="0.00%" top="0" binddataset="dsSchedule" autofittype="col" right="36.08%" bottom="0.00%" onheadclick="Div00_GridList_onheadclick">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="25"/>
-                      <Column size="20"/>
-                      <Column size="60"/>
-                      <Column size="110"/>
-                      <Column size="50"/>
-                      <Column size="50"/>
-                      <Column size="40"/>
-                    </Columns>
-                    <Rows>
-                      <Row size="24" band="head"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                      <Cell col="1" text="번호"/>
-                      <Cell col="2" text="제목"/>
-                      <Cell col="3" text="내용"/>
-                      <Cell col="4" text="시작일"/>
-                      <Cell col="5" text="종료일"/>
-                      <Cell col="6" text="등록인"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk" checkboxfalsevalue="0" checkboxtruevalue="1"/>
-                      <Cell col="1" text="bind:seq" displaytype="text"/>
-                      <Cell col="2" text="bind:title"/>
-                      <Cell col="3" text="bind:contents"/>
-                      <Cell col="4" text="bind:str_start_time" edittype="none"/>
-                      <Cell col="5" text="bind:str_end_time" displaytype="normal" edittype="none"/>
-                      <Cell col="6" text="bind:writer_name" displaytype="text"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
-              <Div id="div_info" taborder="1" left="GridList:10" formscrollbartype="auto" formscrolltype="vertical" minwidth="425" maxwidth="" bottom="0" top="0" text="" width="340">
-                <Layouts>
-                  <Layout>
-                    <Static id="sta_subtitle" taborder="0" text="일정 정보" left="0" top="-5" height="34" cssclass="sta_WF_title01" right="252"/>
-                    <Static id="sta_title" taborder="1" text="제목" left="8" top="36" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
-                    <Static id="sta_line01" taborder="2" text="" left="10" top="72" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
-                    <Static id="sta_line00_00" taborder="3" text="" left="10" top="36" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
-                    <Static id="sta_startTime" taborder="4" text="시작일" left="8" top="76" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
-                    <Static id="sta_endTime" taborder="5" text="종료일" left="8" top="116" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
-                    <Static id="sta_line04" taborder="6" text="" left="10" top="112" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
-                    <Static id="sta_writer" taborder="7" text="등록인" left="178" top="154" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
-                    <TextArea id="ta_contents" taborder="8" left="9" top="200" width="329" height="160"/>
-                    <Button id="btn_modify" taborder="9" text="수정" left="143" top="385" width="60" height="35" cssclass="btn_WF_list01"/>
-                    <Edit id="edt_title" taborder="10" left="76" top="42" width="105" height="25" readonly="true"/>
-                    <Edit id="edt_writer" taborder="11" left="246" top="160" width="94" height="25" readonly="true"/>
-                    <Combo id="cb_color" taborder="12" text="Combo00" left="76" top="161" width="94" height="25" innerdataset="dsColor" datacolumn="color" codecolumn="code"/>
-                    <Static id="sta_color" taborder="13" text="색상" left="8" top="154" width="58" height="34" background="" padding="0px" cssclass="sta_WF_table_required" border="0px none,1px solid #c9c9c9,0px none,0px none"/>
-                    <Static id="sta_line04_00" taborder="14" text="" left="10" top="150" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
-                    <Calendar id="cldStartDate" taborder="15" left="76" top="81" width="105" height="25"/>
-                    <Calendar id="cldEndDate" taborder="16" left="77" top="121" width="105" height="25"/>
-                  </Layout>
-                </Layouts>
-              </Div>
+              <Static id="sta_subtitle" taborder="0" text="일정 정보" left="0" top="-5" height="34" cssclass="sta_WF_title01" right="252"/>
+              <Static id="sta_title" taborder="1" text="제목" left="8" top="36" width="58" height="34" background="" padding="0px 0px 0px 10px" cssclass="sta_WF_table_required" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="sta_startTime" taborder="2" text="시작일" left="8" top="69" width="58" height="34" background="" padding="0px 0px 0px 10px" cssclass="sta_WF_table_required" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="sta_endTime" taborder="3" text="종료일" left="8" top="102" width="58" height="34" background="" padding="0px 0px 0px 10px" cssclass="sta_WF_table_required" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="sta_writer" taborder="4" text="등록인" left="8" top="168" width="58" height="34" background="" padding="0px 0px 0px 10px" cssclass="sta_WF_table_required" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <TextArea id="ta_contents" taborder="5" left="9" top="209" width="329" height="151"/>
+              <Button id="btn_update" taborder="6" text="수정" left="143" top="385" width="60" height="35" cssclass="btn_WF_list01" onclick="div_info_btn_update_onclick"/>
+              <Static id="sta_color" taborder="7" text="색상" left="8" top="135" width="58" height="34" background="" padding="0px 0px 0px 10px" cssclass="sta_WF_table_required" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none"/>
+              <Static id="sta_form" taborder="8" left="66" top="36" height="34" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="13"/>
+              <Edit id="edt_title" taborder="9" left="76" top="42" width="105" height="25"/>
+              <Static id="sta_form00" taborder="10" left="66" top="69" height="34" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="13"/>
+              <Static id="sta_form00_00" taborder="11" left="66" top="102" height="34" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="13"/>
+              <Static id="sta_form00_00_00" taborder="12" left="66" top="135" height="34" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="13"/>
+              <Calendar id="cldStartDate" taborder="13" left="76" top="73" width="120" height="25"/>
+              <Calendar id="cldEndDate" taborder="14" left="77" top="107" width="120" height="25"/>
+              <Combo id="cb_color" taborder="15" text="Combo00" left="77" top="140" width="94" height="25" innerdataset="dsColor" datacolumn="color" codecolumn="code" background=""/>
+              <Static id="sta_form00_00_00_00" taborder="16" left="66" top="168" height="34" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="13"/>
+              <Edit id="edt_writer" taborder="17" left="77" top="172" width="94" height="25" readonly="true"/>
             </Layout>
           </Layouts>
         </Div>
+        <Button id="btnAdd" taborder="4" text="추가" top="55" width="55" height="35" cssclass="btn_WF_add01" right="250" onclick="btnAdd_onclick"/>
+        <Button id="btnDel" taborder="5" text="삭제" top="55" width="55" height="35" cssclass="btn_WF_delete01" right="172" onclick="btnDel_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -178,7 +173,7 @@ this.divSearch_btnFind_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 };
 
 // 일정 추가
-this.divSearch_btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objCF = new ChildFrame();
 	objCF.set_openalign("center middle");
@@ -210,56 +205,46 @@ this.fn_callback_popUp = function(id, sRtn){
     );
 };
 
-this.divSearch_btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let arr = this.dsSchedule.extractRows("chk==1");
-	var seq = this.dsSchedule.getColumn(this.dsSchedule.rowposition, "seq");
-	trace("seq값은? "+seq);
   	if(arr.length == 0 || arr == -1) {alert("선택된 항목이 없습니다.");return}
   	
-//  this.dsSchedule.deleteMultiRows(arr);
+  this.dsSchedule.deleteMultiRows(arr);
   	this.transaction(
     	"scheduleDelete"
     	, "/schedule/deleteSchedule.nex"
-		, ""
-  		//, "ds_delBoard = ds_board_menu:D"
+  		, "in_ds=dsSchedule:D"
     	, ""
-  		, "seq="+seq
+  		, ""
     	, "fn_callback"
     	);
 };
 
-this.Div00_GridList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.div_info_btn_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	if(e.cell == 0){
-		this.gf_setCheckAll(obj, e);
-	}
+	this.transaction(
+    	"scheduleUpdate"
+    	, "/schedule/scheduleUpdate.nex"
+  		, "in_ds=dsSchedule:U"
+    	, ""
+  		, ""
+    	, "fn_callback"
+    );
 };
-
-this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
-{
-	var strColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", ""); //Cell의 특정 속성 값을 반환하는 메소드입니다.
-	var sheadValue = obj.getCellProperty("head", e.cell, "text"); //head에서 선택한 행의 text 값 가져오기
-	//var objDs = obj.getBindDataset(); 
-	
-	sheadValue = (sheadValue == "0" ? "1" : "0");
-	obj.setCellProperty("head",e.cell,"text",sheadValue);
-	obj.setCellProperty("body",e.cell,"text",sheadValue);
-	trace("sheadValue "+sheadValue);
-		
-	//this.ds_board_menu.set_enableevent(false);
-	for(var i=0; i<this.ds_board_menu.getRowCount(); i++){
-		this.ds_board_menu.setColumn(i, "chk", sheadValue);
-	}
-	//this.ds_board_menu.set_enableevent(true);
-};]]></Script>
+]]></Script>
     <Bind>
-      <BindItem id="item7" compid="Div00.form.div_info.form.ta_contents" propid="value" datasetid="dsSchedule" columnid="contents"/>
-      <BindItem id="item0" compid="Div00.form.div_info.form.edt_title" propid="value" datasetid="dsSchedule" columnid="title"/>
-      <BindItem id="item6" compid="Div00.form.div_info.form.edt_writer" propid="value" datasetid="dsSchedule" columnid="writer_name"/>
-      <BindItem id="item1" compid="Div00.form.div_info.form.cldStartDate" propid="value" datasetid="dsSchedule" columnid="str_start_time"/>
-      <BindItem id="item2" compid="Div00.form.div_info.form.cldEndDate" propid="value" datasetid="dsSchedule" columnid="str_end_time"/>
-      <BindItem id="item3" compid="Div00.form.div_info.form.cb_color" propid="value" datasetid="dsSchedule" columnid="color"/>
+      <BindItem id="item0" compid="div_info.form.ta_contents" propid="value" datasetid="dsSchedule" columnid="contents"/>
+      <BindItem id="item6" compid="div_info.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item1" compid="div_info.form.edt_title" propid="value" datasetid="dsSchedule" columnid="title"/>
+      <BindItem id="item7" compid="div_info.form.sta_form00" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item8" compid="div_info.form.sta_form00_00" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item9" compid="div_info.form.sta_form00_00_00" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item3" compid="div_info.form.cldStartDate" propid="value" datasetid="dsSchedule" columnid="str_start_time"/>
+      <BindItem id="item4" compid="div_info.form.cldEndDate" propid="value" datasetid="dsSchedule" columnid="str_end_time"/>
+      <BindItem id="item5" compid="div_info.form.cb_color" propid="value" datasetid="dsSchedule" columnid="color"/>
+      <BindItem id="item10" compid="div_info.form.sta_form00_00_00_00" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item2" compid="div_info.form.edt_writer" propid="value" datasetid="dsSchedule" columnid="writer_name"/>
     </Bind>
   </Form>
 </FDL>
