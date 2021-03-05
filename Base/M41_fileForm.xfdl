@@ -84,7 +84,7 @@
             <Tabpage id="Tabpage2" text="Tabpage2" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="양식 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-484"/>
+                  <Static id="Static00" taborder="0" text="양식 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-484" onclick="Tab00_Tabpage2_Static00_onclick"/>
                   <Static id="Static01" taborder="1" text="양식 분류" left="10" top="47" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
                   <Static id="Static01_00" taborder="2" text="기안 양식 명 *" left="10" top="94" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
                   <Static id="Static01_01" taborder="3" left="10" top="141" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="양식 담당자"/>
@@ -416,6 +416,11 @@ this.btn_listSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 };
 
 
+
+this.Tab00_Tabpage2_Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
 ]]></Script>
     <Objects>
       <Dataset id="tp_title" useclientlayout="true">
