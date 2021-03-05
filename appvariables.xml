@@ -135,6 +135,20 @@
           <Col id="PGM_PATH">Base</Col>
           <Col id="PGM_ID">M61_bugReport.xfdl</Col>
         </Row>
+        <Row>
+          <Col id="MENU_CD">0070</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">근태 관리</Col>
+          <Col id="MENU_LVL">0</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0071</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="MENU_NM">근태변경 요청 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">M71_AttendanceReq.xfdl</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsOpenMenu">
