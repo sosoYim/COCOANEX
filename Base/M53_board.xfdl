@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="게시판 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
-        <Button id="btn_modify" taborder="1" text="수정" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" cssclass="btn_WF_reset01" right="100"/>
+        <Button id="btn_modify" taborder="1" text="수정" top="55" width="55" height="35" onclick="board_div_btn_modify_onclick" right="100"/>
         <Button id="btn_del" taborder="2" text="삭제" top="55" width="55" height="35" cssclass="btn_WF_delete01" onclick="board_div_btn_del_onclick" right="172"/>
         <Button id="btn_add" taborder="3" text="추가" top="55" height="35" onclick="board_div_btn_add_onclick" cssclass="btn_WF_add01" right="250" width="55"/>
         <Grid id="board_mn_list_Grd" taborder="4" left="20" top="100" binddataset="ds_board_menu" autofittype="col" onheadclick="board_div_board_mn_list_Grd_onheadclick" oncellclick="board_div_board_mn_list_Grd_oncellclick" bottom="50" right="500">
@@ -45,7 +45,7 @@
               <Static id="stcSeq" taborder="3" text="게시판 번호" left="18" top="33" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
               <Static id="stcNm" taborder="4" text="게시판 명" left="18" top="80" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
               <Static id="stcType" taborder="5" left="18" top="127" width="120" height="132" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="게시판 종류"/>
-              <MaskEdit id="mskSeq" taborder="6" left="145" top="40" width="30" height="32" textAlign="center" border="0px none,0px none,1px solid #c7c7c7"/>
+              <MaskEdit id="mskSeq" taborder="6" left="145" top="40" width="30" height="32" textAlign="center" border="0px none,0px none,1px solid #c7c7c7" readonly="true"/>
               <Edit id="edtBoardNm" taborder="7" left="144" top="86" width="151" height="34" onclick="Common_onclick" border="0px none,0px none,1px solid #c7c7c7"/>
               <Radio id="rdoType" taborder="8" left="148" top="136" height="108" codecolumn="codecolumn" datacolumn="datacolumn" columncount="1" right="91" readonly="true" innerdataset="board_type_radio"/>
             </Layout>
@@ -205,7 +205,7 @@ this.board_div_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 };
 this.fn_callback_del = function(id, ErrCode, ErrMsg)
 {
-	this.alert("삭제 되었습니다.");
+	this.confirm("게시판 삭제를 하시면 게시판에 속한 게시글 모두 삭제됩니다.");
 }
 ]]></Script>
     <Bind>

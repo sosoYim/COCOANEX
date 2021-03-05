@@ -5,7 +5,7 @@
       <Layout height="400" width="300">
         <Static id="staLogo" taborder="0" text="게시판 추가" left="24.33%" top="7.50%" width="50.00%" height="10.00%" font="bold 18px/normal &quot;Gulim&quot;" textAlign="center"/>
         <Static id="stcType" taborder="1" text="게시판 종류 :" left="5.67%" top="20.25%" width="23.00%" height="8.00%"/>
-        <Static id="stcName" taborder="2" text="수업이름 :" left="8.00%" top="30.75%" width="21.00%" height="8.00%"/>
+        <Static id="stcName" taborder="2" text="게시판 명 :" left="8.00%" top="30.75%" width="21.00%" height="8.00%"/>
         <Edit id="edtName" taborder="3" left="32.00%" top="31.25%" width="52.00%" height="7.50%" displaynulltext="이름을 입력하세요"/>
         <Button id="btnOk" taborder="4" text="Ok" left="25.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnOk_onclick"/>
         <Button id="btnCancel" taborder="5" text="Cancel" left="52.67%" top="85.25%" width="20.00%" height="7.50%" onclick="btnCancel_onclick"/>
