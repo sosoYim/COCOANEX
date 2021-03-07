@@ -80,23 +80,24 @@
             <Col id="org_nm">코코아</Col>
             <Col id="org_cd">10</Col>
             <Col id="level">0</Col>
+            <Col id="p_org_cd"></Col>
           </Row>
           <Row>
             <Col id="org_nm">개발부</Col>
             <Col id="org_cd">100</Col>
             <Col id="level">1</Col>
-            <Col id="p_org_cd">10</Col>
+            <Col id="p_org_cd"></Col>
           </Row>
           <Row>
             <Col id="org_nm">개발1팀</Col>
             <Col id="org_cd">1000</Col>
-            <Col id="p_org_cd">100</Col>
+            <Col id="p_org_cd"></Col>
             <Col id="level">2</Col>
           </Row>
           <Row>
             <Col id="org_nm">인사부</Col>
             <Col id="org_cd">200</Col>
-            <Col id="p_org_cd">10</Col>
+            <Col id="p_org_cd"></Col>
             <Col id="level">1</Col>
           </Row>
         </Rows>
@@ -329,7 +330,7 @@ this.grd_tree_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEv
 
 
 
-
+//트리 그리드 클릭시 옆에 사원들 보여주기
 this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let row = obj.currentrow;
@@ -345,16 +346,16 @@ this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventIn
 	}else if(level==1){
 		//부서
 		this.ds_employee.filter("dept_code == "+org_cd);
-	}else{
+	}else if(level==2){
 		//팀
 		if(org_cd == -1){
 			trace("무소속임");
 			let p_org_cd = this.ds_org.getColumn(row,"p_org_cd");
 			trace("p_org_cd : ",p_org_cd);
-			//왜 무소속끼리 뭉쳐서 같이 나와ㅠㅠ
-			this.ds_employee.filter("dept_code == "+p_org_cd);
+			this.ds_employee.filter("dept_code == '"+p_org_cd+"' && team_code == -1");
+		}else{
+			this.ds_employee.filter("team_code == "+org_cd);
 		}
-		this.ds_employee.filter("team_code == "+org_cd);
 	}
 };
 
