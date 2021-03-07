@@ -14,26 +14,32 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
                 <Cell text="날짜"/>
-                <Cell col="1" text="출근 시간"/>
-                <Cell col="2" text="퇴근 시간"/>
-                <Cell col="3" text="사유"/>
-                <Cell col="4" text="상태"/>
-                <Cell col="5" text="신청인"/>
+                <Cell col="1" text="출 퇴근 여부"/>
+                <Cell col="2" text="출근 시간"/>
+                <Cell col="3" text="퇴근 시간"/>
+                <Cell col="4" text="사유"/>
+                <Cell col="5" text="상태"/>
+                <Cell col="6" text="신청인"/>
+                <Cell col="7" text="의견"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:today"/>
-                <Cell col="1" text="bind:start_time"/>
-                <Cell col="2" text="bind:end_time"/>
-                <Cell col="3" text="bind:contents"/>
-                <Cell col="4" text="bind:status"/>
-                <Cell col="5" text="bind:name"/>
+                <Cell col="1" text="bind:atd_status"/>
+                <Cell col="2" text="bind:start_time"/>
+                <Cell col="3" text="bind:end_time"/>
+                <Cell col="4" text="bind:contents"/>
+                <Cell col="5" text="bind:status"/>
+                <Cell col="6" text="bind:name"/>
+                <Cell col="7" text="bind:comments"/>
               </Band>
             </Format>
           </Formats>
@@ -46,17 +52,17 @@
               <Static id="Static01_00" taborder="2" left="7" top="87" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="출근 시간"/>
               <Static id="Static01_01" taborder="3" left="7" top="134" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" onclick="Static01_01_onclick" text="퇴근 시간"/>
               <Static id="Static01_02" taborder="4" text="신청인" left="7" top="181" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-              <Static id="Static01_03" taborder="5" text="사유" left="7" top="228" width="120" height="87" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
-              <Static id="Static01_04" taborder="6" left="7" top="315" width="120" height="115" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="의견"/>
-              <Static id="Static01_05" taborder="7" left="7" top="432" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="상태" onclick="Div00_Static01_05_onclick"/>
+              <Static id="Static01_03" taborder="5" text="사유" left="7" top="228" width="120" height="70" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
+              <Static id="Static01_04" taborder="6" left="7" top="298" width="120" height="70" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="의견"/>
+              <Static id="Static01_05" taborder="7" left="7" top="369" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="상태" onclick="Div00_Static01_05_onclick"/>
               <Static id="sta_today" taborder="8" left="127" top="40" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="10"/>
               <Static id="sta_start_time" taborder="9" left="127" top="87" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10" text=""/>
               <Static id="sta_end_time" taborder="10" left="127" top="134" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
               <Static id="sta_name" taborder="11" left="127" top="181" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10" onclick="Div00_Static01_06_00_01_onclick"/>
-              <Static id="Static01_06_00_02" taborder="12" left="127" top="228" height="87" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
-              <Static id="Static01_06_00_03" taborder="13" left="127" top="315" height="115" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
-              <Static id="Static01_06_00_04" taborder="14" left="127" top="432" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
-              <Combo id="comb_status" taborder="15" left="137" top="436" height="35" codecolumn="codecolumn" datacolumn="datacolumn" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120" index="-1" innerdataset="innerdataset">
+              <Static id="Static01_06_00_02" taborder="12" left="128" top="211" height="87" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="9" text=""/>
+              <Static id="Static01_06_00_03" taborder="13" left="128" top="253" height="115" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="9" onclick="Div00_Static01_06_00_03_onclick"/>
+              <Static id="Static01_06_00_04" taborder="14" left="127" top="369" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+              <Combo id="comb_status" taborder="15" left="137" top="374" height="35" codecolumn="codecolumn" datacolumn="datacolumn" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120" index="-1" innerdataset="innerdataset">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -78,15 +84,48 @@
                   </Rows>
                 </Dataset>
               </Combo>
-              <TextArea id="edit_contents" taborder="16" left="137" top="235" height="70" maxlength="100" width="230" readonly="true" onchanged="Div00_edit_contents_onchanged"/>
+              <TextArea id="edit_contents" taborder="16" left="137" top="235" height="55" maxlength="100" width="230" readonly="true" onchanged="Div00_edit_contents_onchanged" autoskip="true"/>
               <Static id="sta_nameErrMsg" taborder="17" left="257" top="95" height="30" color="red" right="10"/>
               <Static id="sta_explainErrMsg" taborder="18" left="277" top="188" height="30" color="red" right="10"/>
               <Button id="btn_save" taborder="19" text="변경" top="7" height="25" cssclass="btn_WF_list01" right="7" width="60" onclick="Div00_btn_save_onclick"/>
-              <TextArea id="edit_comment" taborder="20" left="137" top="325" height="100" maxlength="100" width="230"/>
+              <TextArea id="edit_comment" taborder="20" left="137" top="306" height="55" maxlength="100" width="230"/>
+              <Static id="Static01_05_00" taborder="21" left="7" top="416" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="출 퇴근 여부" onclick="Div00_Static01_05_onclick"/>
+              <Static id="Static01_06_00_04_00" taborder="22" left="127" top="416" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+              <Combo id="comb_status00" taborder="23" left="137" top="422" height="35" codecolumn="codecolumn" datacolumn="datacolumn" text="" value="6" onitemchanged="div_addListForm_tp_listTemp_onitemchanged" width="120" index="-1" innerdataset="innerdataset">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">출근 전</Col>
+                      <Col id="datacolumn">출근 전</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">정상 출근</Col>
+                      <Col id="datacolumn">정상 출근</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">외근</Col>
+                      <Col id="datacolumn">외근</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">지각</Col>
+                      <Col id="datacolumn">지각</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">결근</Col>
+                      <Col id="datacolumn">결근</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
             </Layout>
           </Layouts>
           <InitValue>
             <Combo id="comb_status" innerdataset="tp_list" codecolumn="code" datacolumn="name"/>
+            <Combo id="comb_status00" innerdataset="tp_list" codecolumn="code" datacolumn="name"/>
           </InitValue>
         </Div>
       </Layout>
@@ -110,23 +149,20 @@ this.Div00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 		this.transaction(
 		"saveAtdReq" //1. strsvcid
 		,"/attendance/saveAtdReq" //2.strurl
-		,"in_ds=ds_atdlist:U" //3.strInDatasets Sds=Fds:U :A :
+		,"in_ds=ds_atdlist" //3.strInDatasets Sds=Fds:U :A :
 		,"" //4.strOutDatasets
 		,"" //5.strArgument
 		,"fn_callback" //6.strCallbackFunc
 	);
 };
 
-this.Div00_edit_contents_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
-{
-	
-};
 ]]></Script>
     <Objects>
       <Dataset id="ds_atdlist">
         <ColumnInfo>
           <Column id="seq" type="INT" size="256"/>
           <Column id="today" type="STRING" size="256"/>
+          <Column id="atd_status" type="STRING" size="256"/>
           <Column id="start_time" type="STRING" size="256"/>
           <Column id="end_time" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
@@ -166,6 +202,7 @@ this.Div00_edit_contents_onchanged = function(obj:nexacro.TextArea,e:nexacro.Cha
       <BindItem id="item4" compid="Div00.form.sta_name" propid="text" datasetid="ds_atdlist" columnid="name"/>
       <BindItem id="item5" compid="Div00.form.edit_contents" propid="value" datasetid="ds_atdlist" columnid="contents"/>
       <BindItem id="item6" compid="Div00.form.edit_comment" propid="value" datasetid="ds_atdlist" columnid="comments"/>
+      <BindItem id="item7" compid="Div00.form.comb_status00" propid="value" datasetid="ds_atdlist" columnid="atd_status"/>
     </Bind>
   </Form>
 </FDL>

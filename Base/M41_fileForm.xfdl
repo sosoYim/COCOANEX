@@ -94,7 +94,7 @@
                   <Static id="Static01_05" taborder="7" left="10" top="399" width="120" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" text="템플릿 설정"/>
                   <Static id="sta_form" taborder="8" left="130" top="47" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="10"/>
                   <Static id="Static01_06_00" taborder="9" left="130" top="94" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10" text=""/>
-                  <Static id="sta_writer_code" taborder="10" left="130" top="141" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
+                  <Static id="sta_writer_code" taborder="10" left="130" top="141" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10" onclick="Tab00_Tabpage2_sta_writer_code_onclick"/>
                   <Static id="Static01_06_00_01" taborder="11" left="130" top="188" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" text="" right="10"/>
                   <Static id="Static01_06_00_02" taborder="12" left="130" top="235" height="116" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
                   <Static id="Static01_06_00_03" taborder="13" left="130" top="352" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="10"/>
@@ -340,11 +340,8 @@ this.grid_temp_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 	}
 	this.Tab00.set_visible(true);
 	this.Tab00.set_tabindex(1);
-	var user_name = this.ds_user.getColumn(0,"name");
-	var user_dept = this.ds_user.getColumn(0,"dept_name");
 	var temp_name = this.tp_title.getColumn(this.tp_title.rowposition,"title");
 	this.Tab00.Tabpage2.form.sta_form.set_text(temp_name);
-	this.Tab00.Tabpage2.form.sta_writer_code.set_text(user_name+" | "+user_dept);	
 };
 
 this.div_addListForm_btn_modList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -416,11 +413,6 @@ this.btn_listSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 };
 
 
-
-this.Tab00_Tabpage2_Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
 ]]></Script>
     <Objects>
       <Dataset id="tp_title" useclientlayout="true">
@@ -443,6 +435,7 @@ this.Tab00_Tabpage2_Static00_onclick = function(obj:nexacro.Static,e:nexacro.Cli
           <Column id="temp_code" type="INT" size="256"/>
           <Column id="form_code" type="INT" size="256"/>
           <Column id="writer_code" type="INT" size="256"/>
+          <Column id="writer_name" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="tp_origin" useclientlayout="false">
@@ -479,7 +472,6 @@ this.Tab00_Tabpage2_Static00_onclick = function(obj:nexacro.Static,e:nexacro.Cli
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="Tab00.Tabpage2.form.tp_listName" propid="value" datasetid="tp_list" columnid="name"/>
       <BindItem id="item1" compid="Tab00.Tabpage2.form.tp_listExplain" propid="value" datasetid="tp_list" columnid="explain"/>
       <BindItem id="item2" compid="Tab00.Tabpage2.form.tp_listContents" propid="value" datasetid="tp_list" columnid="contents"/>
       <BindItem id="item3" compid="Tab00.Tabpage2.form.radio_status" propid="value" datasetid="tp_list" columnid="status"/>
@@ -488,6 +480,8 @@ this.Tab00_Tabpage2_Static00_onclick = function(obj:nexacro.Static,e:nexacro.Cli
       <BindItem id="item6" compid="Tab00.Tabpage1.form.tp_listName" propid="value" datasetid="tp_list" columnid="name"/>
       <BindItem id="item7" compid="Tab00.Tabpage1.form.tp_listExplain" propid="value" datasetid="tp_list" columnid="explain"/>
       <BindItem id="item8" compid="Tab00.Tabpage1.form.tp_listContents" propid="value" datasetid="tp_list" columnid="contents"/>
+      <BindItem id="item0" compid="Tab00.Tabpage2.form.sta_writer_code" propid="text" datasetid="tp_list" columnid="writer_name"/>
+      <BindItem id="item9" compid="Tab00.Tabpage2.form.tp_listName" propid="value" datasetid="tp_list" columnid="name"/>
     </Bind>
   </Form>
 </FDL>
