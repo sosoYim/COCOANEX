@@ -33,7 +33,7 @@
                     <Band id="body">
                       <Cell text="bind:deptname"/>
                       <Cell col="1" text="bind:teamname"/>
-                      <Cell col="2" text="bind:code"/>
+                      <Cell col="2" text="bind:code" displaytype="text"/>
                       <Cell col="3" text="bind:name"/>
                       <Cell col="4" text="bind:posname"/>
                       <Cell col="5" text="bind:withdraw"/>
@@ -55,7 +55,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:org_nm" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:level" editmaxlength="6" editinputfilter="sign,space,symbol,dot,comma,digit"/>
+                <Cell text="bind:org_nm" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:level" editmaxlength="6" editinputfilter="sign,space,symbol,dot,comma"/>
               </Band>
             </Format>
           </Formats>
