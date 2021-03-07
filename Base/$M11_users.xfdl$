@@ -116,7 +116,7 @@
               <Static id="sta_line00_00_00_00" taborder="34" text="" left="10" top="198" width="369" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
               <Static id="sta_line00_00_00_00_00" taborder="35" text="" left="66" top="236" width="313" height="8" border="1px solid #c7c7c7,0px none,0px none"/>
               <Static id="sta_subtitle" taborder="36" text="사원 정보" left="0" top="0" height="34" cssclass="sta_WF_title01" right="299"/>
-              <Combo id="cmb_pos" taborder="37" text="Combo00" left="270" top="168" width="100" height="25" innerdataset="ds_position" codecolumn="code" datacolumn="name"/>
+              <Combo id="cmb_pos" taborder="37" text="Combo00" left="270" top="168" width="100" height="25" innerdataset="ds_position" codecolumn="code" datacolumn="name" canitemchange="div_info_cmb_pos_canitemchange"/>
               <Static id="sta_mailValid" taborder="38" text="" left="77" top="303" width="286" height="13" font="9px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               <Static id="sta_inMailValid" taborder="39" text="" left="77" top="343" width="286" height="13" font="9px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
             </Layout>
@@ -301,11 +301,14 @@ this.fn_callback = function(id, ErrCode, ErrMsg)
 	trace(ErrMsg);
 }
 
-this.fn_empsave = function(resultAdd, resultModif)
+this.fn_empsave = function(id, ErrCode, ErrMsg, resultAdd, resultModif)
 {
-	
-	trace("resultAdd : ", nexacro.getApplication().resultAdd);
-	trace("resultModif : ", nexacro.getApplication().resultModif);
+	if(ErrCode == 0){
+		alert("성공적으로 저장되었습니다.");
+		this.onloadFunc();
+	}else if(ErrCode == -1){
+		alert("오류 발생. 버그리포트를 제출해주세요.");
+	}
 }
 
 this.fn_callback_load = function(id, EddCode, ErrMsg)
@@ -314,7 +317,7 @@ this.fn_callback_load = function(id, EddCode, ErrMsg)
 	
 	//트랜잭션 후 div_info 팀에 무소속 항목 추가
 	addNoTeam = this.ds_team.addRow();
-	this.ds_team.setColumn(addNoTeam, 'code', null);
+	this.ds_team.setColumn(addNoTeam, 'code', -1);
 	this.ds_team.setColumn(addNoTeam, 'name', '무소속');
 }
 
@@ -370,11 +373,13 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			}	
 			let ckExistMail = this.isValueExist(email, 'email');
 			let ckExistBMail = this.ckExistBMail(b_email, 'b_email');
-			if(ckExistMail != -1 || ckExistMail != i){
-				alert("중복된 메일이 있습니다. 확인 후 다시 저장하십시오.");
+			if((ckExistMail != -1 || ckExistMail != i) || (ckExistMail == 1 && email != null)){
+				//alert("중복된 메일이 있습니다. 확인 후 다시 저장하십시오.");
 				this.ds_employee.set_rowposition(ckExistMail);
-			}else if(ckExistBmail){
-				alert("중복된 사원메일이 있습니다. 확인 후 다시 저장하십시오.");
+				return;
+			}else if((ckExistBmail != -1 || ckExistBMail != i) || (ckExistBMail == 1 && b_email != null)){
+				//alert("중복된 사원메일이 있습니다. 확인 후 다시 저장하십시오.");
+				return;
 			}
 			//연락처, 사내전화에 숫자만 있는지, 메일 형식 안맞는건 없는지, 이름이나 주소에 특수기호 있는지 확인
 			
@@ -387,23 +392,24 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			}
 			let ckExistMail = this.isValueExist(email, 'email');
 			let ckExistBMail = this.ckExistBMail(b_email, 'b_email');
-			/*
-			if(ckExistMail != -1 || ckExistMail != i){
-				alert("중복된 메일이 있습니다. 확인 후 다시 저장하십시오.");
+			if((ckExistMail != -1 || ckExistMail != i) || (ckExistMail == 1 && email != null)){
+				//alert("중복된 메일이 있습니다. 확인 후 다시 저장하십시오.");
 				this.ds_employee.set_rowposition(ckExistMail);
-			}else if(ckExistBmail){
-				alert("중복된 사원메일이 있습니다. 확인 후 다시 저장하십시오.");
-			}*/
-		}else{
-			this.transaction(
-				"empSave" //strSvcID
-				, "/nexEmployee/nexSave.nex" //strURL
-				, "in_ds_employee=ds_employee:U" //strInDatasets Sds=Fds:U, A, N
-				, "" //strOutDatasets - select Fds = Sds
-				, "" //strArgument
-				,  "fn_empsave" //strCallbackFunc
-			);
+				return;
+			}else if((ckExistBmail != -1 || ckExistBMail != i) || (ckExistBMail == 1 && b_email != null)){
+				//alert("중복된 사원메일이 있습니다. 확인 후 다시 저장하십시오.");
+				return;
+			}
 		}
+		this.transaction(
+			"empSave" //strSvcID
+			, "/nexEmployee/nexSave.nex" //strURL
+			, "in_ds_employee=ds_employee:U" //strInDatasets Sds=Fds:U, A, N
+			, "" //strOutDatasets - select Fds = Sds
+			, "" //strArgument
+			,  "fn_empsave" //strCallbackFunc
+		);
+	
 	}
 };
 //취소
@@ -446,8 +452,9 @@ this.div_info_cmb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.Item
 {
 	this.div_info.form.cmb_team.set_value(null);
 	let dept_code = this.div_info.form.cmb_dept.value;
+	this.div_info.form.cmb_team.value == -1;
 	if(dept_code!=-10){
-		this.ds_team.filter("dept_code == "+dept_code);
+		this.ds_team.filter("dept_code == '"+dept_code+"' || dept_code == -1");
 	}
 };
 //팀 콤보 제한
@@ -516,17 +523,6 @@ this.div_info_ckb_withdraw_onchanged = function(obj:nexacro.CheckBox,e:nexacro.C
 			this.div_info.form.edt_address.set_enable(true);
 	}
 };
-//팀 무소속 : 팀 선택 콤보 비활성화, 팀 값 null
-/*
-this.div_info_chk_notaem_onchanged = function(obj:nexacro.CheckBox,e:nexacro.CheckBoxChangedEventInfo)
-{
-	let noteam = obj.value;
-	if(noteam){
-		this.div_info.form.cmb_team.set_value(null);
-		this.div_info.form.cmb_team.set_enable(false);
-	}
-};
-*/
 
 ////ds_employee 업데이트 END====================================================
 
@@ -677,7 +673,6 @@ this.div_info_ckb_withdraw_onclick = function(obj:nexacro.CheckBox,e:nexacro.Cli
 			this.div_info.form.cmb_dept.set_enable(false);
 			this.div_info.form.edt_name.set_enable(false);
 			this.div_info.form.cmb_team.set_enable(false);
-			
 			//this.div_info.form.msk_password.set_enable(false);
 			this.div_info.form.cmb_pos.set_enable(false);
 			this.div_info.form.rad_gender.set_enable(false);
@@ -714,6 +709,9 @@ this.isValueExist = function(value, column)
 this.ckExistMail = function()
 {
 	let emailTyped = this.div_info.form.edt_email.value;
+	if(emailTyped == null){
+		return;
+	}
 	let row = this.grd_emp_list.currentrow;
 	let emailExist = this.ds_employee.findRowNF('email',emailTyped);
 	trace('emailExist : ',emailExist);
@@ -731,7 +729,9 @@ this.ckExistMail = function()
 this.ckExistBMail = function()
 {
 	let emailTyped = this.div_info.form.edt_b_email.value;
-	trace(emailTyped);
+	if(emailTyped == null){
+		return;
+	}
 	let row = this.grd_emp_list.currentrow;
 	let emailExist = this.ds_employee.findRowNF('b_email',emailTyped);
 	let announce = this.div_info.form.sta_inMailValid;
@@ -751,6 +751,14 @@ this.chkEmail = function(str) {
     var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (regExp.test(str)) return true;
     else return false;
-}]]></Script>
+}
+
+this.div_info_cmb_pos_canitemchange = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	let row = this.grd_emp_list.currentrow;
+	let pos_code = this.ds_employee.getColumn(row,'pos_code');
+	trace(pos_code);
+};
+]]></Script>
   </Form>
 </FDL>
