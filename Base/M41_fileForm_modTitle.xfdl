@@ -6,8 +6,8 @@
         <Static id="Static00" taborder="0" text="양식 분류 추가" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-780"/>
         <Static id="Static01" taborder="1" text="양식 분류 명" left="10" top="44" width="120" height="36"/>
         <Static id="Static01_00" taborder="2" text="설명" left="10" top="110" width="120" height="36"/>
-        <Edit id="Edit00" taborder="3" left="91" top="52" width="199" height="26" onchanged="Edit00_onchanged"/>
-        <TextArea id="TextArea00" taborder="4" left="91" top="120" width="199" height="144" displaynulltext=" "/>
+        <Edit id="Edit00" taborder="3" left="91" top="52" width="199" height="26" onchanged="Edit00_onchanged" maxlength="50"/>
+        <TextArea id="TextArea00" taborder="4" left="91" top="120" width="199" height="144" displaynulltext=" " maxlength="100"/>
         <Button id="btn_cancel" taborder="5" text="취소" left="20" top="370" width="112" height="46" onclick="btn_cancel_onclick"/>
         <Button id="btn_add" taborder="6" text="등록" left="160" top="370" width="112" height="46" onclick="btn_add_onclick"/>
         <Static id="Static01_00_00" taborder="7" text="등록 정보" left="10" top="274" width="71" height="36"/>
