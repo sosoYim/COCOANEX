@@ -142,7 +142,9 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.M12_deptTeam_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[//새로 추가 :  org_cd = =10
+//무소속 : org_cd = -1
+this.M12_deptTeam_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 		trace("도착==============--================");
 		this.transaction(
@@ -158,6 +160,16 @@
 this.fn_callback = function(id, ErrCode, ErrMsg)
 {
 	trace(ErrMsg);
+}
+
+this.fn_callback_save = function(id, ErrCode, ErrMsg)
+{
+	trace('errcode : ',ErrCode);
+	if(ErrMsg == 'SUCCESS'){
+		alert('성공적으로 저장되었습니다.');
+	}else{
+		alert('저장에 실패했습니다. 관리자에게 문의해주십시오.');
+	}
 }
 /*
 this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -176,22 +188,31 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//포커스 로우
 	let row = this.grd_tree.currentrow;
 	trace(row);
-	let p_org_cd = this.ds_org.getColumn(row, "org_cd");
+	let p_org_cd; 
 	let p_level = this.ds_org.getColumn(row,"level");
 	//대표에 포커스 : 부서추가 / 부서나 팀에 포커스 : 팀 추가
 	let set_level=0;
 	if(p_level==0){
 		set_level=1
+	}else if(p_level==1){
+		//부서일때
+		set_level=2;
 	}else{
-		set_level=2
+		//팀일때
+		set_level=2;
+		p_org_cd = this.ds_org.getColumn(row, "p_org_cd");
 	}
+	//부서일때 vs 팀일때
 	let addedRow = this.ds_org.insertRow(row+1);
 	this.ds_org.setColumn(addedRow,"p_org_cd",p_org_cd);
 	this.ds_org.setColumn(addedRow,"level",set_level);
-	//null을 스프링 int로 못 받아서 -1 넣어줌
-	this.ds_org.setColumn(addedRow,"org_cd",-1);
+	//null을 스프링 int로 못 받아서 -10 넣어줌
+	this.ds_org.setColumn(addedRow,"org_cd",-10);
 	trace("추가된 로우 부모코드 : ", this.ds_org.getColumn(addedRow, "p_org_cd"))
 	trace("추가된 로우 레벨 : ",set_level);
+	//추가 후 이름 입력하도록 텍스트 에디트 타입으로
+	this.ds_org.set_rowposition(addedRow);
+	//this.grd_tree.setCellProperty("body",0,"edittype","expr:org_nm==''?'text':'tree'");
 };
 //삭제
 this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -227,19 +248,39 @@ this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 //저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	//이름을 넣지 않은 값들은 delete해주기
-	
+	//유효성 체크
+	//이름을 넣지 않은 값
+	//중복되는 이름
+	for(var i=0; i < this.ds_org.rowcount; i++)
+	{
+		let org_nm = this.ds_org.getColumn(i, 'org_nm');
+		let ckDoubleName = this.ds_org.findRowNF('org_nm', org_nm);
+		let org_cd = this.ds_org.getColumn(i, 'org_cd');
+		trace("i : ", i);
+		trace('org_nm : ',org_nm);
+		//공백지우기
+		//org_nm.replace(/ /gi,"");
+		if(org_nm == '' || org_nm == null){
+			this.ds_org.set_rowposition(i);
+			alert('이름을 입력하세요');
+			return;
+		}else if((ckDoubleName == -1 || ckDoubleName == i) || org_cd == -1){
+			//아무것도 안함
+		}else{
+		this.ds_org.set_rowposition(i);
+			alert('중복된 이름은 사용할 수 없습니다.');
+			return;
+		}
+	}
 	//트랜잭션
-		this.transaction(
-			"OrganDeptTeam" //strSvcID
-			, "/nexDeptTeam/saveOrgan.nex" //strURL
-			, "in_ds_org=ds_org:U" //strInDatasets Sds=Fds:U, A, N
-			, "" //strOutDatasets - select Fds = Sds
-			, "" //strArgument
-			,  "fn_callback" //strCallbackFunc
-		);
-
-
+	this.transaction(
+		"OrganDeptTeam" //strSvcID
+		, "/nexDeptTeam/saveOrgan.nex" //strURL
+		, "in_ds_org=ds_org:U" //strInDatasets Sds=Fds:U, A, N
+		, "" //strOutDatasets - select Fds = Sds
+		, "" //strArgument
+		,  "fn_callback_save" //strCallbackFunc
+	);
 };
 
 //리셋
@@ -258,6 +299,12 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 //더블클릭시 텍스트에디트
 this.grd_tree_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	let row = this.grd_tree.currentrow;
+	let teamcode = this.ds_org.getColumn(row, 'org_cd');
+	if(teamcode == -1){
+		alert('무소속 항목은 수정할 수 없습니다.');
+		return;
+	}
 	this.grd_tree.setCellProperty("body",0,"edittype","text");
 };
 //포커스 이동시 트리
@@ -289,12 +336,6 @@ this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventIn
 		}
 		this.ds_employee.filter("team_code == "+org_cd);
 	}
-};
-
-this.div_search_btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
