@@ -5,7 +5,7 @@
       <Layout height="65" mobileorientation="landscape" width="1260">
         <Static id="Static00" taborder="0" left="0" top="0" height="24" right="0" cssclass="sta_top_bg01" background="linear-gradient(to right,cornflowerblue 12%,#684bb9 49%)"/>
         <Static id="Static01" taborder="1" left="0" top="24" height="41" right="0" cssclass="sta_top_bg02"/>
-        <Static id="sta_topName" taborder="2" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht" text="안녕하세요 000님!"/>
+        <Static id="sta_topName" taborder="2" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht"/>
         <Static id="Static02" taborder="3" text="COCOAERP" left="0" top="24" width="164" height="41" padding="5px" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="black"/>
       </Layout>
     </Layouts>
@@ -47,6 +47,11 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_emp">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -56,8 +61,21 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.transaction(
+		"getEmpInfoNex" //1. strsvcid
+		,"/membership/getEmpInfoNex" //2.strurl
+		,"" //3.strInDatasets Sds=Fds:U :A :
+		,"ds_emp=out_ds" //4.strOutDatasets
+		,"" //5.strArgument
+		,"fn_callback" //6.strCallbackFunc
+	);
 	
+
 };
-]]></Script>
+
+this.fn_callback=function(id,errmsg,etc){
+	var name="안녕하세요 "+this.ds_emp.getColumn(this.ds_emp.rowposition,"name")+"님";
+ 	this.sta_topName.set_text(name);
+}]]></Script>
   </Form>
 </FDL>
