@@ -30,7 +30,7 @@
         <Div id="div_modif" taborder="3" text="" top="100" border="1px solid #c7c7c7" width="450" bottom="50" left="grd_position:10">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="메뉴 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="0"/>
+              <Static id="Static00" taborder="0" text="직급 관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="0"/>
               <Static id="sta" taborder="1" left="122" top="124" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
               <Static id="Static01_00" taborder="2" text="직급명" left="20" top="124" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
               <Static id="Static01" taborder="3" text="코드" left="20" top="77" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
