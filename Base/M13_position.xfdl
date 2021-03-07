@@ -3,7 +3,7 @@
   <Form id="M13_position" width="1090" height="650" titletext="New Form" onload="M13_position_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Button id="btn_save" taborder="0" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" right="100"/>
+        <Button id="btn_save" taborder="0" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" right="100" width="64"/>
         <Static id="sta_title" taborder="1" text="직급 관리" left="20" top="10" height="34" cssclass="sta_WF_title01" right="10" font="bold 18px/normal &quot;Malgun gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
         <Grid id="grd_position" taborder="2" left="20" top="100" binddataset="ds_position" autofittype="col" right="560" minwidth="300" maxwidth="" bottom="50">
           <Formats>
@@ -27,16 +27,16 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="Div00" taborder="3" text="" top="100" border="1px solid #c7c7c7" width="450" bottom="50" left="grd_position:10">
+        <Div id="div_modif" taborder="3" text="" top="100" border="1px solid #c7c7c7" width="450" bottom="50" left="grd_position:10">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="메뉴 수정" left="0" top="0" height="34" cssclass="sta_WF_title01" right="0"/>
-              <Static id="Static01_06_00" taborder="1" left="122" top="124" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
+              <Static id="sta" taborder="1" left="122" top="124" height="46" border="0px none,0px none,1px solid #c9c9c9" padding="0px 0px 0px 10px" right="20"/>
               <Static id="Static01_00" taborder="2" text="직급명" left="20" top="124" height="46" border="0px none,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px" width="120"/>
               <Static id="Static01" taborder="3" text="코드" left="20" top="77" width="120" height="46" border="1px solid #c9c9c9,1px solid #c9c9c9,1px solid #c9c9c9,0px none" padding="0px 0px 0px 10px"/>
               <Static id="sta_form" taborder="4" left="122" top="77" height="46" padding="0px 0px 0px 10px" border="1px solid #c9c9c9,0px none" text="" right="20"/>
               <Edit id="edt_code" taborder="5" left="150" top="84" width="131" height="32" readonly="true"/>
-              <Edit id="edt_name" taborder="6" left="150" top="130" width="131" height="32"/>
+              <Edit id="edt_name" taborder="6" left="150" top="130" width="131" height="32" onchanged="Div00_edt_name_onchanged"/>
             </Layout>
           </Layouts>
         </Div>
@@ -72,6 +72,13 @@ this.M13_position_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	for(var i=0; i < this.ds_position.rowcount; i++){
+		let edt_name = this.div_modif.form.edt_name.value;
+		if(edt_name == '' || edt_name == null){
+			alert("직명에 빈값을 넣을 수 없습니다.");
+			return;
+		}
+	}
 	this.transaction(
 			"updatePosList" // 1. strSvcID
 			,"/nexPos/updatePosList.nex" // 2. strURL
@@ -84,15 +91,21 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.fn_callback = function(id, ErrCode, ErrMsg)
 {
-	trace(ErrMsg);
-}
+	if(id == "updatePosList"){
+		if(ErrCode == 0){
+			alert("성공적으로 저장했습니다.");
+		}else{
+			alert("에러가 발생했습니다. 버그리포트를 이용해주십시오.");
+		}
+	}
 
+}
 
 ]]></Script>
     <Bind>
-      <BindItem id="item1" compid="Div00.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
-      <BindItem id="item4" compid="Div00.form.edt_code" propid="value" datasetid="ds_position" columnid="code"/>
-      <BindItem id="item5" compid="Div00.form.edt_name" propid="value" datasetid="ds_position" columnid="name"/>
+      <BindItem id="item1" compid="div_modif.form.sta_form" propid="text" datasetid="tp_title" columnid="title"/>
+      <BindItem id="item4" compid="div_modif.form.edt_code" propid="value" datasetid="ds_position" columnid="code"/>
+      <BindItem id="item5" compid="div_modif.form.edt_name" propid="value" datasetid="ds_position" columnid="name"/>
     </Bind>
   </Form>
 </FDL>
