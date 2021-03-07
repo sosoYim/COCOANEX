@@ -62,8 +62,9 @@
         </Grid>
         <Button id="btn_reset" taborder="3" text="리셋" top="55" width="64" onclick="btn_reset_onclick" cssclass="btn_WF_reset01" right="100" height="35"/>
         <Button id="btn_del" taborder="5" text="삭제" top="55" height="35" cssclass="btn_WF_delete01" onclick="btn_del_onclick" width="64" left="94"/>
-        <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" left="btn_del:10"/>
+        <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" left="170"/>
         <Button id="btn_add" taborder="2" text="추가" top="55" height="35" onclick="btn_add_onclick" cssclass="btn_WF_add01" width="64" left="20"/>
+        <Static id="Static00" taborder="7" text="부서/팀 이름을 수정하려면 더블클릭하세요." left="300" top="55" width="461" height="35" textAlign="center" background="#e2e2e2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -324,18 +325,43 @@ this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventIn
 	let row = obj.currentrow;
 	let level = this.ds_org.getColumn(row,"level");
 	let org_cd = this.ds_org.getColumn(row,"org_cd");
-	trace("row : ",row,"level : ",level,"org_cd : ",org_cd );
-	if(level<2){
+	trace("row : ",row);
+	trace("level : ",level);
+	trace("org_cd : ",org_cd);
+	
+	if(level==0){
+		this.ds_employee.filter("");
+	}else if(level==1){
 		this.ds_employee.filter("dept_code == "+org_cd);
 	}else{
 		//무소속
 		if(org_cd == -1){
 			let p_org_cd = this.ds_org.getColumn(row,"p_org_cd");
-			trace(this.ds_employee.getColumn(row,"team_code"));
-			this.ds_employee.filter("dept_code =="+p_org_cd && "team_code == ''");
+			trace("p_org_cd : ",p_org_cd);
+			//왜 무소속끼리 뭉쳐서 같이 나와ㅠㅠ
+			this.ds_employee.filter("dept_code == "+p_org_cd);
 		}
 		this.ds_employee.filter("team_code == "+org_cd);
 	}
-};]]></Script>
+};
+
+this.btn_modif = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let row = this.grd_tree.currentrow;
+	let level = this.ds_org.getColumn(row,'level');
+	let teamcode;
+	if(level==2){
+		teamcode = this.ds_org.getColumn(row, 'org_cd');
+	}
+	trace('row : ',row);
+	trace('teamcode : ',teamcode);
+	if(teamcode == -1){
+		alert('무소속 항목은 수정할 수 없습니다.');
+		return;
+	}
+	let cell = this.grd_tree.getCellPos();
+	this.grd_tree.setCellProperty("body",cell,"edittype","text");
+};
+]]></Script>
   </Form>
 </FDL>
