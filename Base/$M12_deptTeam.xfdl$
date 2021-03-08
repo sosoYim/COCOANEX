@@ -33,7 +33,7 @@
                     <Band id="body">
                       <Cell text="bind:deptname"/>
                       <Cell col="1" text="bind:teamname"/>
-                      <Cell col="2" text="bind:code"/>
+                      <Cell col="2" text="bind:code" displaytype="text"/>
                       <Cell col="3" text="bind:name"/>
                       <Cell col="4" text="bind:posname"/>
                       <Cell col="5" text="bind:withdraw"/>
@@ -45,7 +45,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grd_tree" taborder="1" left="20" top="100" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_org" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" oncelldblclick="grd_tree_oncelldblclick" onselectchanged="grd_tree_onselectchanged" right="div_empList:10" oncellclick="grd_tree_oncellclick" bottom="50" minheight="300" maxheight="">
+        <Grid id="grd_tree" taborder="1" left="20" top="100" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_org" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" oncelldblclick="grd_tree_oncelldblclick" onselectchanged="grd_tree_onselectchanged" right="div_empList:10" oncellclick="grd_tree_oncellclick" bottom="100" minheight="300" maxheight="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -55,7 +55,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:org_nm" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:level"/>
+                <Cell text="bind:org_nm" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:level" editmaxlength="6" editinputfilter="sign,space,symbol,dot,comma"/>
               </Band>
             </Format>
           </Formats>
@@ -64,7 +64,7 @@
         <Button id="btn_del" taborder="5" text="삭제" top="55" height="35" cssclass="btn_WF_delete01" onclick="btn_del_onclick" width="64" left="94"/>
         <Button id="btn_save" taborder="4" text="저장" top="55" height="35" onclick="btn_save_onclick" cssclass="btn_WF_save01" width="64" left="170"/>
         <Button id="btn_add" taborder="2" text="추가" top="55" height="35" onclick="btn_add_onclick" cssclass="btn_WF_add01" width="64" left="20"/>
-        <Static id="Static00" taborder="7" text="부서/팀 이름을 수정하려면 더블클릭하세요." left="300" top="55" width="461" height="35" textAlign="center" background="#e2e2e2"/>
+        <Static id="Static00" taborder="7" text="부서/팀 이름을 수정하려면 더블클릭하세요." left="20" top="563" textAlign="center" background="#e2e2e2" right="800" bottom="50"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -80,23 +80,24 @@
             <Col id="org_nm">코코아</Col>
             <Col id="org_cd">10</Col>
             <Col id="level">0</Col>
+            <Col id="p_org_cd"></Col>
           </Row>
           <Row>
             <Col id="org_nm">개발부</Col>
             <Col id="org_cd">100</Col>
             <Col id="level">1</Col>
-            <Col id="p_org_cd">10</Col>
+            <Col id="p_org_cd"></Col>
           </Row>
           <Row>
             <Col id="org_nm">개발1팀</Col>
             <Col id="org_cd">1000</Col>
-            <Col id="p_org_cd">100</Col>
+            <Col id="p_org_cd"></Col>
             <Col id="level">2</Col>
           </Row>
           <Row>
             <Col id="org_nm">인사부</Col>
             <Col id="org_cd">200</Col>
-            <Col id="p_org_cd">10</Col>
+            <Col id="p_org_cd"></Col>
             <Col id="level">1</Col>
           </Row>
         </Rows>
@@ -168,6 +169,14 @@ this.fn_callback_save = function(id, ErrCode, ErrMsg)
 	trace('errcode : ',ErrCode);
 	if(ErrMsg == 'SUCCESS'){
 		alert('성공적으로 저장되었습니다.');
+		this.transaction(
+			"OrganDeptTeam" //strSvcID
+			, "/nexDeptTeam/nexOrganDept.nex" //strURL
+			, "" //strInDatasets Sds=Fds:U, A, N
+			, "ds_org=out_org_list ds_employee=out_emp_list" //strOutDatasets - select Fds = Sds
+			, "" //strArgument
+			,  "fn_callback" //strCallbackFunc
+		);
 	}else{
 		alert('저장에 실패했습니다. 관리자에게 문의해주십시오.');
 	}
@@ -194,10 +203,11 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//대표에 포커스 : 부서추가 / 부서나 팀에 포커스 : 팀 추가
 	let set_level=0;
 	if(p_level==0){
-		set_level=1
+		set_level=1;
 	}else if(p_level==1){
 		//부서일때
 		set_level=2;
+		p_org_cd = this.ds_org.getColumn(row, "org_cd");
 	}else{
 		//팀일때
 		set_level=2;
@@ -224,6 +234,7 @@ this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let row = this.grd_tree.currentrow;
 	let level = this.ds_org.getColumn(row,"level");
 	let org_cd = this.ds_org.getColumn(row,"org_cd");
+	
 	let isPExist = this.ds_org.findRow("p_org_cd",org_cd);
 	let isEmpExist;
 	if(level == 1){
@@ -236,8 +247,12 @@ this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(level == 0){
 		alert("부서나 팀만 삭제할 수 있습니다.");
 		return;
-	}else if(level == 0 || (level == 1 && isPExist != -1)){
-		alert("하위 팀이 존재하는 부서는 삭제할 수 없습니다.");
+	}else if(org_cd == -1){
+		alert("무소속 분류는 삭제할 수 없습니다.");
+		return;
+	}else if(level == 0 || (level == 1 && isPExist != -1 )){
+	//조건에 무소속(org_cd : -1)인것도 빼줘야 하는데....
+		alert("하위 팀 혹은 소속된 사원이 존재하는 부서는 삭제할 수 없습니다.");
 		return;
 	}else if(isEmpExist != -1){
 		alert("소속된 사원이 있는 부서, 팀은 삭제할 수 없습니다.");
@@ -257,10 +272,6 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let org_nm = this.ds_org.getColumn(i, 'org_nm');
 		let ckDoubleName = this.ds_org.findRowNF('org_nm', org_nm);
 		let org_cd = this.ds_org.getColumn(i, 'org_cd');
-		trace("i : ", i);
-		trace('org_nm : ',org_nm);
-		//공백지우기
-		//org_nm.replace(/ /gi,"");
 		if(org_nm == '' || org_nm == null){
 			this.ds_org.set_rowposition(i);
 			alert('이름을 입력하세요');
@@ -319,7 +330,7 @@ this.grd_tree_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEv
 
 
 
-
+//트리 그리드 클릭시 옆에 사원들 보여주기
 this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let row = obj.currentrow;
@@ -330,38 +341,24 @@ this.grd_tree_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventIn
 	trace("org_cd : ",org_cd);
 	
 	if(level==0){
+		//최고
 		this.ds_employee.filter("");
 	}else if(level==1){
+		//부서
 		this.ds_employee.filter("dept_code == "+org_cd);
-	}else{
-		//무소속
+	}else if(level==2){
+		//팀
 		if(org_cd == -1){
+			trace("무소속임");
 			let p_org_cd = this.ds_org.getColumn(row,"p_org_cd");
 			trace("p_org_cd : ",p_org_cd);
-			//왜 무소속끼리 뭉쳐서 같이 나와ㅠㅠ
-			this.ds_employee.filter("dept_code == "+p_org_cd);
+			this.ds_employee.filter("dept_code == '"+p_org_cd+"' && team_code == -1");
+		}else{
+			this.ds_employee.filter("team_code == "+org_cd);
 		}
-		this.ds_employee.filter("team_code == "+org_cd);
 	}
 };
 
-this.btn_modif = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	let row = this.grd_tree.currentrow;
-	let level = this.ds_org.getColumn(row,'level');
-	let teamcode;
-	if(level==2){
-		teamcode = this.ds_org.getColumn(row, 'org_cd');
-	}
-	trace('row : ',row);
-	trace('teamcode : ',teamcode);
-	if(teamcode == -1){
-		alert('무소속 항목은 수정할 수 없습니다.');
-		return;
-	}
-	let cell = this.grd_tree.getCellPos();
-	this.grd_tree.setCellProperty("body",cell,"edittype","text");
-};
 ]]></Script>
   </Form>
 </FDL>
